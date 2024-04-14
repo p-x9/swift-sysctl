@@ -65,6 +65,15 @@ extension Node {
             oid: Child._shared[keyPath: keyPath].oid
         )
     }
+
+    public subscript(
+        dynamicMember keyPath: KeyPath<Child, AnyNode>
+    ) -> AnyField {
+        .init(
+            parents: [oid],
+            oid: Child._shared[keyPath: keyPath].oid
+        )
+    }
 }
 
 // MARK: Chained
@@ -79,13 +88,6 @@ public struct ChainedNode<Child: NodeCollection>: NodeProtocol {
 }
 
 extension ChainedNode {
-    public subscript<Value>(dynamicMember keyPath: KeyPath<Child, LeafNode<Value>>) -> Field<Value> {
-        .init(
-            parents: parents + [oid],
-            oid: Child._shared[keyPath: keyPath].oid
-        )
-    }
-
     public subscript<GrandChild>(
         dynamicMember keyPath: KeyPath<Child, Node<GrandChild>>
     ) -> ChainedNode<GrandChild> {
@@ -103,6 +105,20 @@ extension ChainedNode {
         return .init(
             parents: parents + [oid] + node.parents,
             oid: node.oid
+        )
+    }
+
+    public subscript<Value>(dynamicMember keyPath: KeyPath<Child, LeafNode<Value>>) -> Field<Value> {
+        .init(
+            parents: parents + [oid],
+            oid: Child._shared[keyPath: keyPath].oid
+        )
+    }
+
+    public subscript(dynamicMember keyPath: KeyPath<Child, AnyNode>) -> AnyField {
+        .init(
+            parents: parents + [oid],
+            oid: Child._shared[keyPath: keyPath].oid
         )
     }
 }
@@ -135,6 +151,15 @@ extension TopNodeProtocol {
     public subscript<Value>(
         dynamicMember keyPath: KeyPath<Child, LeafNode<Value>>
     ) -> Field<Value> {
+        .init(
+            parents: [oid],
+            oid: Child._shared[keyPath: keyPath].oid
+        )
+    }
+
+    public subscript(
+        dynamicMember keyPath: KeyPath<Child, AnyNode>
+    ) -> AnyField {
         .init(
             parents: [oid],
             oid: Child._shared[keyPath: keyPath].oid

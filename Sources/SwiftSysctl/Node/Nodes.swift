@@ -10,6 +10,18 @@ import Foundation
 
 public enum Nodes {}
 
+// MARK: - Sysctl
+public struct SysctlNode: TopNodeProtocol {
+    public typealias Child = Nodes.Sysctl
+
+    public let oid: OID = OID.TopLevel.sysctl
+
+    public var name: String {
+        oid.name
+    }
+}
+
+// MARK: - Kern
 public struct KernNode: TopNodeProtocol {
     public typealias Child = Nodes.Kern
 
@@ -20,6 +32,51 @@ public struct KernNode: TopNodeProtocol {
     }
 }
 
+// MARK: - VM
+public struct VMNode: TopNodeProtocol {
+    public typealias Child = Nodes.VM
+
+    public let oid: OID = OID.TopLevel.vm
+
+    public var name: String {
+        oid.name
+    }
+}
+
+// MARK: - VFS
+public struct VFSNode: TopNodeProtocol {
+    public typealias Child = Nodes.VFS
+
+    public let oid: OID = OID.TopLevel.vfs
+
+    public var name: String {
+        oid.name
+    }
+}
+
+// MARK: - Net
+public struct NetNode: TopNodeProtocol {
+    public typealias Child = Nodes.Net
+
+    public let oid: OID = OID.TopLevel.net
+
+    public var name: String {
+        oid.name
+    }
+}
+
+// MARK: - Debug
+public struct DebugNode: TopNodeProtocol {
+    public typealias Child = Nodes.Debug
+
+    public let oid: OID = OID.TopLevel.debug
+
+    public var name: String {
+        oid.name
+    }
+}
+
+// MARK: - HW
 public struct HWNode: TopNodeProtocol {
     public typealias Child = Nodes.HW
 
@@ -30,6 +87,7 @@ public struct HWNode: TopNodeProtocol {
     }
 }
 
+// MARK: - MachDep
 public struct MachDepNode: TopNodeProtocol {
     public typealias Child = Nodes.MachDep
 

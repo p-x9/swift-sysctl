@@ -73,9 +73,17 @@ extension Sysctl {
         }
 
         data = .init(data[4...])
-        guard let format = String(data: data, encoding: .utf8) else {
-            return nil
+        let format: String? = data.withUnsafeBytes {
+            guard let baseAddress = $0.baseAddress else {
+                return nil
+            }
+            return String(
+                cString: baseAddress
+                    .assumingMemoryBound(to: CChar.self)
+            )
         }
+
+        guard let format else { return nil }
 
         return (_kind, format)
     }

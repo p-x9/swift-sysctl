@@ -16,7 +16,7 @@ extension Sysctl {
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L781
     public static func _name(_ oid: [Int32]) -> String? {
         let field = SwiftSysctl.sysctl._name
-        return sysctl(field, additional: oid).withUnsafeBytes {
+        return sysctl(field, additional: oid)?.withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
                 return nil
             }
@@ -37,8 +37,8 @@ extension Sysctl {
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L999
     public static func _next(_ oid: [Int32]) -> [Int32]? {
         let field = SwiftSysctl.sysctl.next
-        let data = sysctl(field, additional: oid)
-        guard data.count >= MemoryLayout<Int32>.size else {
+        guard let data = sysctl(field, additional: oid),
+              data.count >= MemoryLayout<Int32>.size else {
             return nil
         }
         return data.withUnsafeBytes {
@@ -64,7 +64,9 @@ extension Sysctl {
     ///
     public static func _oidfmt(_ oid: [Int32]) -> (UInt32, String)? {
         let field = SwiftSysctl.sysctl.oidfmt
-        var data = sysctl(field, additional: oid)
+        guard var data = sysctl(field, additional: oid) else {
+            return nil
+        }
 
         guard data.count > 4 else { return nil }
 

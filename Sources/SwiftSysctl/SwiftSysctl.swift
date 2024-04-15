@@ -4,15 +4,12 @@ public enum Sysctl {}
 
 extension Sysctl {
     @inlinable
-    public static func sysctl(_ field: Field<String>) -> String {
-        var mib: [Int32] = field.parents.map(\.id) + [field.oid.id]
-        var size = 0
+    public static func sysctl(_ field: Field<String>) -> String? {
+        let mib: [Int32] = field.parents.map(\.id) + [field.oid.id]
 
-        Darwin.sysctl(&mib, u_int(mib.count), nil, &size, nil, 0)
-        var name = [UInt8](repeating: 0, count: Int(size))
-        Darwin.sysctl(&mib, u_int(mib.count), &name, &size, nil, 0)
+        guard let data = sysctl(mib) else { return nil }
 
-        return name.withUnsafeBytes {
+        return data.withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
                 return nil
             }
@@ -24,28 +21,19 @@ extension Sysctl {
     }
 
     @inlinable
-    public static func sysctl<Value>(_ field: Field<Value>) -> Value where Value: FixedWidthInteger {
-        var mib: [Int32] = field.parents.map(\.id) + [field.oid.id]
-        var size = 0
+    public static func sysctl<Value>(_ field: Field<Value>) -> Value? where Value: FixedWidthInteger {
+        let mib: [Int32] = field.parents.map(\.id) + [field.oid.id]
 
-        Darwin.sysctl(&mib, u_int(mib.count), nil, &size, nil, 0)
-        var data = [UInt8](repeating: 0, count: Int(size))
-        Darwin.sysctl(&mib, u_int(mib.count), &data, &size, nil, 0)
+        guard let data = sysctl(mib) else { return nil }
 
         return data.withUnsafeBytes { $0.load(as: Value.self) }
     }
 
     @_disfavoredOverload
     @inlinable
-    public static func sysctl<Value>(_ field: Field<Value>) -> Data {
-        var mib: [Int32] = field.parents.map(\.id) + [field.oid.id]
-        var size = 0
-
-        Darwin.sysctl(&mib, u_int(mib.count), nil, &size, nil, 0)
-        var data = [UInt8](repeating: 0, count: Int(size))
-        Darwin.sysctl(&mib, u_int(mib.count), &data, &size, nil, 0)
-
-        return Data(data)
+    public static func sysctl<Value>(_ field: Field<Value>) -> Data? {
+        let mib: [Int32] = field.parents.map(\.id) + [field.oid.id]
+        return sysctl(mib)
     }
 }
 
@@ -54,7 +42,7 @@ extension Sysctl {
     public static func sysctl(
         _ node: AnyField,
         additional add: [Int32] = []
-    ) -> Data {
+    ) -> Data? {
         var mib: [Int32] = node.parents.map(\.id)
         mib += [node.oid.id]
         mib += add
@@ -67,14 +55,26 @@ extension Sysctl {
     @inlinable
     public static func sysctl(
         _ oid: [Int32]
-    ) -> Data {
+    ) -> Data? {
         var mib: [Int32] = oid
 
         var size = 0
+        var ret: Int32 = 0
 
-        Darwin.sysctl(&mib, u_int(mib.count), nil, &size, nil, 0)
+        ret = Darwin.sysctl(
+            &mib, u_int(mib.count),
+            nil, &size,
+            nil, 0
+        )
+        guard ret == 0 else { return nil }
+
         var data = [UInt8](repeating: 0, count: Int(size))
-        Darwin.sysctl(&mib, u_int(mib.count), &data, &size, nil, 0)
+        ret = Darwin.sysctl(
+            &mib, u_int(mib.count),
+            &data, &size,
+            nil, 0
+        )
+        guard ret == 0 else { return nil }
 
         return Data(data)
     }

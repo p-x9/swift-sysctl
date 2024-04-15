@@ -29,8 +29,8 @@ final class SwiftSysctlTests: XCTestCase {
                 continue
             }
             print("\(name) [\(format)]: ", terminator: "")
-            let data = Sysctl.sysctl(_current)
-            guard !data.isEmpty else {
+            guard let data = Sysctl.sysctl(_current),
+                  !data.isEmpty else {
                 print("")
                 continue
             }

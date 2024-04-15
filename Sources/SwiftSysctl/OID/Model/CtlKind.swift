@@ -48,6 +48,11 @@ extension CtlKind {
         case oid2
         /// CTLFLAG_EXPERIMENT
         case experiment
+
+        /// CTLFLAG_PERMANENT
+        ///
+        /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/sys/sysctl.h#L168C29-L168C39
+        case permanent
     }
 }
 
@@ -100,6 +105,11 @@ extension CtlKind {
     public static let experiment = CtlKind(
         rawValue: Bit.experiment.rawValue
     )
+
+    /// CTLFLAG_PERMANENT
+    public static let permanent = CtlKind(
+        rawValue: Bit.permanent.rawValue
+    )
 }
 
 extension CtlKind.Bit: RawRepresentable {
@@ -118,6 +128,7 @@ extension CtlKind.Bit: RawRepresentable {
         case RawValue(CTLFLAG_LOCKED): self = .locked
         case RawValue(CTLFLAG_OID2): self = .oid2
         case RawValue(CTLFLAG_EXPERIMENT): self = .experiment
+        case RawValue(0x00200000): self = .permanent
         default: return nil
         }
     }
@@ -135,6 +146,7 @@ extension CtlKind.Bit: RawRepresentable {
         case .locked: RawValue(CTLFLAG_LOCKED)
         case .oid2: RawValue(CTLFLAG_OID2)
         case .experiment: RawValue(CTLFLAG_EXPERIMENT)
+        case .permanent: RawValue(0x00200000)
         }
     }
 }
@@ -153,6 +165,7 @@ extension CtlKind.Bit: CustomStringConvertible {
         case .locked: "CTLFLAG_LOCKED"
         case .oid2: "CTLFLAG_OID2"
         case .experiment: "CTLFLAG_EXPERIMENT"
+        case .permanent: "0x00200000"
         }
     }
 }

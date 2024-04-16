@@ -10,6 +10,9 @@ import Foundation
 
 public protocol FieldProtocol {
     associatedtype Value
-    var oid: OID { get }
+    associatedtype OIDType: OIDProtocol
+
+    var oid: OIDType { get }
     var name: String { get }
 }
+

@@ -11,7 +11,9 @@ import Foundation
 //MARK: - NodeProtocol
 public protocol NodeProtocol {
     associatedtype Child: NodeCollection
-    var oid: OID { get }
+    associatedtype OIDType: OIDProtocol
+
+    var oid: OIDType { get }
     var name: String { get }
 }
 
@@ -45,6 +47,15 @@ extension NodeProtocol {
         )
     }
 
+    public subscript<Value>(
+        dynamicMember keyPath: KeyPath<Child, LeafNameNode<Value>>
+    ) -> NameField<Value> {
+        .init(
+            parents: [oid],
+            oid: Child._shared[keyPath: keyPath].oid
+        )
+    }
+
     public subscript(
         dynamicMember keyPath: KeyPath<Child, AnyNode>
     ) -> AnyField {
@@ -58,9 +69,10 @@ extension NodeProtocol {
 // MARK: - ChainedNodeProtocol
 public protocol ChainedNodeProtocol {
     associatedtype Child: NodeCollection
+    associatedtype OIDType: OIDProtocol
 
-    var parents: [OID] { get }
-    var oid: OID { get }
+    var parents: [any OIDProtocol] { get }
+    var oid: OIDType { get }
     var name: String { get }
 }
 
@@ -86,6 +98,13 @@ extension ChainedNodeProtocol {
     }
 
     public subscript<Value>(dynamicMember keyPath: KeyPath<Child, LeafNode<Value>>) -> Field<Value> {
+        .init(
+            parents: parents + [oid],
+            oid: Child._shared[keyPath: keyPath].oid
+        )
+    }
+
+    public subscript<Value>(dynamicMember keyPath: KeyPath<Child, LeafNameNode<Value>>) -> NameField<Value> {
         .init(
             parents: parents + [oid],
             oid: Child._shared[keyPath: keyPath].oid

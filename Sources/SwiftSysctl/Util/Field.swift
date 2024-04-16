@@ -16,9 +16,26 @@ public struct LeafNode<Value>: FieldProtocol {
     }
 }
 
+public struct LeafNameNode<Value>: FieldProtocol {
+    public let oid: NameOID
+
+    public var name: String {
+        oid.name
+    }
+}
+
 public struct Field<Value>: FieldProtocol {
-    public let parents: [OID]
+    public let parents: [any OIDProtocol]
     public let oid: OID
+
+    public var name: String {
+        (parents + [oid]).map(\.name).joined(separator: ".")
+    }
+}
+
+public struct NameField<Value>: FieldProtocol {
+    public let parents: [any OIDProtocol]
+    public let oid: NameOID
 
     public var name: String {
         (parents + [oid]).map(\.name).joined(separator: ".")
@@ -26,35 +43,42 @@ public struct Field<Value>: FieldProtocol {
 }
 
 public struct AnyNode {
-    public let oid: OID
+    public let oid: any OIDProtocol
 
     public var name: String {
         oid.name
     }
 
-    public init(oid: OID) {
+    public init(oid: any OIDProtocol) {
         self.oid = oid
     }
 
     public init<Child>(_ node: Node<Child>) {
         self.init(oid: node.oid)
     }
+
+    public init<Child>(_ node: NameNode<Child>) {
+        self.init(oid: node.oid)
+    }
 }
 
 public struct AnyField {
-    public let parents: [OID]
-    public let oid: OID
+    public let parents: [any OIDProtocol]
+    public let oid: any OIDProtocol
 
     public var name: String {
         (parents + [oid]).map(\.name).joined(separator: ".")
     }
 
-    public init(parents: [OID], oid: OID) {
+    public init(parents: [any OIDProtocol], oid: any OIDProtocol) {
         self.parents = parents
         self.oid = oid
     }
 
     public init<Child>(_ node: ChainedNode<Child>) {
-        self.init(parents: node.parents, oid: node.oid)
+        self.init(
+            parents: node.parents,
+            oid: node.oid
+        )
     }
 }

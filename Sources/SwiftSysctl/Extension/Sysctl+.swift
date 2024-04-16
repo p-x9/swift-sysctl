@@ -90,3 +90,21 @@ extension Sysctl {
         return (_kind, format)
     }
 }
+
+extension Sysctl {
+    public static func _oid(_ name: String) -> [Int32]? {
+        name.withCString {
+            var size = 0
+            var ret: Int32 = 0
+
+            ret = sysctlnametomib($0, nil, &size)
+            guard ret == 0 else { return nil }
+
+            var mib = [Int32](repeating: 0, count: size)
+            ret = sysctlnametomib($0, &mib, &size)
+            guard ret == 0 else { return nil }
+
+            return mib
+        }
+    }
+}

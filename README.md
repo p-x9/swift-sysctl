@@ -30,6 +30,14 @@ Therefore, in the above example, the value is automatically obtained as a String
 
 (See [Node directory](./Sources/SwiftSysctl/Node/))
 
+> [!NOTE]
+> Some values cannot be read without root permission.
+> It is possible to check the possibility by checking the Kind(Flags) of the OID.
+
+> [!NOTE]
+> OIDs that exist vary greatly depending on the CPU architecture.
+> Some OIDs may not exist except on macOS.
+
 ## Implementation
 
 The following is a brief description of the implementation.

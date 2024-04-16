@@ -109,3 +109,27 @@ extension Sysctl {
         return Data(data)
     }
 }
+
+extension Sysctl {
+    @inlinable
+    public static func kind<FieldType: FieldProtocol>(
+        _ field: FieldType
+    ) -> CtlKind?  {
+        guard let oid = _oid(field.name),
+              let fmt = _oidfmt(oid) else {
+            return nil
+        }
+        return .init(rawValue: fmt.0)
+    }
+
+    @inlinable
+    public static func format<FieldType: FieldProtocol>(
+        _ field: FieldType
+    ) -> String?  {
+        guard let oid = _oid(field.name),
+              let fmt = _oidfmt(oid) else {
+            return nil
+        }
+        return fmt.1
+    }
+}

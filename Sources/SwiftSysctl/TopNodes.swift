@@ -3,7 +3,7 @@
 //
 //
 //  Created by p-x9 on 2024/04/14.
-//  
+//
 //
 
 import Foundation
@@ -16,4 +16,3 @@ public let net = NetNode()
 public let debug = DebugNode()
 public let hw = HWNode()
 public let machdep = MachDepNode()
-

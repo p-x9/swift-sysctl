@@ -1,9 +1,9 @@
 //
 //  OID+Sysctl.swift
-//  
+//
 //
 //  Created by p-x9 on 2024/04/13.
-//  
+//
 //
 
 import Foundation

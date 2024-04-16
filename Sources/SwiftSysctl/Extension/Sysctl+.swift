@@ -3,7 +3,7 @@
 //
 //
 //  Created by p-x9 on 2024/04/14.
-//  
+//
 //
 
 import Foundation
@@ -27,7 +27,7 @@ extension Sysctl {
             )
         }
     }
-    
+
     /// Obtains the next OID after the specified OID
     /// - Parameter oid: object identifier
     /// - Returns: Next OID
@@ -53,7 +53,6 @@ extension Sysctl {
         }
     }
 
-    
     /// Get the format of the value associated with the given OID
     /// - Parameter oid: object identifier
     /// - Returns: (kind, format)

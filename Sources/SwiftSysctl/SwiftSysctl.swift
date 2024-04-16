@@ -34,7 +34,7 @@ extension Sysctl {
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
     ) -> Data? {
-        return sysctl(field.name)
+        sysctl(field.name)
     }
 }
 

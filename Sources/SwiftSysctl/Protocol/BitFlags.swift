@@ -3,13 +3,13 @@
 //
 //
 //  Created by p-x9 on 2024/04/13.
-//  
+//
 //
 
 import Foundation
 
 public protocol BitFlags: OptionSet {
-    associatedtype Bit: CaseIterable & RawRepresentable & CustomStringConvertible where Bit.RawValue == RawValue
+    associatedtype Bit: CaseIterable, RawRepresentable, CustomStringConvertible where Bit.RawValue == RawValue
 
     associatedtype Element = Self
 

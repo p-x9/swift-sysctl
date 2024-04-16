@@ -8,7 +8,7 @@ let package = Package(
         .library(
             name: "SwiftSysctl",
             targets: ["SwiftSysctl"]
-        ),
+        )
     ],
     targets: [
         .target(
@@ -17,6 +17,6 @@ let package = Package(
         .testTarget(
             name: "SwiftSysctlTests",
             dependencies: ["SwiftSysctl"]
-        ),
+        )
     ]
 )

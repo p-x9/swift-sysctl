@@ -3,12 +3,12 @@
 //
 //
 //  Created by p-x9 on 2024/04/16.
-//  
+//
 //
 
 import Foundation
 
-//MARK: - NodeProtocol
+// MARK: - NodeProtocol
 public protocol NodeProtocol {
     associatedtype Child: NodeCollection
     associatedtype OIDType: OIDProtocol
@@ -29,8 +29,28 @@ extension NodeProtocol {
     }
 
     public subscript<GrandChild>(
+        dynamicMember keyPath: KeyPath<Child, NameNode<GrandChild>>
+    ) -> ChainedNameNode<GrandChild> {
+        let node = Child._shared[keyPath: keyPath]
+        return .init(
+            parents: [oid],
+            oid: node.oid
+        )
+    }
+
+    public subscript<GrandChild>(
         dynamicMember keyPath: KeyPath<Child, ChainedNode<GrandChild>>
     ) -> ChainedNode<GrandChild> {
+        let node = Child._shared[keyPath: keyPath]
+        return .init(
+            parents: [oid] + node.parents,
+            oid: node.oid
+        )
+    }
+
+    public subscript<GrandChild>(
+        dynamicMember keyPath: KeyPath<Child, ChainedNameNode<GrandChild>>
+    ) -> ChainedNameNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
             parents: [oid] + node.parents,
@@ -88,8 +108,28 @@ extension ChainedNodeProtocol {
     }
 
     public subscript<GrandChild>(
+        dynamicMember keyPath: KeyPath<Child, NameNode<GrandChild>>
+    ) -> ChainedNameNode<GrandChild> {
+        let node = Child._shared[keyPath: keyPath]
+        return .init(
+            parents: parents + [oid],
+            oid: node.oid
+        )
+    }
+
+    public subscript<GrandChild>(
         dynamicMember keyPath: KeyPath<Child, ChainedNode<GrandChild>>
     ) -> ChainedNode<GrandChild> {
+        let node = Child._shared[keyPath: keyPath]
+        return .init(
+            parents: parents + [oid] + node.parents,
+            oid: node.oid
+        )
+    }
+
+    public subscript<GrandChild>(
+        dynamicMember keyPath: KeyPath<Child, ChainedNameNode<GrandChild>>
+    ) -> ChainedNameNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
             parents: parents + [oid] + node.parents,

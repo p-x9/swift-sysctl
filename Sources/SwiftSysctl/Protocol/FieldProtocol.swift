@@ -3,7 +3,7 @@
 //
 //
 //  Created by p-x9 on 2024/04/16.
-//  
+//
 //
 
 import Foundation
@@ -15,4 +15,3 @@ public protocol FieldProtocol {
     var oid: OIDType { get }
     var name: String { get }
 }
-

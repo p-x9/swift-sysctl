@@ -32,7 +32,6 @@ Therefore, in the above example, the value is automatically obtained as a String
 
 > [!NOTE]
 > Some values cannot be read without root permission.
-> It is possible to check the possibility by checking the Kind(Flags) of the OID.
 
 > [!NOTE]
 > OIDs that exist vary greatly depending on the CPU architecture.

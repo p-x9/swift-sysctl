@@ -8,12 +8,6 @@
 
 import Foundation
 
-public protocol FieldProtocol {
-    associatedtype Value
-    var oid: OID { get }
-    var name: String { get }
-}
-
 public struct LeafNode<Value>: FieldProtocol {
     public let oid: OID
 

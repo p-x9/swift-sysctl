@@ -16,7 +16,7 @@ extension Nodes {
             oid: OID.Sysctl.debug
         )
 
-        public let _name = AnyNode(
+        public let name = AnyNode(
             oid: OID.Sysctl.name
         )
 

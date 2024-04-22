@@ -14,10 +14,10 @@ public enum Nodes {}
 public struct SysctlNode: TopNodeProtocol {
     public typealias Child = Nodes.Sysctl
 
-    public let oid = OID.TopLevel.sysctl
+    public let _oid = OID.TopLevel.sysctl
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -25,10 +25,10 @@ public struct SysctlNode: TopNodeProtocol {
 public struct KernNode: TopNodeProtocol {
     public typealias Child = Nodes.Kern
 
-    public let oid = OID.TopLevel.kern
+    public let _oid = OID.TopLevel.kern
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -36,10 +36,10 @@ public struct KernNode: TopNodeProtocol {
 public struct VMNode: TopNodeProtocol {
     public typealias Child = Nodes.VM
 
-    public let oid = OID.TopLevel.vm
+    public let _oid = OID.TopLevel.vm
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -47,10 +47,10 @@ public struct VMNode: TopNodeProtocol {
 public struct VFSNode: TopNodeProtocol {
     public typealias Child = Nodes.VFS
 
-    public let oid = OID.TopLevel.vfs
+    public let _oid = OID.TopLevel.vfs
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -58,10 +58,10 @@ public struct VFSNode: TopNodeProtocol {
 public struct NetNode: TopNodeProtocol {
     public typealias Child = Nodes.Net
 
-    public let oid = OID.TopLevel.net
+    public let _oid = OID.TopLevel.net
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -69,10 +69,10 @@ public struct NetNode: TopNodeProtocol {
 public struct DebugNode: TopNodeProtocol {
     public typealias Child = Nodes.Debug
 
-    public let oid = OID.TopLevel.debug
+    public let _oid = OID.TopLevel.debug
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -80,10 +80,10 @@ public struct DebugNode: TopNodeProtocol {
 public struct HWNode: TopNodeProtocol {
     public typealias Child = Nodes.HW
 
-    public let oid = OID.TopLevel.hw
+    public let _oid = OID.TopLevel.hw
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }
 
@@ -91,9 +91,9 @@ public struct HWNode: TopNodeProtocol {
 public struct MachDepNode: TopNodeProtocol {
     public typealias Child = Nodes.MachDep
 
-    public let oid = OID.TopLevel.machdep
+    public let _oid = OID.TopLevel.machdep
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 }

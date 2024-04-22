@@ -13,8 +13,8 @@ public protocol NodeProtocol {
     associatedtype Child: NodeCollection
     associatedtype OIDType: OIDProtocol
 
-    var oid: OIDType { get }
-    var name: String { get }
+    var _oid: OIDType { get }
+    var _name: String { get }
 }
 
 extension NodeProtocol {
@@ -23,8 +23,8 @@ extension NodeProtocol {
     ) -> ChainedNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: [oid],
-            oid: node.oid
+            parents: [_oid],
+            oid: node._oid
         )
     }
 
@@ -33,8 +33,8 @@ extension NodeProtocol {
     ) -> ChainedNameNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: [oid],
-            oid: node.oid
+            parents: [_oid],
+            oid: node._oid
         )
     }
 
@@ -43,8 +43,8 @@ extension NodeProtocol {
     ) -> ChainedNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: [oid] + node.parents,
-            oid: node.oid
+            parents: [_oid] + node._parents,
+            oid: node._oid
         )
     }
 
@@ -53,8 +53,8 @@ extension NodeProtocol {
     ) -> ChainedNameNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: [oid] + node.parents,
-            oid: node.oid
+            parents: [_oid] + node._parents,
+            oid: node._oid
         )
     }
 
@@ -62,8 +62,8 @@ extension NodeProtocol {
         dynamicMember keyPath: KeyPath<Child, LeafNode<Value>>
     ) -> Field<Value> {
         .init(
-            parents: [oid],
-            oid: Child._shared[keyPath: keyPath].oid
+            parents: [_oid],
+            oid: Child._shared[keyPath: keyPath]._oid
         )
     }
 
@@ -71,8 +71,8 @@ extension NodeProtocol {
         dynamicMember keyPath: KeyPath<Child, LeafNameNode<Value>>
     ) -> NameField<Value> {
         .init(
-            parents: [oid],
-            oid: Child._shared[keyPath: keyPath].oid
+            parents: [_oid],
+            oid: Child._shared[keyPath: keyPath]._oid
         )
     }
 
@@ -80,8 +80,8 @@ extension NodeProtocol {
         dynamicMember keyPath: KeyPath<Child, AnyNode>
     ) -> AnyField {
         .init(
-            parents: [oid],
-            oid: Child._shared[keyPath: keyPath].oid
+            parents: [_oid],
+            oid: Child._shared[keyPath: keyPath]._oid
         )
     }
 }
@@ -91,9 +91,9 @@ public protocol ChainedNodeProtocol {
     associatedtype Child: NodeCollection
     associatedtype OIDType: OIDProtocol
 
-    var parents: [any OIDProtocol] { get }
-    var oid: OIDType { get }
-    var name: String { get }
+    var _parents: [any OIDProtocol] { get }
+    var _oid: OIDType { get }
+    var _name: String { get }
 }
 
 extension ChainedNodeProtocol {
@@ -102,8 +102,8 @@ extension ChainedNodeProtocol {
     ) -> ChainedNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: parents + [oid],
-            oid: node.oid
+            parents: _parents + [_oid],
+            oid: node._oid
         )
     }
 
@@ -112,8 +112,8 @@ extension ChainedNodeProtocol {
     ) -> ChainedNameNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: parents + [oid],
-            oid: node.oid
+            parents: _parents + [_oid],
+            oid: node._oid
         )
     }
 
@@ -122,8 +122,8 @@ extension ChainedNodeProtocol {
     ) -> ChainedNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: parents + [oid] + node.parents,
-            oid: node.oid
+            parents: _parents + [_oid] + node._parents,
+            oid: node._oid
         )
     }
 
@@ -132,29 +132,29 @@ extension ChainedNodeProtocol {
     ) -> ChainedNameNode<GrandChild> {
         let node = Child._shared[keyPath: keyPath]
         return .init(
-            parents: parents + [oid] + node.parents,
-            oid: node.oid
+            parents: _parents + [_oid] + node._parents,
+            oid: node._oid
         )
     }
 
     public subscript<Value>(dynamicMember keyPath: KeyPath<Child, LeafNode<Value>>) -> Field<Value> {
         .init(
-            parents: parents + [oid],
-            oid: Child._shared[keyPath: keyPath].oid
+            parents: _parents + [_oid],
+            oid: Child._shared[keyPath: keyPath]._oid
         )
     }
 
     public subscript<Value>(dynamicMember keyPath: KeyPath<Child, LeafNameNode<Value>>) -> NameField<Value> {
         .init(
-            parents: parents + [oid],
-            oid: Child._shared[keyPath: keyPath].oid
+            parents: _parents + [_oid],
+            oid: Child._shared[keyPath: keyPath]._oid
         )
     }
 
     public subscript(dynamicMember keyPath: KeyPath<Child, AnyNode>) -> AnyField {
         .init(
-            parents: parents + [oid],
-            oid: Child._shared[keyPath: keyPath].oid
+            parents: _parents + [_oid],
+            oid: Child._shared[keyPath: keyPath]._oid
         )
     }
 }

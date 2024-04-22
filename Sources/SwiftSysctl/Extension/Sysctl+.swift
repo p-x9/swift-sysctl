@@ -15,7 +15,7 @@ extension Sysctl {
     ///
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L781
     public static func _name(_ oid: [Int32]) -> String? {
-        let field = SwiftSysctl.sysctl._name
+        let field = SwiftSysctl.sysctl.name
         return sysctl(field, additional: oid)?.withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
                 return nil

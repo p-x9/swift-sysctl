@@ -11,40 +11,58 @@ import Foundation
 // MARK: - Node
 @dynamicMemberLookup
 public struct Node<Child: NodeCollection>: NodeProtocol {
-    public let oid: OID
+    public let _oid: OID
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
+    }
+    
+    init(oid: OID) {
+        self._oid = oid
     }
 }
 
 @dynamicMemberLookup
 public struct NameNode<Child: NodeCollection>: NodeProtocol {
-    public let oid: NameOID
+    public let _oid: NameOID
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
+    }
+    
+    init(oid: NameOID) {
+        self._oid = oid
     }
 }
 
 // MARK: Chained
 @dynamicMemberLookup
 public struct ChainedNode<Child: NodeCollection>: ChainedNodeProtocol {
-    public let parents: [any OIDProtocol]
-    public let oid: OID
+    public let _parents: [any OIDProtocol]
+    public let _oid: OID
 
-    public var name: String {
-        (parents + [oid]).map(\.name).joined(separator: ".")
+    public var _name: String {
+        (_parents + [_oid]).map(\.name).joined(separator: ".")
+    }
+    
+    init(parents: [any OIDProtocol], oid: OID) {
+        self._parents = parents
+        self._oid = oid
     }
 }
 
 @dynamicMemberLookup
 public struct ChainedNameNode<Child: NodeCollection>: ChainedNodeProtocol {
-    public let parents: [any OIDProtocol]
-    public let oid: NameOID
+    public let _parents: [any OIDProtocol]
+    public let _oid: NameOID
 
-    public var name: String {
-        (parents + [oid]).map(\.name).joined(separator: ".")
+    public var _name: String {
+        (_parents + [_oid]).map(\.name).joined(separator: ".")
+    }
+    
+    init(parents: [any OIDProtocol], oid: NameOID) {
+        self._parents = parents
+        self._oid = oid
     }
 }
 

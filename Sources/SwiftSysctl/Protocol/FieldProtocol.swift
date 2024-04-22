@@ -12,6 +12,6 @@ public protocol FieldProtocol {
     associatedtype Value
     associatedtype OIDType: OIDProtocol
 
-    var oid: OIDType { get }
-    var name: String { get }
+    var _oid: OIDType { get }
+    var _name: String { get }
 }

@@ -9,76 +9,94 @@
 import Foundation
 
 public struct LeafNode<Value>: FieldProtocol {
-    public let oid: OID
+    public let _oid: OID
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
+    }
+    
+    init(oid: OID) {
+        self._oid = oid
     }
 }
 
 public struct LeafNameNode<Value>: FieldProtocol {
-    public let oid: NameOID
+    public let _oid: NameOID
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
+    }
+    
+    init(oid: NameOID) {
+        self._oid = oid
     }
 }
 
 public struct Field<Value>: FieldProtocol {
-    public let parents: [any OIDProtocol]
-    public let oid: OID
+    public let _parents: [any OIDProtocol]
+    public let _oid: OID
 
-    public var name: String {
-        (parents + [oid]).map(\.name).joined(separator: ".")
+    public var _name: String {
+        (_parents + [_oid]).map(\.name).joined(separator: ".")
+    }
+    
+    init(parents: [any OIDProtocol], oid: OID) {
+        self._parents = parents
+        self._oid = oid
     }
 }
 
 public struct NameField<Value>: FieldProtocol {
-    public let parents: [any OIDProtocol]
-    public let oid: NameOID
+    public let _parents: [any OIDProtocol]
+    public let _oid: NameOID
 
-    public var name: String {
-        (parents + [oid]).map(\.name).joined(separator: ".")
+    public var _name: String {
+        (_parents + [_oid]).map(\.name).joined(separator: ".")
+    }
+    
+    init(parents: [any OIDProtocol], oid: NameOID) {
+        self._parents = parents
+        self._oid = oid
     }
 }
 
 public struct AnyNode {
-    public let oid: any OIDProtocol
+    public let _oid: any OIDProtocol
 
-    public var name: String {
-        oid.name
+    public var _name: String {
+        _oid.name
     }
 
     public init(oid: any OIDProtocol) {
-        self.oid = oid
+        self._oid = oid
     }
 
     public init<Child>(_ node: Node<Child>) {
-        self.init(oid: node.oid)
+        self.init(oid: node._oid)
     }
 
     public init<Child>(_ node: NameNode<Child>) {
-        self.init(oid: node.oid)
+        self.init(oid: node._oid)
     }
 }
 
 public struct AnyField {
-    public let parents: [any OIDProtocol]
-    public let oid: any OIDProtocol
+    public let _parents: [any OIDProtocol]
+    public let _oid: any OIDProtocol
 
-    public var name: String {
-        (parents + [oid]).map(\.name).joined(separator: ".")
+    public var _name: String {
+        (_parents + [_oid]).map(\.name).joined(separator: ".")
     }
 
     public init(parents: [any OIDProtocol], oid: any OIDProtocol) {
-        self.parents = parents
-        self.oid = oid
+        self._parents = parents
+        self._oid = oid
     }
 
     public init<Child>(_ node: ChainedNode<Child>) {
         self.init(
-            parents: node.parents,
-            oid: node.oid
+            parents: node._parents,
+            oid: node._oid
         )
     }
 }

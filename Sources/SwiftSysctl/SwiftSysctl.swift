@@ -7,7 +7,7 @@ extension Sysctl {
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
     ) -> String? where FieldType.Value == String {
-        guard let data = sysctl(field.name) else { return nil }
+        guard let data = sysctl(field._name) else { return nil }
 
         return data.withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
@@ -24,7 +24,7 @@ extension Sysctl {
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
     ) -> FieldType.Value? where FieldType.Value: FixedWidthInteger {
-        guard let data = sysctl(field.name) else { return nil }
+        guard let data = sysctl(field._name) else { return nil }
 
         return data.withUnsafeBytes { $0.load(as: FieldType.Value.self) }
     }
@@ -34,7 +34,7 @@ extension Sysctl {
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
     ) -> Data? {
-        sysctl(field.name)
+        sysctl(field._name)
     }
 }
 
@@ -47,11 +47,11 @@ extension Sysctl {
         var size = 0
         var ret: Int32 = 0
 
-        ret = sysctlnametomib(node.name, nil, &size)
+        ret = sysctlnametomib(node._name, nil, &size)
         guard ret == 0 else { return nil }
 
         var mib = [Int32](repeating: 0, count: size)
-        ret = sysctlnametomib(node.name, &mib, &size)
+        ret = sysctlnametomib(node._name, &mib, &size)
         guard ret == 0 else { return nil }
 
         mib += add
@@ -115,7 +115,7 @@ extension Sysctl {
     public static func kind<FieldType: FieldProtocol>(
         _ field: FieldType
     ) -> CtlKind?  {
-        guard let oid = _oid(field.name),
+        guard let oid = _oid(field._name),
               let fmt = _oidfmt(oid) else {
             return nil
         }
@@ -126,7 +126,7 @@ extension Sysctl {
     public static func format<FieldType: FieldProtocol>(
         _ field: FieldType
     ) -> String?  {
-        guard let oid = _oid(field.name),
+        guard let oid = _oid(field._name),
               let fmt = _oidfmt(oid) else {
             return nil
         }

@@ -47,18 +47,4 @@ extension OID.Sysctl {
         kind: 0x80e00001,
         format: "N"
     )
-
-    static let proc_native: OID = .init(
-        name: "proc_native",
-        id: 100,
-        kind: 0x80e00002,
-        format: "I"
-    )
-
-    static let proc_cputype: OID = .init(
-        name: "proc_cputype",
-        id: 101,
-        kind: 0x80e00001,
-        format: "I"
-    )
 }

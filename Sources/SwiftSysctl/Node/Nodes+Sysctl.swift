@@ -31,13 +31,5 @@ extension Nodes {
         public let oidfmt = AnyNode(
             oid: OID.Sysctl.oidfmt
         )
-
-        public let proc_native = LeafNode<CInt>(
-            oid: OID.Sysctl.proc_native
-        )
-
-        public let proc_cputype = LeafNode<CInt>(
-            oid: OID.Sysctl.proc_cputype
-        )
     }
 }

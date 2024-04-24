@@ -10,9 +10,15 @@ let package = Package(
             targets: ["SwiftSysctl"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/p-x9/swift-errno.git", from: "0.1.0")
+    ],
     targets: [
         .target(
-            name: "SwiftSysctl"
+            name: "SwiftSysctl",
+            dependencies: [
+                .product(name: "SwiftErrno", package: "swift-errno")
+            ]
         ),
         .testTarget(
             name: "SwiftSysctlTests",

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-errno",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/p-x9/swift-errno.git",
+      "state" : {
+        "revision" : "e187fbb1e536f8537e91c0a7a340685b3336f06b",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}

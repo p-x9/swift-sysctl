@@ -1,5 +1,4 @@
 import Foundation
-import SwiftErrno
 
 public enum Sysctl {}
 
@@ -51,11 +50,11 @@ extension Sysctl {
         var ret: Int32 = 0
 
         ret = sysctlnametomib(node._name, nil, &size)
-        guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+        guard ret == 0 else { throw SysctlError.error(-ret) }
 
         var mib = [Int32](repeating: 0, count: size)
         ret = sysctlnametomib(node._name, &mib, &size)
-        guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+        guard ret == 0 else { throw SysctlError.error(-ret) }
 
         mib += add
 
@@ -78,7 +77,7 @@ extension Sysctl {
             nil, &size,
             nil, 0
         )
-        guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+        guard ret == 0 else { throw SysctlError.error(-ret) }
 
         var data = [UInt8](repeating: 0, count: Int(size))
         ret = Darwin.sysctl(
@@ -86,7 +85,7 @@ extension Sysctl {
             &data, &size,
             nil, 0
         )
-        guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+        guard ret == 0 else { throw SysctlError.error(-ret) }
 
         return Data(data)
     }
@@ -101,13 +100,13 @@ extension Sysctl {
         ret = name.withCString {
             sysctlbyname($0, nil, &size, nil, 0)
         }
-        guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+        guard ret == 0 else { throw SysctlError.error(-ret) }
 
         var data = [UInt8](repeating: 0, count: Int(size))
         ret = name.withCString {
             sysctlbyname($0, &data, &size, nil, 0)
         }
-        guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+        guard ret == 0 else { throw SysctlError.error(-ret) }
 
         return Data(data)
     }

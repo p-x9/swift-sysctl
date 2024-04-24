@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftErrno
 
 extension Sysctl {
     /// Convert an OID into a string name.
@@ -96,11 +95,11 @@ extension Sysctl {
             var ret: Int32 = 0
 
             ret = sysctlnametomib($0, nil, &size)
-            guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+            guard ret == 0 else { throw SysctlError.error(-ret) }
 
             var mib = [Int32](repeating: 0, count: size)
             ret = sysctlnametomib($0, &mib, &size)
-            guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
+            guard ret == 0 else { throw SysctlError.error(-ret) }
 
             return mib
         }

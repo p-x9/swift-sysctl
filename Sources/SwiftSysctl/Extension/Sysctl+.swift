@@ -17,7 +17,7 @@ extension Sysctl {
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L781
     public static func _name(_ oid: [Int32]) throws -> String? {
         let field = SwiftSysctl.sysctl.name
-        return try sysctl(field, additional: oid)?.withUnsafeBytes {
+        return try sysctl(field, additional: oid).withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
                 return nil
             }
@@ -38,8 +38,8 @@ extension Sysctl {
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L999
     public static func _next(_ oid: [Int32]) throws -> [Int32]? {
         let field = SwiftSysctl.sysctl.next
-        guard let data = try sysctl(field, additional: oid),
-              data.count >= MemoryLayout<Int32>.size else {
+        let data = try sysctl(field, additional: oid)
+        guard data.count >= MemoryLayout<Int32>.size else {
             return nil
         }
         return data.withUnsafeBytes {
@@ -64,9 +64,7 @@ extension Sysctl {
     ///
     public static func _oidfmt(_ oid: [Int32]) throws -> (UInt32, String)? {
         let field = SwiftSysctl.sysctl.oidfmt
-        guard var data = try sysctl(field, additional: oid) else {
-            return nil
-        }
+        var data = try sysctl(field, additional: oid)
 
         guard data.count > 4 else { return nil }
 
@@ -102,7 +100,7 @@ extension Sysctl {
 
             var mib = [Int32](repeating: 0, count: size)
             ret = sysctlnametomib($0, &mib, &size)
-            guard ret == 0 else { return nil }
+            guard ret == 0 else { throw Errno(rawValue: -ret) ?? Errno.unknown(-ret) }
 
             return mib
         }

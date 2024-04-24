@@ -8,7 +8,7 @@ extension Sysctl {
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
     ) throws -> String? where FieldType.Value == String {
-        guard let data = try sysctl(field._name) else { return nil }
+        let data = try sysctl(field._name)
 
         return data.withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
@@ -18,15 +18,17 @@ extension Sysctl {
                 cString: baseAddress
                     .assumingMemoryBound(to: CChar.self)
             )
-        } ?? ""
+        }
     }
 
     @inlinable
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
     ) throws -> FieldType.Value? where FieldType.Value: FixedWidthInteger {
-        guard let data = try sysctl(field._name) else { return nil }
-
+        let data = try sysctl(field._name)
+        guard data.count >= MemoryLayout<FieldType.Value>.size else {
+            return nil
+        }
         return data.withUnsafeBytes { $0.load(as: FieldType.Value.self) }
     }
 
@@ -34,7 +36,7 @@ extension Sysctl {
     @inlinable
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
-    ) throws -> Data? {
+    ) throws -> Data {
         try sysctl(field._name)
     }
 }
@@ -44,7 +46,7 @@ extension Sysctl {
     public static func sysctl(
         _ node: AnyField,
         additional add: [Int32] = []
-    ) throws -> Data? {
+    ) throws -> Data {
         var size = 0
         var ret: Int32 = 0
 
@@ -65,7 +67,7 @@ extension Sysctl {
     @inlinable
     public static func sysctl(
         _ oid: [Int32]
-    ) throws -> Data? {
+    ) throws -> Data {
         var mib: [Int32] = oid
 
         var size = 0
@@ -92,7 +94,7 @@ extension Sysctl {
     @inlinable
     public static func sysctl(
         _ name: String
-    ) throws -> Data? {
+    ) throws -> Data {
         var size = 0
         var ret: Int32 = 0
 

@@ -165,7 +165,7 @@ extension CtlKind.Bit: CustomStringConvertible {
         case .locked: "CTLFLAG_LOCKED"
         case .oid2: "CTLFLAG_OID2"
         case .experiment: "CTLFLAG_EXPERIMENT"
-        case .permanent: "0x00200000"
+        case .permanent: "CTLFLAG_PERMANENT"
         }
     }
 }

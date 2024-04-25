@@ -14,9 +14,9 @@ extension Sysctl {
     /// - Returns: name of oid
     ///
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L781
-    public static func _name(_ oid: [Int32]) -> String? {
+    public static func _name(_ oid: [Int32]) throws -> String? {
         let field = SwiftSysctl.sysctl.name
-        return sysctl(field, additional: oid)?.withUnsafeBytes {
+        return try sysctl(field, additional: oid).withUnsafeBytes {
             guard let baseAddress = $0.baseAddress else {
                 return nil
             }
@@ -35,10 +35,10 @@ extension Sysctl {
     /// This is an iterator function designed to iterate the oid tree and provide a list of OIDs
     ///
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L999
-    public static func _next(_ oid: [Int32]) -> [Int32]? {
+    public static func _next(_ oid: [Int32]) throws -> [Int32]? {
         let field = SwiftSysctl.sysctl.next
-        guard let data = sysctl(field, additional: oid),
-              data.count >= MemoryLayout<Int32>.size else {
+        let data = try sysctl(field, additional: oid)
+        guard data.count >= MemoryLayout<Int32>.size else {
             return nil
         }
         return data.withUnsafeBytes {
@@ -61,11 +61,9 @@ extension Sysctl {
     ///
     /// https://github.com/apple-oss-distributions/xnu/blob/94d3b452840153a99b38a3a9659680b2a006908e/bsd/kern/kern_newsysctl.c#L1233
     ///
-    public static func _oidfmt(_ oid: [Int32]) -> (UInt32, String)? {
+    public static func _oidfmt(_ oid: [Int32]) throws -> (UInt32, String)? {
         let field = SwiftSysctl.sysctl.oidfmt
-        guard var data = sysctl(field, additional: oid) else {
-            return nil
-        }
+        var data = try sysctl(field, additional: oid)
 
         guard data.count > 4 else { return nil }
 
@@ -91,17 +89,17 @@ extension Sysctl {
 }
 
 extension Sysctl {
-    public static func _oid(_ name: String) -> [Int32]? {
-        name.withCString {
+    public static func _oid(_ name: String) throws -> [Int32]? {
+        try name.withCString {
             var size = 0
             var ret: Int32 = 0
 
             ret = sysctlnametomib($0, nil, &size)
-            guard ret == 0 else { return nil }
+            guard ret == 0 else { throw SysctlError.error(-ret) }
 
             var mib = [Int32](repeating: 0, count: size)
             ret = sysctlnametomib($0, &mib, &size)
-            guard ret == 0 else { return nil }
+            guard ret == 0 else { throw SysctlError.error(-ret) }
 
             return mib
         }

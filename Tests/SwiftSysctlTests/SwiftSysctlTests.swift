@@ -2,34 +2,34 @@ import XCTest
 @testable import SwiftSysctl
 
 final class SwiftSysctlTests: XCTestCase {
-    func testSysctlNext() {
+    func testSysctlNext() throws {
         let root: [Int32] = [0, 0]
         var current: [Int32]? = root
 
         while current != nil {
             guard let _current = current else { break }
-            let name = Sysctl._name(_current)
+            let name = try? Sysctl._name(_current)
             print(
                 name ?? "Unknown",
                 _current
             )
-            current = Sysctl._next(_current)
+            current = try? Sysctl._next(_current)
         }
     }
 
-    func testSysctlNextValue() {
+    func testSysctlNextValue() throws {
         let root: [Int32] = [0, 0]
         var current: [Int32]? = root
 
         while current != nil {
             guard let _current = current else { break }
-            current = Sysctl._next(_current)
-            guard let name = Sysctl._name(_current),
-                  let (_, format) = Sysctl._oidfmt(_current) else {
+            current = try? Sysctl._next(_current)
+            guard let name = try? Sysctl._name(_current),
+                  let (_, format) = try? Sysctl._oidfmt(_current) else {
                 continue
             }
             print("\(name) [\(format)]: ", terminator: "")
-            guard let data = Sysctl.sysctl(_current),
+            guard let data = try? Sysctl.sysctl(_current),
                   !data.isEmpty else {
                 print("")
                 continue

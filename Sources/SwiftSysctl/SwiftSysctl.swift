@@ -35,6 +35,20 @@ extension Sysctl {
     @inlinable
     public static func sysctl<FieldType: FieldProtocol>(
         _ field: FieldType
+    ) throws -> [FieldType.Value] where FieldType.Value: FixedWidthInteger {
+        let data = try sysctl(field._name)
+        guard data.count >= MemoryLayout<FieldType.Value>.size else {
+            return []
+        }
+        return data
+            .withUnsafeBytes { $0.assumingMemoryBound(to: FieldType.Value.self) }
+            .map { $0 }
+    }
+
+    @_disfavoredOverload
+    @inlinable
+    public static func sysctl<FieldType: FieldProtocol>(
+        _ field: FieldType
     ) throws -> Data {
         try sysctl(field._name)
     }

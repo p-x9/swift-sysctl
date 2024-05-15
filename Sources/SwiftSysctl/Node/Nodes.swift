@@ -97,3 +97,14 @@ public struct MachDepNode: TopNodeProtocol {
         _oid.name
     }
 }
+
+// MARK: - Security
+public struct SecurityNode: TopNodeProtocol {
+    public typealias Child = Nodes.Security
+
+    public let _oid = OID.TopLevel.security
+
+    public var _name: String {
+        _oid.name
+    }
+}

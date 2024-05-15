@@ -68,4 +68,9 @@ extension OID.TopLevel {
         kind: 0xc0e00001,
         format: "N"
     )
+
+    public static let security: NameOID = .init(
+        name: "security",
+        format: "N"
+    )
 }

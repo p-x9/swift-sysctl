@@ -2,7 +2,7 @@
 //  OID+Security.swift
 //
 //
-//  Created by p-x9 on 2024/05/14.
+//  Created by p-x9 on 2024/04/16.
 //
 //
 
@@ -15,14 +15,30 @@ extension OID {
 }
 
 extension OID.Security {
+    static let codesigning: NameOID = .init(
+        name: "codesigning",
+        format: "N"
+    )
+
     static let mac: NameOID = .init(
         name: "mac",
         format: "N"
     )
+}
 
-    static let codesigning: NameOID = .init(
-        name: "codesigning",
-        format: "N"
+extension OID.Security {
+    public enum Codesigning {}
+}
+
+extension OID.Security.Codesigning {
+    static let config: NameOID = .init(
+        name: "config",
+        format: "IU"
+    )
+
+    static let monitor: NameOID = .init(
+        name: "monitor",
+        format: "IU"
     )
 }
 
@@ -31,13 +47,8 @@ extension OID.Security {
 }
 
 extension OID.Security.Mac {
-    static let platform_exec_logging: NameOID = .init(
-        name: "platform_exec_logging",
-        format: "I"
-    )
-
-    static let max_slots: NameOID = .init(
-        name: "max_slots",
+    static let device_enforce: NameOID = .init(
+        name: "device_enforce",
         format: "IU"
     )
 
@@ -46,24 +57,24 @@ extension OID.Security.Mac {
         format: "IU"
     )
 
-    static let vnode_label_count: NameOID = .init(
-        name: "vnode_label_count",
-        format: "IU"
-    )
-
     static let lockdown_mode_state: NameOID = .init(
         name: "lockdown_mode_state",
         format: "I"
     )
 
-    static let device_enforce: NameOID = .init(
-        name: "device_enforce",
+    static let max_slots: NameOID = .init(
+        name: "max_slots",
         format: "IU"
     )
 
     static let pipe_enforce: NameOID = .init(
         name: "pipe_enforce",
         format: "IU"
+    )
+
+    static let platform_exec_logging: NameOID = .init(
+        name: "platform_exec_logging",
+        format: "I"
     )
 
     static let posixsem_enforce: NameOID = .init(
@@ -116,20 +127,8 @@ extension OID.Security.Mac {
         format: "IU"
     )
 
-}
-
-extension OID.Security {
-    public enum Codesigning {}
-}
-
-extension OID.Security.Codesigning {
-    static let monitor: NameOID = .init(
-        name: "monitor",
-        format: "IU"
-    )
-
-    static let config: NameOID = .init(
-        name: "config",
+    static let vnode_label_count: NameOID = .init(
+        name: "vnode_label_count",
         format: "IU"
     )
 }

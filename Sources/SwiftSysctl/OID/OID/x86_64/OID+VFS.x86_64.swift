@@ -16,11 +16,6 @@ extension OID.VFS {
         format: "N"
     )
 
-    static let vnstats: NameOID = .init(
-        name: "vnstats",
-        format: "N"
-    )
-
     static let nspace: NameOID = .init(
         name: "nspace",
         format: "N"
@@ -29,6 +24,11 @@ extension OID.VFS {
     static let purge_vm_pagers: NameOID = .init(
         name: "purge_vm_pagers",
         format: "I"
+    )
+
+    static let vnstats: NameOID = .init(
+        name: "vnstats",
+        format: "N"
     )
 }
 
@@ -43,18 +43,8 @@ extension OID.VFS.Generic {
         format: "N"
     )
 
-    static let vfsidlist: NameOID = .init(
-        name: "vfsidlist",
-        format: "S,fsid"
-    )
-
     static let noremotehang: NameOID = .init(
         name: "noremotehang",
-        format: "I"
-    )
-
-    static let sync_timeout: NameOID = .init(
-        name: "sync_timeout",
         format: "I"
     )
 
@@ -63,11 +53,20 @@ extension OID.VFS.Generic {
         format: "I"
     )
 
+    static let sync_timeout: NameOID = .init(
+        name: "sync_timeout",
+        format: "I"
+    )
+
     static let trace_paths: NameOID = .init(
         name: "trace_paths",
         format: "-"
     )
 
+    static let vfsidlist: NameOID = .init(
+        name: "vfsidlist",
+        format: "S,fsid"
+    )
 }
 
 extension OID.VFS.Generic {
@@ -79,7 +78,6 @@ extension OID.VFS.Generic.Nfs {
         name: "server",
         format: "N"
     )
-
 }
 
 extension OID.VFS.Generic.Nfs {
@@ -87,28 +85,48 @@ extension OID.VFS.Generic.Nfs {
 }
 
 extension OID.VFS.Generic.Nfs.Server {
-    static let wg_delay: NameOID = .init(
-        name: "wg_delay",
-        format: "I"
-    )
-
-    static let wg_delay_v3: NameOID = .init(
-        name: "wg_delay_v3",
-        format: "I"
-    )
-
-    static let require_resv_port: NameOID = .init(
-        name: "require_resv_port",
-        format: "I"
-    )
-
     static let async: NameOID = .init(
         name: "async",
         format: "I"
     )
 
+    static let debug_ctl: NameOID = .init(
+        name: "debug_ctl",
+        format: "IU"
+    )
+
     static let export_hash_size: NameOID = .init(
         name: "export_hash_size",
+        format: "I"
+    )
+
+    static let fsevents: NameOID = .init(
+        name: "fsevents",
+        format: "I"
+    )
+
+    static let gss_context_ttl: NameOID = .init(
+        name: "gss_context_ttl",
+        format: "IU"
+    )
+
+    static let nfsd_sock_idle_timeout: NameOID = .init(
+        name: "nfsd_sock_idle_timeout",
+        format: "I"
+    )
+
+    static let nfsd_tcp_connections: NameOID = .init(
+        name: "nfsd_tcp_connections",
+        format: "I"
+    )
+
+    static let nfsd_thread_count: NameOID = .init(
+        name: "nfsd_thread_count",
+        format: "I"
+    )
+
+    static let nfsd_thread_max: NameOID = .init(
+        name: "nfsd_thread_max",
         format: "I"
     )
 
@@ -122,19 +140,9 @@ extension OID.VFS.Generic.Nfs.Server {
         format: "I"
     )
 
-    static let user_stats: NameOID = .init(
-        name: "user_stats",
+    static let require_resv_port: NameOID = .init(
+        name: "require_resv_port",
         format: "I"
-    )
-
-    static let gss_context_ttl: NameOID = .init(
-        name: "gss_context_ttl",
-        format: "IU"
-    )
-
-    static let debug_ctl: NameOID = .init(
-        name: "debug_ctl",
-        format: "IU"
     )
 
     static let unprocessed_rpc_current: NameOID = .init(
@@ -147,33 +155,8 @@ extension OID.VFS.Generic.Nfs.Server {
         format: "IU"
     )
 
-    static let fsevents: NameOID = .init(
-        name: "fsevents",
-        format: "I"
-    )
-
-    static let nfsd_thread_max: NameOID = .init(
-        name: "nfsd_thread_max",
-        format: "I"
-    )
-
-    static let nfsd_thread_count: NameOID = .init(
-        name: "nfsd_thread_count",
-        format: "I"
-    )
-
-    static let nfsd_sock_idle_timeout: NameOID = .init(
-        name: "nfsd_sock_idle_timeout",
-        format: "I"
-    )
-
-    static let nfsd_tcp_connections: NameOID = .init(
-        name: "nfsd_tcp_connections",
-        format: "I"
-    )
-
-    static let use_upcall_svc: NameOID = .init(
-        name: "use_upcall_svc",
+    static let upcall_queue_count: NameOID = .init(
+        name: "upcall_queue_count",
         format: "I"
     )
 
@@ -187,8 +170,23 @@ extension OID.VFS.Generic.Nfs.Server {
         format: "I"
     )
 
-    static let upcall_queue_count: NameOID = .init(
-        name: "upcall_queue_count",
+    static let use_upcall_svc: NameOID = .init(
+        name: "use_upcall_svc",
+        format: "I"
+    )
+
+    static let user_stats: NameOID = .init(
+        name: "user_stats",
+        format: "I"
+    )
+
+    static let wg_delay: NameOID = .init(
+        name: "wg_delay",
+        format: "I"
+    )
+
+    static let wg_delay_v3: NameOID = .init(
+        name: "wg_delay_v3",
         format: "I"
     )
 }
@@ -205,42 +203,48 @@ extension OID.VFS.Ncstats {
 }
 
 extension OID.VFS {
+    public enum Nspace {}
+}
+
+extension OID.VFS.Nspace {
+    static let complete: NameOID = .init(
+        name: "complete",
+        format: "-"
+    )
+
+    static let prevent_materialization: NameOID = .init(
+        name: "prevent_materialization",
+        format: "I"
+    )
+
+    static let resolver: NameOID = .init(
+        name: "resolver",
+        format: "I"
+    )
+
+    static let thread_prevent_materialization: NameOID = .init(
+        name: "thread_prevent_materialization",
+        format: "I"
+    )
+}
+
+extension OID.VFS {
     public enum Vnstats {}
 }
 
 extension OID.VFS.Vnstats {
-    static let vn_dealloc_level: NameOID = .init(
-        name: "vn_dealloc_level",
-        format: "I"
-    )
-
     static let desired_vnodes: NameOID = .init(
         name: "desired_vnodes",
         format: "I"
     )
 
-    static let num_vnodes: NameOID = .init(
-        name: "num_vnodes",
-        format: "L"
+    static let num_allocedvnodes: NameOID = .init(
+        name: "num_allocedvnodes",
+        format: "Q"
     )
 
-    static let num_vnodes_min: NameOID = .init(
-        name: "num_vnodes_min",
-        format: "I"
-    )
-
-    static let num_vnodes_max: NameOID = .init(
-        name: "num_vnodes_max",
-        format: "I"
-    )
-
-    static let num_deallocable_vnodes: NameOID = .init(
-        name: "num_deallocable_vnodes",
-        format: "I"
-    )
-
-    static let num_deallocable_busy_vnodes: NameOID = .init(
-        name: "num_deallocable_busy_vnodes",
+    static let num_async_work_vnodes: NameOID = .init(
+        name: "num_async_work_vnodes",
         format: "L"
     )
 
@@ -254,34 +258,24 @@ extension OID.VFS.Vnstats {
         format: "L"
     )
 
-    static let num_async_work_vnodes: NameOID = .init(
-        name: "num_async_work_vnodes",
+    static let num_deallocable_busy_vnodes: NameOID = .init(
+        name: "num_deallocable_busy_vnodes",
         format: "L"
     )
 
-    static let num_rapid_aging_vnodes: NameOID = .init(
-        name: "num_rapid_aging_vnodes",
+    static let num_deallocable_vnodes: NameOID = .init(
+        name: "num_deallocable_vnodes",
         format: "I"
-    )
-
-    static let num_free_vnodes: NameOID = .init(
-        name: "num_free_vnodes",
-        format: "L"
-    )
-
-    static let num_recycledvnodes: NameOID = .init(
-        name: "num_recycledvnodes",
-        format: "L"
-    )
-
-    static let num_allocedvnodes: NameOID = .init(
-        name: "num_allocedvnodes",
-        format: "Q"
     )
 
     static let num_deallocedvnodes: NameOID = .init(
         name: "num_deallocedvnodes",
         format: "Q"
+    )
+
+    static let num_free_vnodes: NameOID = .init(
+        name: "num_free_vnodes",
+        format: "L"
     )
 
     static let num_newvnode_calls: NameOID = .init(
@@ -293,31 +287,35 @@ extension OID.VFS.Vnstats {
         name: "num_newvnode_calls_nodead",
         format: "Q"
     )
-}
 
-extension OID.VFS {
-    public enum Nspace {}
-}
-
-extension OID.VFS.Nspace {
-    static let resolver: NameOID = .init(
-        name: "resolver",
+    static let num_rapid_aging_vnodes: NameOID = .init(
+        name: "num_rapid_aging_vnodes",
         format: "I"
     )
 
-    static let prevent_materialization: NameOID = .init(
-        name: "prevent_materialization",
+    static let num_recycledvnodes: NameOID = .init(
+        name: "num_recycledvnodes",
+        format: "L"
+    )
+
+    static let num_vnodes: NameOID = .init(
+        name: "num_vnodes",
+        format: "L"
+    )
+
+    static let num_vnodes_max: NameOID = .init(
+        name: "num_vnodes_max",
         format: "I"
     )
 
-    static let thread_prevent_materialization: NameOID = .init(
-        name: "thread_prevent_materialization",
+    static let num_vnodes_min: NameOID = .init(
+        name: "num_vnodes_min",
         format: "I"
     )
 
-    static let complete: NameOID = .init(
-        name: "complete",
-        format: "-"
+    static let vn_dealloc_level: NameOID = .init(
+        name: "vn_dealloc_level",
+        format: "I"
     )
 }
 

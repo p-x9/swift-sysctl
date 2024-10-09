@@ -11,12 +11,26 @@ import Foundation
 #if arch(arm64)
 
 extension Nodes.Security {
+    public var codesigning: NameNode<Codesigning> {
+        .init(oid: OID.Security.codesigning)
+    }
+
     public var mac: NameNode<Mac> {
         .init(oid: OID.Security.mac)
     }
+}
 
-    public var codesigning: NameNode<Codesigning> {
-        .init(oid: OID.Security.codesigning)
+extension Nodes.Security {
+    public struct Codesigning: NodeCollection {
+        public static let _shared: Codesigning = .init()
+
+        public var config: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Security.Codesigning.config)
+        }
+
+        public var monitor: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Security.Codesigning.monitor)
+        }
     }
 }
 
@@ -24,8 +38,12 @@ extension Nodes.Security {
     public struct Mac: NodeCollection {
         public static let _shared: Mac = .init()
 
-        public var platform_exec_logging: LeafNameNode<CInt> {
-            .init(oid: OID.Security.Mac.platform_exec_logging)
+        public var device_enforce: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Security.Mac.device_enforce)
+        }
+
+        public var labelvnodes: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Security.Mac.labelvnodes)
         }
 
         public var lockdown_mode_state: LeafNameNode<CInt> {
@@ -36,20 +54,12 @@ extension Nodes.Security {
             .init(oid: OID.Security.Mac.max_slots)
         }
 
-        public var labelvnodes: LeafNameNode<CUnsignedInt> {
-            .init(oid: OID.Security.Mac.labelvnodes)
-        }
-
-        public var vnode_label_count: LeafNameNode<CUnsignedInt> {
-            .init(oid: OID.Security.Mac.vnode_label_count)
-        }
-
-        public var device_enforce: LeafNameNode<CUnsignedInt> {
-            .init(oid: OID.Security.Mac.device_enforce)
-        }
-
         public var pipe_enforce: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Security.Mac.pipe_enforce)
+        }
+
+        public var platform_exec_logging: LeafNameNode<CInt> {
+            .init(oid: OID.Security.Mac.platform_exec_logging)
         }
 
         public var posixsem_enforce: LeafNameNode<CUnsignedInt> {
@@ -92,19 +102,8 @@ extension Nodes.Security {
             .init(oid: OID.Security.Mac.vnode_enforce)
         }
 
-    }
-}
-
-extension Nodes.Security {
-    public struct Codesigning: NodeCollection {
-        public static let _shared: Codesigning = .init()
-
-        public var monitor: LeafNameNode<CUnsignedInt> {
-            .init(oid: OID.Security.Codesigning.monitor)
-        }
-
-        public var config: LeafNameNode<CUnsignedInt> {
-            .init(oid: OID.Security.Codesigning.config)
+        public var vnode_label_count: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Security.Mac.vnode_label_count)
         }
     }
 }

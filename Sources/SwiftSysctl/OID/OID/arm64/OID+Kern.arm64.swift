@@ -11,6 +11,26 @@ import Foundation
 #if arch(arm64)
 
 extension OID.Kern {
+    static let eventhandler: NameOID = .init(
+        name: "eventhandler",
+        format: "N"
+    )
+
+    static let bridge: NameOID = .init(
+        name: "bridge",
+        format: "N"
+    )
+
+    static let cpc: NameOID = .init(
+        name: "cpc",
+        format: "N"
+    )
+
+    static let skywalk: NameOID = .init(
+        name: "skywalk",
+        format: "N"
+    )
+
     static let dtrace: NameOID = .init(
         name: "dtrace",
         format: "N"
@@ -18,6 +38,21 @@ extension OID.Kern {
 
     static let monotonic: NameOID = .init(
         name: "monotonic",
+        format: "N"
+    )
+
+    static let hvg: NameOID = .init(
+        name: "hvg",
+        format: "N"
+    )
+
+    static let timer: NameOID = .init(
+        name: "timer",
+        format: "N"
+    )
+
+    static let microstackshot: NameOID = .init(
+        name: "microstackshot",
         format: "N"
     )
 
@@ -31,39 +66,34 @@ extension OID.Kern {
         format: "N"
     )
 
-    static let timer: NameOID = .init(
-        name: "timer",
-        format: "N"
-    )
-
-    static let bridge: NameOID = .init(
-        name: "bridge",
-        format: "N"
-    )
-
-    static let microstackshot: NameOID = .init(
-        name: "microstackshot",
-        format: "N"
-    )
-
-    static let eventhandler: NameOID = .init(
-        name: "eventhandler",
-        format: "N"
-    )
-
-    static let hvg: NameOID = .init(
-        name: "hvg",
-        format: "N"
-    )
-
-    static let skywalk: NameOID = .init(
-        name: "skywalk",
-        format: "N"
-    )
-
     static let hv: NameOID = .init(
         name: "hv",
         format: "N"
+    )
+
+    static let proc_rsr_in_progress: NameOID = .init(
+        name: "proc_rsr_in_progress",
+        format: "I"
+    )
+
+    static let hv_vmm_present: NameOID = .init(
+        name: "hv_vmm_present",
+        format: "I"
+    )
+
+    static let secure_kernel: NameOID = .init(
+        name: "secure_kernel",
+        format: "I"
+    )
+
+    static let next_ecc_event: NameOID = .init(
+        name: "next_ecc_event",
+        format: "-"
+    )
+
+    static let willuserspacereboot: NameOID = .init(
+        name: "willuserspacereboot",
+        format: "I"
     )
 
     static let hibernatefile: NameOID = .init(
@@ -116,14 +146,19 @@ extension OID.Kern {
         format: "S"
     )
 
-    static let pmtimeout: NameOID = .init(
-        name: "pmtimeout",
-        format: "IU"
+    static let nbuf: NameOID = .init(
+        name: "nbuf",
+        format: "I"
     )
 
-    static let pmcallouttimer: NameOID = .init(
-        name: "pmcallouttimer",
-        format: "IU"
+    static let maxnbuf: NameOID = .init(
+        name: "maxnbuf",
+        format: "I"
+    )
+
+    static let flush_cache_on_write: NameOID = .init(
+        name: "flush_cache_on_write",
+        format: "I"
     )
 
     static let wq_stalled_window_usecs: NameOID = .init(
@@ -333,7 +368,7 @@ extension OID.Kern {
 
     static let sched_recommended_cores: NameOID = .init(
         name: "sched_recommended_cores",
-        format: "IU"
+        format: "Q"
     )
 
     static let suspend_cluster_powerdown: NameOID = .init(
@@ -436,11 +471,6 @@ extension OID.Kern {
         format: "I"
     )
 
-    static let iokittest: NameOID = .init(
-        name: "iokittest",
-        format: "I"
-    )
-
     static let drivercorefile: NameOID = .init(
         name: "drivercorefile",
         format: "A"
@@ -503,16 +533,6 @@ extension OID.Kern {
 
     static let ipc_portbt: NameOID = .init(
         name: "ipc_portbt",
-        format: "I"
-    )
-
-    static let ikm_signature_failures: NameOID = .init(
-        name: "ikm_signature_failures",
-        format: "I"
-    )
-
-    static let ikm_signature_failure_id: NameOID = .init(
-        name: "ikm_signature_failure_id",
         format: "I"
     )
 
@@ -706,8 +726,28 @@ extension OID.Kern {
         format: "I"
     )
 
+    static let gpu_pmem_selector: NameOID = .init(
+        name: "gpu_pmem_selector",
+        format: "I"
+    )
+
+    static let exclaves_status: NameOID = .init(
+        name: "exclaves_status",
+        format: "I"
+    )
+
+    static let exclaves_boot_stage: NameOID = .init(
+        name: "exclaves_boot_stage",
+        format: "I"
+    )
+
     static let test_ca_event: NameOID = .init(
         name: "test_ca_event",
+        format: "I"
+    )
+
+    static let entitled_max_task_pmem: NameOID = .init(
+        name: "entitled_max_task_pmem",
         format: "I"
     )
 
@@ -766,6 +806,111 @@ extension OID.Kern {
         format: "I"
     )
 
+    static let stackshot_estimate_adj: NameOID = .init(
+        name: "stackshot_estimate_adj",
+        format: "IU"
+    )
+
+    static let stackshot_stats: NameOID = .init(
+        name: "stackshot_stats",
+        format: "S,stackshot_stats"
+    )
+
+    static let msgbuf: NameOID = .init(
+        name: "msgbuf",
+        format: "I"
+    )
+
+    static let task_exc_guard_default: NameOID = .init(
+        name: "task_exc_guard_default",
+        format: "I"
+    )
+
+    static let tcsm_available: NameOID = .init(
+        name: "tcsm_available",
+        format: "I"
+    )
+
+    static let tcsm_enable: NameOID = .init(
+        name: "tcsm_enable",
+        format: "I"
+    )
+
+    static let preoslog: NameOID = .init(
+        name: "preoslog",
+        format: "-"
+    )
+
+    static let coredump_encryption_key: NameOID = .init(
+        name: "coredump_encryption_key",
+        format: "-"
+    )
+
+    static let ulock_adaptive_spin_usecs: NameOID = .init(
+        name: "ulock_adaptive_spin_usecs",
+        format: "I"
+    )
+
+    static let progressmeter: NameOID = .init(
+        name: "progressmeter",
+        format: "I"
+    )
+
+    static let consoleoptions: NameOID = .init(
+        name: "consoleoptions",
+        format: "I"
+    )
+
+    static let progressoptions: NameOID = .init(
+        name: "progressoptions",
+        format: "S,vc_progress_user_options"
+    )
+
+    static let wakereason: NameOID = .init(
+        name: "wakereason",
+        format: "A"
+    )
+
+    static let bootreason: NameOID = .init(
+        name: "bootreason",
+        format: "A"
+    )
+
+    static let shutdownreason: NameOID = .init(
+        name: "shutdownreason",
+        format: "A"
+    )
+
+    static let aotmetrics: NameOID = .init(
+        name: "aotmetrics",
+        format: "S,IOPMAOTMetrics"
+    )
+
+    static let aotmodebits: NameOID = .init(
+        name: "aotmodebits",
+        format: "I"
+    )
+
+    static let aotmode: NameOID = .init(
+        name: "aotmode",
+        format: "I"
+    )
+
+    static let pmtimeout: NameOID = .init(
+        name: "pmtimeout",
+        format: "IU"
+    )
+
+    static let pmcallouttimer: NameOID = .init(
+        name: "pmcallouttimer",
+        format: "IU"
+    )
+
+    static let iokittest: NameOID = .init(
+        name: "iokittest",
+        format: "I"
+    )
+
     static let sleeptime: NameOID = .init(
         name: "sleeptime",
         format: "S,timeval"
@@ -806,140 +951,6 @@ extension OID.Kern {
         format: "I"
     )
 
-    static let progressmeter: NameOID = .init(
-        name: "progressmeter",
-        format: "I"
-    )
-
-    static let consoleoptions: NameOID = .init(
-        name: "consoleoptions",
-        format: "I"
-    )
-
-    static let progressoptions: NameOID = .init(
-        name: "progressoptions",
-        format: "S,vc_progress_user_options"
-    )
-
-    static let wakereason: NameOID = .init(
-        name: "wakereason",
-        format: "A"
-    )
-
-    static let stackshot_estimate_adj: NameOID = .init(
-        name: "stackshot_estimate_adj",
-        format: "IU"
-    )
-
-    static let stackshot_busy_enabled: NameOID = .init(
-        name: "stackshot_busy_enabled",
-        format: "IU"
-    )
-
-    static let stackshot_stats: NameOID = .init(
-        name: "stackshot_stats",
-        format: "S,stackshot_stats"
-    )
-
-    static let msgbuf: NameOID = .init(
-        name: "msgbuf",
-        format: "I"
-    )
-
-    static let bootreason: NameOID = .init(
-        name: "bootreason",
-        format: "A"
-    )
-
-    static let shutdownreason: NameOID = .init(
-        name: "shutdownreason",
-        format: "A"
-    )
-
-    static let task_exc_guard_default: NameOID = .init(
-        name: "task_exc_guard_default",
-        format: "I"
-    )
-
-    static let tcsm_available: NameOID = .init(
-        name: "tcsm_available",
-        format: "I"
-    )
-
-    static let tcsm_enable: NameOID = .init(
-        name: "tcsm_enable",
-        format: "I"
-    )
-
-    static let preoslog: NameOID = .init(
-        name: "preoslog",
-        format: "-"
-    )
-
-    static let coredump_encryption_key: NameOID = .init(
-        name: "coredump_encryption_key",
-        format: "-"
-    )
-
-    static let ulock_adaptive_spin_usecs: NameOID = .init(
-        name: "ulock_adaptive_spin_usecs",
-        format: "I"
-    )
-
-    static let aotmetrics: NameOID = .init(
-        name: "aotmetrics",
-        format: "S,IOPMAOTMetrics"
-    )
-
-    static let aotmodebits: NameOID = .init(
-        name: "aotmodebits",
-        format: "I"
-    )
-
-    static let aotmode: NameOID = .init(
-        name: "aotmode",
-        format: "I"
-    )
-
-    static let proc_rsr_in_progress: NameOID = .init(
-        name: "proc_rsr_in_progress",
-        format: "I"
-    )
-
-    static let hv_vmm_present: NameOID = .init(
-        name: "hv_vmm_present",
-        format: "I"
-    )
-
-    static let secure_kernel: NameOID = .init(
-        name: "secure_kernel",
-        format: "I"
-    )
-
-    static let next_ecc_event: NameOID = .init(
-        name: "next_ecc_event",
-        format: "-"
-    )
-
-    static let willuserspacereboot: NameOID = .init(
-        name: "willuserspacereboot",
-        format: "I"
-    )
-
-    static let flush_cache_on_write: NameOID = .init(
-        name: "flush_cache_on_write",
-        format: "I"
-    )
-
-    static let maxnbuf: NameOID = .init(
-        name: "maxnbuf",
-        format: "I"
-    )
-
-    static let nbuf: NameOID = .init(
-        name: "nbuf",
-        format: "I"
-    )
 }
 
 extension OID.Kern.Ipc {
@@ -953,44 +964,24 @@ extension OID.Kern.Ipc {
         format: "S,mb_stat"
     )
 
-    static let mleak_top_trace: NameOID = .init(
-        name: "mleak_top_trace",
-        format: "S,mb_top_trace"
-    )
-
-    static let mleak_table: NameOID = .init(
-        name: "mleak_table",
-        format: "S,mleak_table"
-    )
-
-    static let mleak_sample_factor: NameOID = .init(
-        name: "mleak_sample_factor",
-        format: "I"
-    )
-
-    static let mb_normalized: NameOID = .init(
-        name: "mb_normalized",
-        format: "I"
-    )
-
-    static let mb_watchdog: NameOID = .init(
-        name: "mb_watchdog",
-        format: "I"
-    )
-
-    static let mb_drain_force: NameOID = .init(
-        name: "mb_drain_force",
-        format: "I"
-    )
-
-    static let mb_drain_maxint: NameOID = .init(
-        name: "mb_drain_maxint",
-        format: "I"
-    )
-
     static let mb_memory_pressure_percentage: NameOID = .init(
         name: "mb_memory_pressure_percentage",
         format: "I"
+    )
+
+    static let mb_uses_mcache: NameOID = .init(
+        name: "mb_uses_mcache",
+        format: "I"
+    )
+
+    static let mb_tag_mbuf: NameOID = .init(
+        name: "mb_tag_mbuf",
+        format: "IU"
+    )
+
+    static let mb_tag_stats: NameOID = .init(
+        name: "mb_tag_stats",
+        format: "S,m_tag_stats"
     )
 
     static let socket_debug: NameOID = .init(
@@ -1103,26 +1094,6 @@ extension OID.Kern.Ipc {
         format: "IU"
     )
 
-    static let sbmb_cnt: NameOID = .init(
-        name: "sbmb_cnt",
-        format: "I"
-    )
-
-    static let sbmb_cnt_peak: NameOID = .init(
-        name: "sbmb_cnt_peak",
-        format: "I"
-    )
-
-    static let sbmb_cnt_floor: NameOID = .init(
-        name: "sbmb_cnt_floor",
-        format: "I"
-    )
-
-    static let sbmb_limreached: NameOID = .init(
-        name: "sbmb_limreached",
-        format: "Q"
-    )
-
     static let maxsendmsgx: NameOID = .init(
         name: "maxsendmsgx",
         format: "IU"
@@ -1135,6 +1106,16 @@ extension OID.Kern.Ipc {
 
     static let missingpktinfo: NameOID = .init(
         name: "missingpktinfo",
+        format: "IU"
+    )
+
+    static let do_recvmsg_x_donttrunc: NameOID = .init(
+        name: "do_recvmsg_x_donttrunc",
+        format: "I"
+    )
+
+    static let sendmsg_x_mode: NameOID = .init(
+        name: "sendmsg_x_mode",
         format: "IU"
     )
 }
@@ -1271,344 +1252,23 @@ extension OID.Kern.Tty {
 }
 
 extension OID.Kern {
-    public enum Dtrace {}
-}
-
-extension OID.Kern.Dtrace {
-    static let ignore_fbt_blacklist: NameOID = .init(
-        name: "ignore_fbt_blacklist",
-        format: "I"
-    )
-
-    static let dof_mode: NameOID = .init(
-        name: "dof_mode",
-        format: "I"
-    )
-
-    static let provide_private_probes: NameOID = .init(
-        name: "provide_private_probes",
-        format: "I"
-    )
-
-    static let global_maxsize: NameOID = .init(
-        name: "global_maxsize",
-        format: "Q"
-    )
-
-    static let dof_maxsize: NameOID = .init(
-        name: "dof_maxsize",
-        format: "Q"
-    )
-
-    static let difo_maxsize: NameOID = .init(
-        name: "difo_maxsize",
-        format: "Q"
-    )
-
-    static let buffer_memory_inuse: NameOID = .init(
-        name: "buffer_memory_inuse",
-        format: "Q"
-    )
-
-    static let buffer_memory_maxsize: NameOID = .init(
-        name: "buffer_memory_maxsize",
-        format: "Q"
-    )
-
-    static let err_verbose: NameOID = .init(
-        name: "err_verbose",
-        format: "I"
-    )
-}
-
-extension OID.Kern {
-    public enum Monotonic {}
-}
-
-extension OID.Kern.Monotonic {
-    static let fixed_task_perf: NameOID = .init(
-        name: "fixed_task_perf",
-        format: "O"
-    )
-
-    static let fixed_thread_perf: NameOID = .init(
-        name: "fixed_thread_perf",
-        format: "O"
-    )
-
-    static let fixed_cpu_perf: NameOID = .init(
-        name: "fixed_cpu_perf",
-        format: "O"
-    )
-
-    static let kdebug_test: NameOID = .init(
-        name: "kdebug_test",
-        format: "O"
-    )
-
-    static let task_thread_counting: NameOID = .init(
-        name: "task_thread_counting",
-        format: "I"
-    )
-
-    static let retrograde_updates: NameOID = .init(
-        name: "retrograde_updates",
-        format: "Q"
-    )
-
-    static let pmis: NameOID = .init(
-        name: "pmis",
-        format: "Q"
-    )
-
-    static let debug: NameOID = .init(
-        name: "debug",
-        format: "I"
-    )
-
-    static let supported: NameOID = .init(
-        name: "supported",
-        format: "I"
-    )
-}
-
-extension OID.Kern {
-    public enum Entropy {}
-}
-
-extension OID.Kern.Entropy {
-    static let health: NameOID = .init(
-        name: "health",
-        format: "N"
-    )
-
-    static let filter: NameOID = .init(
-        name: "filter",
-        format: "N"
-    )
-
-    static let analysis: NameOID = .init(
-        name: "analysis",
-        format: "N"
-    )
-}
-
-extension OID.Kern.Entropy {
-    public enum Health {}
-}
-
-extension OID.Kern.Entropy.Health {
-    static let repetition_count_test: NameOID = .init(
-        name: "repetition_count_test",
-        format: "N"
-    )
-
-    static let adaptive_proportion_test: NameOID = .init(
-        name: "adaptive_proportion_test",
-        format: "N"
-    )
-
-    static let startup_done: NameOID = .init(
-        name: "startup_done",
-        format: "I"
-    )
-}
-
-extension OID.Kern.Entropy.Health {
-    public enum RepetitionCountTest {}
-}
-
-extension OID.Kern.Entropy.Health.RepetitionCountTest {
-    static let reset_count: NameOID = .init(
-        name: "reset_count",
-        format: "IU"
-    )
-
-    static let failure_count: NameOID = .init(
-        name: "failure_count",
-        format: "IU"
-    )
-
-    static let max_observation_count: NameOID = .init(
-        name: "max_observation_count",
-        format: "IU"
-    )
-}
-
-extension OID.Kern.Entropy.Health {
-    public enum AdaptiveProportionTest {}
-}
-
-extension OID.Kern.Entropy.Health.AdaptiveProportionTest {
-    static let reset_count: NameOID = .init(
-        name: "reset_count",
-        format: "IU"
-    )
-
-    static let failure_count: NameOID = .init(
-        name: "failure_count",
-        format: "IU"
-    )
-
-    static let max_observation_count: NameOID = .init(
-        name: "max_observation_count",
-        format: "IU"
-    )
-}
-
-extension OID.Kern.Entropy {
-    public enum Filter {}
-}
-
-extension OID.Kern.Entropy.Filter {
-    static let total_sample_count: NameOID = .init(
-        name: "total_sample_count",
-        format: "Q"
-    )
-
-    static let accepted_sample_count: NameOID = .init(
-        name: "accepted_sample_count",
-        format: "Q"
-    )
-
-    static let rejected_sample_count: NameOID = .init(
-        name: "rejected_sample_count",
-        format: "Q"
-    )
-}
-
-extension OID.Kern.Entropy {
-    public enum Analysis {}
-}
-
-extension OID.Kern.Entropy.Analysis {
-    static let supported: NameOID = .init(
-        name: "supported",
-        format: "I"
-    )
-}
-
-extension OID.Kern {
-    public enum Kdbg {}
-}
-
-extension OID.Kern.Kdbg {
-    static let debug: NameOID = .init(
-        name: "debug",
-        format: "I"
-    )
-
-    static let oldest_time: NameOID = .init(
-        name: "oldest_time",
-        format: "Q"
-    )
-}
-
-extension OID.Kern {
-    public enum Timer {}
-}
-
-extension OID.Kern.Timer {
-    static let longterm: NameOID = .init(
-        name: "longterm",
-        format: "N"
-    )
-
-    static let coalescing_enabled: NameOID = .init(
-        name: "coalescing_enabled",
-        format: "I"
-    )
-
-    static let deadline_tracking_bin_1: NameOID = .init(
-        name: "deadline_tracking_bin_1",
-        format: "Q"
-    )
-
-    static let deadline_tracking_bin_2: NameOID = .init(
-        name: "deadline_tracking_bin_2",
-        format: "Q"
-    )
-
-    static let scan_limit: NameOID = .init(
-        name: "scan_limit",
-        format: "Q"
-    )
-
-    static let scan_interval: NameOID = .init(
-        name: "scan_interval",
-        format: "Q"
-    )
-
-    static let scan_pauses: NameOID = .init(
-        name: "scan_pauses",
-        format: "Q"
-    )
-
-    static let scan_postpones: NameOID = .init(
-        name: "scan_postpones",
-        format: "Q"
-    )
-}
-
-extension OID.Kern.Timer {
-    public enum Longterm {}
-}
-
-extension OID.Kern.Timer.Longterm {
-    static let threshold: NameOID = .init(
-        name: "threshold",
-        format: "Q"
-    )
-
-    static let scan_limit: NameOID = .init(
-        name: "scan_limit",
-        format: "Q"
-    )
-
-    static let scan_interval: NameOID = .init(
-        name: "scan_interval",
-        format: "Q"
-    )
-
-    static let qlen: NameOID = .init(
-        name: "qlen",
-        format: "Q"
-    )
-
-    static let scan_pauses: NameOID = .init(
-        name: "scan_pauses",
-        format: "Q"
-    )
-}
-
-extension OID.Kern {
-    public enum Microstackshot {}
-}
-
-extension OID.Kern.Microstackshot {
-    static let interrupt_sample_rate: NameOID = .init(
-        name: "interrupt_sample_rate",
-        format: "IU"
-    )
-
-    static let pmi_sample_period: NameOID = .init(
-        name: "pmi_sample_period",
-        format: "Q"
-    )
-
-    static let pmi_sample_counter: NameOID = .init(
-        name: "pmi_sample_counter",
-        format: "IU"
-    )
-}
-
-extension OID.Kern {
     public enum Eventhandler {}
 }
 
 extension OID.Kern.Eventhandler {
     static let debug: NameOID = .init(
         name: "debug",
+        format: "I"
+    )
+}
+
+extension OID.Kern {
+    public enum Cpc {}
+}
+
+extension OID.Kern.Cpc {
+    static let secure: NameOID = .init(
+        name: "secure",
         format: "I"
     )
 }
@@ -1760,6 +1420,11 @@ extension OID.Kern.Skywalk.Flowswitch {
         format: "IU"
     )
 
+    static let gso_mtu: NameOID = .init(
+        name: "gso_mtu",
+        format: "IU"
+    )
+
     static let ip_reass: NameOID = .init(
         name: "ip_reass",
         format: "IU"
@@ -1779,6 +1444,7 @@ extension OID.Kern.Skywalk.Flowswitch {
         name: "flow_route_expire",
         format: "IU"
     )
+
 }
 
 extension OID.Kern.Skywalk {
@@ -1794,6 +1460,338 @@ extension OID.Kern.Skywalk.Netif {
     static let default_drop: NameOID = .init(
         name: "default_drop",
         format: "IU"
+    )
+}
+
+extension OID.Kern {
+    public enum Dtrace {}
+}
+
+extension OID.Kern.Dtrace {
+    static let err_verbose: NameOID = .init(
+        name: "err_verbose",
+        format: "I"
+    )
+
+    static let buffer_memory_maxsize: NameOID = .init(
+        name: "buffer_memory_maxsize",
+        format: "Q"
+    )
+
+    static let buffer_memory_inuse: NameOID = .init(
+        name: "buffer_memory_inuse",
+        format: "Q"
+    )
+
+    static let difo_maxsize: NameOID = .init(
+        name: "difo_maxsize",
+        format: "Q"
+    )
+
+    static let dof_maxsize: NameOID = .init(
+        name: "dof_maxsize",
+        format: "Q"
+    )
+
+    static let global_maxsize: NameOID = .init(
+        name: "global_maxsize",
+        format: "Q"
+    )
+
+    static let provide_private_probes: NameOID = .init(
+        name: "provide_private_probes",
+        format: "I"
+    )
+
+    static let dof_mode: NameOID = .init(
+        name: "dof_mode",
+        format: "I"
+    )
+
+    static let ignore_fbt_blacklist: NameOID = .init(
+        name: "ignore_fbt_blacklist",
+        format: "I"
+    )
+}
+
+extension OID.Kern {
+    public enum Monotonic {}
+}
+
+extension OID.Kern.Monotonic {
+    static let supported: NameOID = .init(
+        name: "supported",
+        format: "I"
+    )
+
+    static let debug: NameOID = .init(
+        name: "debug",
+        format: "I"
+    )
+
+    static let pmis: NameOID = .init(
+        name: "pmis",
+        format: "Q"
+    )
+
+    static let retrograde_updates: NameOID = .init(
+        name: "retrograde_updates",
+        format: "Q"
+    )
+
+    static let task_thread_counting: NameOID = .init(
+        name: "task_thread_counting",
+        format: "I"
+    )
+
+    static let kdebug_test: NameOID = .init(
+        name: "kdebug_test",
+        format: "O"
+    )
+
+    static let fixed_cpu_perf: NameOID = .init(
+        name: "fixed_cpu_perf",
+        format: "O"
+    )
+
+    static let fixed_thread_perf: NameOID = .init(
+        name: "fixed_thread_perf",
+        format: "O"
+    )
+
+    static let fixed_task_perf: NameOID = .init(
+        name: "fixed_task_perf",
+        format: "O"
+    )
+}
+
+extension OID.Kern {
+    public enum Timer {}
+}
+
+extension OID.Kern.Timer {
+    static let longterm: NameOID = .init(
+        name: "longterm",
+        format: "N"
+    )
+
+    static let coalescing_enabled: NameOID = .init(
+        name: "coalescing_enabled",
+        format: "I"
+    )
+
+    static let deadline_tracking_bin_1: NameOID = .init(
+        name: "deadline_tracking_bin_1",
+        format: "Q"
+    )
+
+    static let deadline_tracking_bin_2: NameOID = .init(
+        name: "deadline_tracking_bin_2",
+        format: "Q"
+    )
+
+    static let scan_limit: NameOID = .init(
+        name: "scan_limit",
+        format: "Q"
+    )
+
+    static let scan_interval: NameOID = .init(
+        name: "scan_interval",
+        format: "Q"
+    )
+
+    static let scan_pauses: NameOID = .init(
+        name: "scan_pauses",
+        format: "Q"
+    )
+
+    static let scan_postpones: NameOID = .init(
+        name: "scan_postpones",
+        format: "Q"
+    )
+}
+
+extension OID.Kern.Timer {
+    public enum Longterm {}
+}
+
+extension OID.Kern.Timer.Longterm {
+    static let threshold: NameOID = .init(
+        name: "threshold",
+        format: "Q"
+    )
+
+    static let scan_limit: NameOID = .init(
+        name: "scan_limit",
+        format: "Q"
+    )
+
+    static let scan_interval: NameOID = .init(
+        name: "scan_interval",
+        format: "Q"
+    )
+
+    static let qlen: NameOID = .init(
+        name: "qlen",
+        format: "Q"
+    )
+
+    static let scan_pauses: NameOID = .init(
+        name: "scan_pauses",
+        format: "Q"
+    )
+}
+
+extension OID.Kern {
+    public enum Microstackshot {}
+}
+
+extension OID.Kern.Microstackshot {
+    static let interrupt_sample_rate: NameOID = .init(
+        name: "interrupt_sample_rate",
+        format: "IU"
+    )
+
+    static let pmi_sample_period: NameOID = .init(
+        name: "pmi_sample_period",
+        format: "Q"
+    )
+
+    static let pmi_sample_counter: NameOID = .init(
+        name: "pmi_sample_counter",
+        format: "IU"
+    )
+}
+
+extension OID.Kern {
+    public enum Entropy {}
+}
+
+extension OID.Kern.Entropy {
+    static let analysis: NameOID = .init(
+        name: "analysis",
+        format: "N"
+    )
+
+    static let health: NameOID = .init(
+        name: "health",
+        format: "N"
+    )
+
+    static let filter: NameOID = .init(
+        name: "filter",
+        format: "N"
+    )
+}
+
+extension OID.Kern.Entropy {
+    public enum Analysis {}
+}
+
+extension OID.Kern.Entropy.Analysis {
+    static let supported: NameOID = .init(
+        name: "supported",
+        format: "I"
+    )
+}
+
+extension OID.Kern.Entropy {
+    public enum Health {}
+}
+
+extension OID.Kern.Entropy.Health {
+    static let repetition_count_test: NameOID = .init(
+        name: "repetition_count_test",
+        format: "N"
+    )
+
+    static let adaptive_proportion_test: NameOID = .init(
+        name: "adaptive_proportion_test",
+        format: "N"
+    )
+
+    static let startup_done: NameOID = .init(
+        name: "startup_done",
+        format: "I"
+    )
+}
+
+extension OID.Kern.Entropy.Health {
+    public enum RepetitionCountTest {}
+}
+
+extension OID.Kern.Entropy.Health.RepetitionCountTest {
+    static let reset_count: NameOID = .init(
+        name: "reset_count",
+        format: "IU"
+    )
+
+    static let failure_count: NameOID = .init(
+        name: "failure_count",
+        format: "IU"
+    )
+
+    static let max_observation_count: NameOID = .init(
+        name: "max_observation_count",
+        format: "IU"
+    )
+}
+
+extension OID.Kern.Entropy.Health {
+    public enum AdaptiveProportionTest {}
+}
+
+extension OID.Kern.Entropy.Health.AdaptiveProportionTest {
+    static let reset_count: NameOID = .init(
+        name: "reset_count",
+        format: "IU"
+    )
+
+    static let failure_count: NameOID = .init(
+        name: "failure_count",
+        format: "IU"
+    )
+
+    static let max_observation_count: NameOID = .init(
+        name: "max_observation_count",
+        format: "IU"
+    )
+}
+
+extension OID.Kern.Entropy {
+    public enum Filter {}
+}
+
+extension OID.Kern.Entropy.Filter {
+    static let total_sample_count: NameOID = .init(
+        name: "total_sample_count",
+        format: "Q"
+    )
+
+    static let accepted_sample_count: NameOID = .init(
+        name: "accepted_sample_count",
+        format: "Q"
+    )
+
+    static let rejected_sample_count: NameOID = .init(
+        name: "rejected_sample_count",
+        format: "Q"
+    )
+}
+
+extension OID.Kern {
+    public enum Kdbg {}
+}
+
+extension OID.Kern.Kdbg {
+    static let debug: NameOID = .init(
+        name: "debug",
+        format: "I"
+    )
+
+    static let oldest_time: NameOID = .init(
+        name: "oldest_time",
+        format: "Q"
     )
 }
 

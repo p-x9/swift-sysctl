@@ -156,6 +156,11 @@ extension OID.HW {
         format: "Q"
     )
 
+    static let memsize_usable: NameOID = .init(
+        name: "memsize_usable",
+        format: "Q"
+    )
+
     static let packages: NameOID = .init(
         name: "packages",
         format: "I"
@@ -695,8 +700,23 @@ extension OID.HW.Optional.Arm {
         format: "I"
     )
 
+    static let FEAT_WFxT: NameOID = .init(
+        name: "FEAT_WFxT",
+        format: "I"
+    )
+
+    static let FEAT_RPRES: NameOID = .init(
+        name: "FEAT_RPRES",
+        format: "I"
+    )
+
     static let FEAT_ECV: NameOID = .init(
         name: "FEAT_ECV",
+        format: "I"
+    )
+
+    static let FEAT_AFP: NameOID = .init(
+        name: "FEAT_AFP",
         format: "I"
     )
 
@@ -732,6 +752,56 @@ extension OID.HW.Optional.Arm {
 
     static let FEAT_BTI: NameOID = .init(
         name: "FEAT_BTI",
+        format: "I"
+    )
+
+    static let FEAT_SME: NameOID = .init(
+        name: "FEAT_SME",
+        format: "I"
+    )
+
+    static let FEAT_SME2: NameOID = .init(
+        name: "FEAT_SME2",
+        format: "I"
+    )
+
+    static let SME_F32F32: NameOID = .init(
+        name: "SME_F32F32",
+        format: "I"
+    )
+
+    static let SME_BI32I32: NameOID = .init(
+        name: "SME_BI32I32",
+        format: "I"
+    )
+
+    static let SME_B16F32: NameOID = .init(
+        name: "SME_B16F32",
+        format: "I"
+    )
+
+    static let SME_F16F32: NameOID = .init(
+        name: "SME_F16F32",
+        format: "I"
+    )
+
+    static let SME_I8I32: NameOID = .init(
+        name: "SME_I8I32",
+        format: "I"
+    )
+
+    static let SME_I16I32: NameOID = .init(
+        name: "SME_I16I32",
+        format: "I"
+    )
+
+    static let FEAT_SME_F64F64: NameOID = .init(
+        name: "FEAT_SME_F64F64",
+        format: "I"
+    )
+
+    static let FEAT_SME_I16I64: NameOID = .init(
+        name: "FEAT_SME_I16I64",
         format: "I"
     )
 

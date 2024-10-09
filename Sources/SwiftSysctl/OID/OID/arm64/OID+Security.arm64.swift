@@ -2,7 +2,7 @@
 //  OID+Security.swift
 //
 //
-//  Created by p-x9 on 2024/05/14.
+//  Created by p-x9 on 2024/04/16.
 //
 //
 
@@ -36,6 +36,11 @@ extension OID.Security.Mac {
         format: "I"
     )
 
+    static let lockdown_mode_state: NameOID = .init(
+        name: "lockdown_mode_state",
+        format: "I"
+    )
+
     static let max_slots: NameOID = .init(
         name: "max_slots",
         format: "IU"
@@ -49,11 +54,6 @@ extension OID.Security.Mac {
     static let vnode_label_count: NameOID = .init(
         name: "vnode_label_count",
         format: "IU"
-    )
-
-    static let lockdown_mode_state: NameOID = .init(
-        name: "lockdown_mode_state",
-        format: "I"
     )
 
     static let device_enforce: NameOID = .init(

@@ -11,6 +11,10 @@ import Foundation
 #if arch(x86_64)
 
 extension Nodes.Sysctl {
+    public var proc_translated: LeafNameNode<CInt> {
+        .init(oid: OID.Sysctl.proc_translated)
+    }
+
     public var proc_native: LeafNameNode<CInt> {
         .init(oid: OID.Sysctl.proc_native)
     }

@@ -11,566 +11,6 @@ import Foundation
 #if arch(arm64)
 
 extension OID.VM {
-    static let cs_force_kill: NameOID = .init(
-        name: "cs_force_kill",
-        format: "I"
-    )
-
-    static let cs_force_hard: NameOID = .init(
-        name: "cs_force_hard",
-        format: "I"
-    )
-
-    static let cs_debug: NameOID = .init(
-        name: "cs_debug",
-        format: "I"
-    )
-
-    static let cs_debug_fail_on_unsigned_code: NameOID = .init(
-        name: "cs_debug_fail_on_unsigned_code",
-        format: "I"
-    )
-
-    static let cs_debug_unsigned_exec_failures: NameOID = .init(
-        name: "cs_debug_unsigned_exec_failures",
-        format: "IU"
-    )
-
-    static let cs_debug_unsigned_mmap_failures: NameOID = .init(
-        name: "cs_debug_unsigned_mmap_failures",
-        format: "IU"
-    )
-
-    static let cs_all_vnodes: NameOID = .init(
-        name: "cs_all_vnodes",
-        format: "I"
-    )
-
-    static let cs_system_enforcement: NameOID = .init(
-        name: "cs_system_enforcement",
-        format: "I"
-    )
-
-    static let cs_process_enforcement: NameOID = .init(
-        name: "cs_process_enforcement",
-        format: "I"
-    )
-
-    static let cs_enforcement_panic: NameOID = .init(
-        name: "cs_enforcement_panic",
-        format: "I"
-    )
-
-    static let cs_library_validation: NameOID = .init(
-        name: "cs_library_validation",
-        format: "I"
-    )
-
-    static let shared_region_control: NameOID = .init(
-        name: "shared_region_control",
-        format: "I"
-    )
-
-    static let swap_enabled: NameOID = .init(
-        name: "swap_enabled",
-        format: "I"
-    )
-
-    static let global_user_wire_limit: NameOID = .init(
-        name: "global_user_wire_limit",
-        format: "Q"
-    )
-
-    static let user_wire_limit: NameOID = .init(
-        name: "user_wire_limit",
-        format: "Q"
-    )
-
-    static let global_no_user_wire_amount: NameOID = .init(
-        name: "global_no_user_wire_amount",
-        format: "Q"
-    )
-
-    static let add_wire_count_over_global_limit: NameOID = .init(
-        name: "add_wire_count_over_global_limit",
-        format: "Q"
-    )
-
-    static let add_wire_count_over_user_limit: NameOID = .init(
-        name: "add_wire_count_over_user_limit",
-        format: "Q"
-    )
-
-    static let vm_copy_src_not_internal: NameOID = .init(
-        name: "vm_copy_src_not_internal",
-        format: "I"
-    )
-
-    static let vm_copy_src_not_symmetric: NameOID = .init(
-        name: "vm_copy_src_not_symmetric",
-        format: "I"
-    )
-
-    static let vm_copy_src_large: NameOID = .init(
-        name: "vm_copy_src_large",
-        format: "I"
-    )
-
-    static let vm_page_external_count: NameOID = .init(
-        name: "vm_page_external_count",
-        format: "I"
-    )
-
-    static let vm_page_filecache_min: NameOID = .init(
-        name: "vm_page_filecache_min",
-        format: "I"
-    )
-
-    static let vm_page_xpmapped_min: NameOID = .init(
-        name: "vm_page_xpmapped_min",
-        format: "I"
-    )
-
-    static let compressor_input_bytes: NameOID = .init(
-        name: "compressor_input_bytes",
-        format: "Q"
-    )
-
-    static let compressor_compressed_bytes: NameOID = .init(
-        name: "compressor_compressed_bytes",
-        format: "Q"
-    )
-
-    static let compressor_bytes_used: NameOID = .init(
-        name: "compressor_bytes_used",
-        format: "Q"
-    )
-
-    static let compressor_mode: NameOID = .init(
-        name: "compressor_mode",
-        format: "I"
-    )
-
-    static let compressor_is_active: NameOID = .init(
-        name: "compressor_is_active",
-        format: "I"
-    )
-
-    static let compressor_swapout_target_age: NameOID = .init(
-        name: "compressor_swapout_target_age",
-        format: "I"
-    )
-
-    static let compressor_available: NameOID = .init(
-        name: "compressor_available",
-        format: "I"
-    )
-
-    static let compressor_segment_buffer_size: NameOID = .init(
-        name: "compressor_segment_buffer_size",
-        format: "I"
-    )
-
-    static let compressor_pool_size: NameOID = .init(
-        name: "compressor_pool_size",
-        format: "Q"
-    )
-
-    static let compressor_min_csegs_per_major_compaction: NameOID = .init(
-        name: "compressor_min_csegs_per_major_compaction",
-        format: "I"
-    )
-
-    static let vm_ripe_target_age_in_secs: NameOID = .init(
-        name: "vm_ripe_target_age_in_secs",
-        format: "I"
-    )
-
-    static let compressor_eval_period_in_msecs: NameOID = .init(
-        name: "compressor_eval_period_in_msecs",
-        format: "I"
-    )
-
-    static let compressor_sample_min_in_msecs: NameOID = .init(
-        name: "compressor_sample_min_in_msecs",
-        format: "I"
-    )
-
-    static let compressor_sample_max_in_msecs: NameOID = .init(
-        name: "compressor_sample_max_in_msecs",
-        format: "I"
-    )
-
-    static let compressor_thrashing_threshold_per_10msecs: NameOID = .init(
-        name: "compressor_thrashing_threshold_per_10msecs",
-        format: "I"
-    )
-
-    static let compressor_thrashing_min_per_10msecs: NameOID = .init(
-        name: "compressor_thrashing_min_per_10msecs",
-        format: "I"
-    )
-
-    static let compressor_swapouts_under_30s: NameOID = .init(
-        name: "compressor_swapouts_under_30s",
-        format: "Q"
-    )
-
-    static let compressor_swapouts_under_60s: NameOID = .init(
-        name: "compressor_swapouts_under_60s",
-        format: "Q"
-    )
-
-    static let compressor_swapouts_under_300s: NameOID = .init(
-        name: "compressor_swapouts_under_300s",
-        format: "Q"
-    )
-
-    static let compressor_swapper_reclaim_swapins: NameOID = .init(
-        name: "compressor_swapper_reclaim_swapins",
-        format: "Q"
-    )
-
-    static let compressor_swapper_defrag_swapins: NameOID = .init(
-        name: "compressor_swapper_defrag_swapins",
-        format: "Q"
-    )
-
-    static let compressor_swapper_swapout_threshold_exceeded: NameOID = .init(
-        name: "compressor_swapper_swapout_threshold_exceeded",
-        format: "Q"
-    )
-
-    static let compressor_swapper_swapout_fileq_throttled: NameOID = .init(
-        name: "compressor_swapper_swapout_fileq_throttled",
-        format: "Q"
-    )
-
-    static let compressor_swapper_swapout_free_count_low: NameOID = .init(
-        name: "compressor_swapper_swapout_free_count_low",
-        format: "Q"
-    )
-
-    static let compressor_swapper_swapout_thrashing_detected: NameOID = .init(
-        name: "compressor_swapper_swapout_thrashing_detected",
-        format: "Q"
-    )
-
-    static let compressor_swapper_swapout_fragmentation_detected: NameOID = .init(
-        name: "compressor_swapper_swapout_fragmentation_detected",
-        format: "Q"
-    )
-
-    static let swapfileprefix: NameOID = .init(
-        name: "swapfileprefix",
-        format: "A"
-    )
-
-    static let compressor_timing_enabled: NameOID = .init(
-        name: "compressor_timing_enabled",
-        format: "I"
-    )
-
-    static let vm_page_donate_mode: NameOID = .init(
-        name: "vm_page_donate_mode",
-        format: "I"
-    )
-
-    static let vm_page_donate_target_high: NameOID = .init(
-        name: "vm_page_donate_target_high",
-        format: "I"
-    )
-
-    static let vm_page_donate_target_low: NameOID = .init(
-        name: "vm_page_donate_target_low",
-        format: "I"
-    )
-
-    static let lz4_compressions: NameOID = .init(
-        name: "lz4_compressions",
-        format: "Q"
-    )
-
-    static let lz4_compression_failures: NameOID = .init(
-        name: "lz4_compression_failures",
-        format: "Q"
-    )
-
-    static let lz4_compressed_bytes: NameOID = .init(
-        name: "lz4_compressed_bytes",
-        format: "Q"
-    )
-
-    static let lz4_wk_compression_delta: NameOID = .init(
-        name: "lz4_wk_compression_delta",
-        format: "Q"
-    )
-
-    static let lz4_wk_compression_negative_delta: NameOID = .init(
-        name: "lz4_wk_compression_negative_delta",
-        format: "Q"
-    )
-
-    static let lz4_decompressions: NameOID = .init(
-        name: "lz4_decompressions",
-        format: "Q"
-    )
-
-    static let lz4_decompressed_bytes: NameOID = .init(
-        name: "lz4_decompressed_bytes",
-        format: "Q"
-    )
-
-    static let uc_decompressions: NameOID = .init(
-        name: "uc_decompressions",
-        format: "Q"
-    )
-
-    static let wk_compressions: NameOID = .init(
-        name: "wk_compressions",
-        format: "Q"
-    )
-
-    static let wk_catime: NameOID = .init(
-        name: "wk_catime",
-        format: "Q"
-    )
-
-    static let wkh_catime: NameOID = .init(
-        name: "wkh_catime",
-        format: "Q"
-    )
-
-    static let wkh_compressions: NameOID = .init(
-        name: "wkh_compressions",
-        format: "Q"
-    )
-
-    static let wks_catime: NameOID = .init(
-        name: "wks_catime",
-        format: "Q"
-    )
-
-    static let wks_compressions: NameOID = .init(
-        name: "wks_compressions",
-        format: "Q"
-    )
-
-    static let wk_compressions_exclusive: NameOID = .init(
-        name: "wk_compressions_exclusive",
-        format: "Q"
-    )
-
-    static let wk_sv_compressions: NameOID = .init(
-        name: "wk_sv_compressions",
-        format: "Q"
-    )
-
-    static let wk_mzv_compressions: NameOID = .init(
-        name: "wk_mzv_compressions",
-        format: "Q"
-    )
-
-    static let wk_compression_failures: NameOID = .init(
-        name: "wk_compression_failures",
-        format: "Q"
-    )
-
-    static let wk_compressed_bytes_exclusive: NameOID = .init(
-        name: "wk_compressed_bytes_exclusive",
-        format: "Q"
-    )
-
-    static let wk_compressed_bytes_total: NameOID = .init(
-        name: "wk_compressed_bytes_total",
-        format: "Q"
-    )
-
-    static let wks_compressed_bytes: NameOID = .init(
-        name: "wks_compressed_bytes",
-        format: "Q"
-    )
-
-    static let wks_compression_failures: NameOID = .init(
-        name: "wks_compression_failures",
-        format: "Q"
-    )
-
-    static let wks_sv_compressions: NameOID = .init(
-        name: "wks_sv_compressions",
-        format: "Q"
-    )
-
-    static let wk_decompressions: NameOID = .init(
-        name: "wk_decompressions",
-        format: "Q"
-    )
-
-    static let wk_datime: NameOID = .init(
-        name: "wk_datime",
-        format: "Q"
-    )
-
-    static let wkh_datime: NameOID = .init(
-        name: "wkh_datime",
-        format: "Q"
-    )
-
-    static let wkh_decompressions: NameOID = .init(
-        name: "wkh_decompressions",
-        format: "Q"
-    )
-
-    static let wks_datime: NameOID = .init(
-        name: "wks_datime",
-        format: "Q"
-    )
-
-    static let wks_decompressions: NameOID = .init(
-        name: "wks_decompressions",
-        format: "Q"
-    )
-
-    static let wk_decompressed_bytes: NameOID = .init(
-        name: "wk_decompressed_bytes",
-        format: "Q"
-    )
-
-    static let wk_sv_decompressions: NameOID = .init(
-        name: "wk_sv_decompressions",
-        format: "Q"
-    )
-
-    static let lz4_threshold: NameOID = .init(
-        name: "lz4_threshold",
-        format: "I"
-    )
-
-    static let wkdm_reeval_threshold: NameOID = .init(
-        name: "wkdm_reeval_threshold",
-        format: "I"
-    )
-
-    static let lz4_max_failure_skips: NameOID = .init(
-        name: "lz4_max_failure_skips",
-        format: "I"
-    )
-
-    static let lz4_max_failure_run_length: NameOID = .init(
-        name: "lz4_max_failure_run_length",
-        format: "I"
-    )
-
-    static let lz4_max_preselects: NameOID = .init(
-        name: "lz4_max_preselects",
-        format: "I"
-    )
-
-    static let lz4_run_preselection_threshold: NameOID = .init(
-        name: "lz4_run_preselection_threshold",
-        format: "I"
-    )
-
-    static let lz4_run_continue_bytes: NameOID = .init(
-        name: "lz4_run_continue_bytes",
-        format: "I"
-    )
-
-    static let lz4_profitable_bytes: NameOID = .init(
-        name: "lz4_profitable_bytes",
-        format: "I"
-    )
-
-    static let vm_page_background_mode: NameOID = .init(
-        name: "vm_page_background_mode",
-        format: "I"
-    )
-
-    static let vm_page_background_exclude_external: NameOID = .init(
-        name: "vm_page_background_exclude_external",
-        format: "I"
-    )
-
-    static let vm_page_background_target: NameOID = .init(
-        name: "vm_page_background_target",
-        format: "I"
-    )
-
-    static let vm_page_background_count: NameOID = .init(
-        name: "vm_page_background_count",
-        format: "I"
-    )
-
-    static let vm_page_background_internal_count: NameOID = .init(
-        name: "vm_page_background_internal_count",
-        format: "I"
-    )
-
-    static let vm_page_background_external_count: NameOID = .init(
-        name: "vm_page_background_external_count",
-        format: "I"
-    )
-
-    static let vm_page_background_promoted_count: NameOID = .init(
-        name: "vm_page_background_promoted_count",
-        format: "Q"
-    )
-
-    static let vm_pageout_considered_bq_internal: NameOID = .init(
-        name: "vm_pageout_considered_bq_internal",
-        format: "Q"
-    )
-
-    static let vm_pageout_considered_bq_external: NameOID = .init(
-        name: "vm_pageout_considered_bq_external",
-        format: "Q"
-    )
-
-    static let vm_pageout_rejected_bq_internal: NameOID = .init(
-        name: "vm_pageout_rejected_bq_internal",
-        format: "Q"
-    )
-
-    static let vm_pageout_rejected_bq_external: NameOID = .init(
-        name: "vm_pageout_rejected_bq_external",
-        format: "Q"
-    )
-
-    static let darkwake_mode: NameOID = .init(
-        name: "darkwake_mode",
-        format: "I"
-    )
-
-    static let get_owned_vmobjects: NameOID = .init(
-        name: "get_owned_vmobjects",
-        format: "A"
-    )
-
-    static let cs_blob_count: NameOID = .init(
-        name: "cs_blob_count",
-        format: "IU"
-    )
-
-    static let cs_blob_size: NameOID = .init(
-        name: "cs_blob_size",
-        format: "LU"
-    )
-
-    static let cs_blob_count_peak: NameOID = .init(
-        name: "cs_blob_count_peak",
-        format: "IU"
-    )
-
-    static let cs_blob_size_peak: NameOID = .init(
-        name: "cs_blob_size_peak",
-        format: "LU"
-    )
-
-    static let cs_blob_size_max: NameOID = .init(
-        name: "cs_blob_size_max",
-        format: "LU"
-    )
-
     static let self_region_footprint: NameOID = .init(
         name: "self_region_footprint",
         format: "I"
@@ -1219,6 +659,571 @@ extension OID.VM {
     static let c_process_major_peak_segcount: NameOID = .init(
         name: "c_process_major_peak_segcount",
         format: "IU"
+    )
+
+    static let panic_ws_crash: NameOID = .init(
+        name: "panic_ws_crash",
+        format: "I"
+    )
+
+    static let cs_force_kill: NameOID = .init(
+        name: "cs_force_kill",
+        format: "I"
+    )
+
+    static let cs_force_hard: NameOID = .init(
+        name: "cs_force_hard",
+        format: "I"
+    )
+
+    static let cs_debug: NameOID = .init(
+        name: "cs_debug",
+        format: "I"
+    )
+
+    static let cs_debug_fail_on_unsigned_code: NameOID = .init(
+        name: "cs_debug_fail_on_unsigned_code",
+        format: "I"
+    )
+
+    static let cs_debug_unsigned_exec_failures: NameOID = .init(
+        name: "cs_debug_unsigned_exec_failures",
+        format: "IU"
+    )
+
+    static let cs_debug_unsigned_mmap_failures: NameOID = .init(
+        name: "cs_debug_unsigned_mmap_failures",
+        format: "IU"
+    )
+
+    static let cs_all_vnodes: NameOID = .init(
+        name: "cs_all_vnodes",
+        format: "I"
+    )
+
+    static let cs_system_enforcement: NameOID = .init(
+        name: "cs_system_enforcement",
+        format: "I"
+    )
+
+    static let cs_process_enforcement: NameOID = .init(
+        name: "cs_process_enforcement",
+        format: "I"
+    )
+
+    static let cs_enforcement_panic: NameOID = .init(
+        name: "cs_enforcement_panic",
+        format: "I"
+    )
+
+    static let cs_library_validation: NameOID = .init(
+        name: "cs_library_validation",
+        format: "I"
+    )
+
+    static let shared_region_control: NameOID = .init(
+        name: "shared_region_control",
+        format: "I"
+    )
+
+    static let swap_enabled: NameOID = .init(
+        name: "swap_enabled",
+        format: "I"
+    )
+
+    static let global_user_wire_limit: NameOID = .init(
+        name: "global_user_wire_limit",
+        format: "Q"
+    )
+
+    static let user_wire_limit: NameOID = .init(
+        name: "user_wire_limit",
+        format: "Q"
+    )
+
+    static let global_no_user_wire_amount: NameOID = .init(
+        name: "global_no_user_wire_amount",
+        format: "Q"
+    )
+
+    static let add_wire_count_over_global_limit: NameOID = .init(
+        name: "add_wire_count_over_global_limit",
+        format: "Q"
+    )
+
+    static let add_wire_count_over_user_limit: NameOID = .init(
+        name: "add_wire_count_over_user_limit",
+        format: "Q"
+    )
+
+    static let vm_copy_src_not_internal: NameOID = .init(
+        name: "vm_copy_src_not_internal",
+        format: "I"
+    )
+
+    static let vm_copy_src_not_symmetric: NameOID = .init(
+        name: "vm_copy_src_not_symmetric",
+        format: "I"
+    )
+
+    static let vm_copy_src_large: NameOID = .init(
+        name: "vm_copy_src_large",
+        format: "I"
+    )
+
+    static let vm_page_external_count: NameOID = .init(
+        name: "vm_page_external_count",
+        format: "I"
+    )
+
+    static let vm_page_filecache_min: NameOID = .init(
+        name: "vm_page_filecache_min",
+        format: "I"
+    )
+
+    static let vm_page_xpmapped_min: NameOID = .init(
+        name: "vm_page_xpmapped_min",
+        format: "I"
+    )
+
+    static let compressor_input_bytes: NameOID = .init(
+        name: "compressor_input_bytes",
+        format: "Q"
+    )
+
+    static let compressor_compressed_bytes: NameOID = .init(
+        name: "compressor_compressed_bytes",
+        format: "Q"
+    )
+
+    static let compressor_bytes_used: NameOID = .init(
+        name: "compressor_bytes_used",
+        format: "Q"
+    )
+
+    static let compressor_mode: NameOID = .init(
+        name: "compressor_mode",
+        format: "I"
+    )
+
+    static let compressor_is_active: NameOID = .init(
+        name: "compressor_is_active",
+        format: "I"
+    )
+
+    static let compressor_swapout_target_age: NameOID = .init(
+        name: "compressor_swapout_target_age",
+        format: "I"
+    )
+
+    static let compressor_available: NameOID = .init(
+        name: "compressor_available",
+        format: "I"
+    )
+
+    static let compressor_segment_buffer_size: NameOID = .init(
+        name: "compressor_segment_buffer_size",
+        format: "I"
+    )
+
+    static let compressor_pool_size: NameOID = .init(
+        name: "compressor_pool_size",
+        format: "Q"
+    )
+
+    static let compressor_min_csegs_per_major_compaction: NameOID = .init(
+        name: "compressor_min_csegs_per_major_compaction",
+        format: "I"
+    )
+
+    static let vm_ripe_target_age_in_secs: NameOID = .init(
+        name: "vm_ripe_target_age_in_secs",
+        format: "I"
+    )
+
+    static let compressor_eval_period_in_msecs: NameOID = .init(
+        name: "compressor_eval_period_in_msecs",
+        format: "I"
+    )
+
+    static let compressor_sample_min_in_msecs: NameOID = .init(
+        name: "compressor_sample_min_in_msecs",
+        format: "I"
+    )
+
+    static let compressor_sample_max_in_msecs: NameOID = .init(
+        name: "compressor_sample_max_in_msecs",
+        format: "I"
+    )
+
+    static let compressor_thrashing_threshold_per_10msecs: NameOID = .init(
+        name: "compressor_thrashing_threshold_per_10msecs",
+        format: "I"
+    )
+
+    static let compressor_thrashing_min_per_10msecs: NameOID = .init(
+        name: "compressor_thrashing_min_per_10msecs",
+        format: "I"
+    )
+
+    static let compressor_swapouts_under_30s: NameOID = .init(
+        name: "compressor_swapouts_under_30s",
+        format: "Q"
+    )
+
+    static let compressor_swapouts_under_60s: NameOID = .init(
+        name: "compressor_swapouts_under_60s",
+        format: "Q"
+    )
+
+    static let compressor_swapouts_under_300s: NameOID = .init(
+        name: "compressor_swapouts_under_300s",
+        format: "Q"
+    )
+
+    static let compressor_swapper_reclaim_swapins: NameOID = .init(
+        name: "compressor_swapper_reclaim_swapins",
+        format: "Q"
+    )
+
+    static let compressor_swapper_defrag_swapins: NameOID = .init(
+        name: "compressor_swapper_defrag_swapins",
+        format: "Q"
+    )
+
+    static let compressor_swapper_swapout_threshold_exceeded: NameOID = .init(
+        name: "compressor_swapper_swapout_threshold_exceeded",
+        format: "Q"
+    )
+
+    static let compressor_swapper_swapout_fileq_throttled: NameOID = .init(
+        name: "compressor_swapper_swapout_fileq_throttled",
+        format: "Q"
+    )
+
+    static let compressor_swapper_swapout_free_count_low: NameOID = .init(
+        name: "compressor_swapper_swapout_free_count_low",
+        format: "Q"
+    )
+
+    static let compressor_swapper_swapout_thrashing_detected: NameOID = .init(
+        name: "compressor_swapper_swapout_thrashing_detected",
+        format: "Q"
+    )
+
+    static let compressor_swapper_swapout_fragmentation_detected: NameOID = .init(
+        name: "compressor_swapper_swapout_fragmentation_detected",
+        format: "Q"
+    )
+
+    static let swapfileprefix: NameOID = .init(
+        name: "swapfileprefix",
+        format: "A"
+    )
+
+    static let compressor_timing_enabled: NameOID = .init(
+        name: "compressor_timing_enabled",
+        format: "I"
+    )
+
+    static let vm_page_donate_mode: NameOID = .init(
+        name: "vm_page_donate_mode",
+        format: "I"
+    )
+
+    static let vm_page_donate_target_high: NameOID = .init(
+        name: "vm_page_donate_target_high",
+        format: "I"
+    )
+
+    static let vm_page_donate_target_low: NameOID = .init(
+        name: "vm_page_donate_target_low",
+        format: "I"
+    )
+
+    static let lz4_compressions: NameOID = .init(
+        name: "lz4_compressions",
+        format: "Q"
+    )
+
+    static let lz4_compression_failures: NameOID = .init(
+        name: "lz4_compression_failures",
+        format: "Q"
+    )
+
+    static let lz4_compressed_bytes: NameOID = .init(
+        name: "lz4_compressed_bytes",
+        format: "Q"
+    )
+
+    static let lz4_wk_compression_delta: NameOID = .init(
+        name: "lz4_wk_compression_delta",
+        format: "Q"
+    )
+
+    static let lz4_wk_compression_negative_delta: NameOID = .init(
+        name: "lz4_wk_compression_negative_delta",
+        format: "Q"
+    )
+
+    static let lz4_decompressions: NameOID = .init(
+        name: "lz4_decompressions",
+        format: "Q"
+    )
+
+    static let lz4_decompressed_bytes: NameOID = .init(
+        name: "lz4_decompressed_bytes",
+        format: "Q"
+    )
+
+    static let uc_decompressions: NameOID = .init(
+        name: "uc_decompressions",
+        format: "Q"
+    )
+
+    static let wk_compressions: NameOID = .init(
+        name: "wk_compressions",
+        format: "Q"
+    )
+
+    static let wk_catime: NameOID = .init(
+        name: "wk_catime",
+        format: "Q"
+    )
+
+    static let wkh_catime: NameOID = .init(
+        name: "wkh_catime",
+        format: "Q"
+    )
+
+    static let wkh_compressions: NameOID = .init(
+        name: "wkh_compressions",
+        format: "Q"
+    )
+
+    static let wks_catime: NameOID = .init(
+        name: "wks_catime",
+        format: "Q"
+    )
+
+    static let wks_compressions: NameOID = .init(
+        name: "wks_compressions",
+        format: "Q"
+    )
+
+    static let wk_compressions_exclusive: NameOID = .init(
+        name: "wk_compressions_exclusive",
+        format: "Q"
+    )
+
+    static let wk_sv_compressions: NameOID = .init(
+        name: "wk_sv_compressions",
+        format: "Q"
+    )
+
+    static let wk_mzv_compressions: NameOID = .init(
+        name: "wk_mzv_compressions",
+        format: "Q"
+    )
+
+    static let wk_compression_failures: NameOID = .init(
+        name: "wk_compression_failures",
+        format: "Q"
+    )
+
+    static let wk_compressed_bytes_exclusive: NameOID = .init(
+        name: "wk_compressed_bytes_exclusive",
+        format: "Q"
+    )
+
+    static let wk_compressed_bytes_total: NameOID = .init(
+        name: "wk_compressed_bytes_total",
+        format: "Q"
+    )
+
+    static let wks_compressed_bytes: NameOID = .init(
+        name: "wks_compressed_bytes",
+        format: "Q"
+    )
+
+    static let wks_compression_failures: NameOID = .init(
+        name: "wks_compression_failures",
+        format: "Q"
+    )
+
+    static let wks_sv_compressions: NameOID = .init(
+        name: "wks_sv_compressions",
+        format: "Q"
+    )
+
+    static let wk_decompressions: NameOID = .init(
+        name: "wk_decompressions",
+        format: "Q"
+    )
+
+    static let wk_datime: NameOID = .init(
+        name: "wk_datime",
+        format: "Q"
+    )
+
+    static let wkh_datime: NameOID = .init(
+        name: "wkh_datime",
+        format: "Q"
+    )
+
+    static let wkh_decompressions: NameOID = .init(
+        name: "wkh_decompressions",
+        format: "Q"
+    )
+
+    static let wks_datime: NameOID = .init(
+        name: "wks_datime",
+        format: "Q"
+    )
+
+    static let wks_decompressions: NameOID = .init(
+        name: "wks_decompressions",
+        format: "Q"
+    )
+
+    static let wk_decompressed_bytes: NameOID = .init(
+        name: "wk_decompressed_bytes",
+        format: "Q"
+    )
+
+    static let wk_sv_decompressions: NameOID = .init(
+        name: "wk_sv_decompressions",
+        format: "Q"
+    )
+
+    static let lz4_threshold: NameOID = .init(
+        name: "lz4_threshold",
+        format: "I"
+    )
+
+    static let wkdm_reeval_threshold: NameOID = .init(
+        name: "wkdm_reeval_threshold",
+        format: "I"
+    )
+
+    static let lz4_max_failure_skips: NameOID = .init(
+        name: "lz4_max_failure_skips",
+        format: "I"
+    )
+
+    static let lz4_max_failure_run_length: NameOID = .init(
+        name: "lz4_max_failure_run_length",
+        format: "I"
+    )
+
+    static let lz4_max_preselects: NameOID = .init(
+        name: "lz4_max_preselects",
+        format: "I"
+    )
+
+    static let lz4_run_preselection_threshold: NameOID = .init(
+        name: "lz4_run_preselection_threshold",
+        format: "I"
+    )
+
+    static let lz4_run_continue_bytes: NameOID = .init(
+        name: "lz4_run_continue_bytes",
+        format: "I"
+    )
+
+    static let lz4_profitable_bytes: NameOID = .init(
+        name: "lz4_profitable_bytes",
+        format: "I"
+    )
+
+    static let vm_page_background_mode: NameOID = .init(
+        name: "vm_page_background_mode",
+        format: "I"
+    )
+
+    static let vm_page_background_exclude_external: NameOID = .init(
+        name: "vm_page_background_exclude_external",
+        format: "I"
+    )
+
+    static let vm_page_background_target: NameOID = .init(
+        name: "vm_page_background_target",
+        format: "I"
+    )
+
+    static let vm_page_background_count: NameOID = .init(
+        name: "vm_page_background_count",
+        format: "I"
+    )
+
+    static let vm_page_background_internal_count: NameOID = .init(
+        name: "vm_page_background_internal_count",
+        format: "I"
+    )
+
+    static let vm_page_background_external_count: NameOID = .init(
+        name: "vm_page_background_external_count",
+        format: "I"
+    )
+
+    static let vm_page_background_promoted_count: NameOID = .init(
+        name: "vm_page_background_promoted_count",
+        format: "Q"
+    )
+
+    static let vm_pageout_considered_bq_internal: NameOID = .init(
+        name: "vm_pageout_considered_bq_internal",
+        format: "Q"
+    )
+
+    static let vm_pageout_considered_bq_external: NameOID = .init(
+        name: "vm_pageout_considered_bq_external",
+        format: "Q"
+    )
+
+    static let vm_pageout_rejected_bq_internal: NameOID = .init(
+        name: "vm_pageout_rejected_bq_internal",
+        format: "Q"
+    )
+
+    static let vm_pageout_rejected_bq_external: NameOID = .init(
+        name: "vm_pageout_rejected_bq_external",
+        format: "Q"
+    )
+
+    static let darkwake_mode: NameOID = .init(
+        name: "darkwake_mode",
+        format: "I"
+    )
+
+    static let get_owned_vmobjects: NameOID = .init(
+        name: "get_owned_vmobjects",
+        format: "A"
+    )
+
+    static let cs_blob_count: NameOID = .init(
+        name: "cs_blob_count",
+        format: "IU"
+    )
+
+    static let cs_blob_size: NameOID = .init(
+        name: "cs_blob_size",
+        format: "LU"
+    )
+
+    static let cs_blob_count_peak: NameOID = .init(
+        name: "cs_blob_count_peak",
+        format: "IU"
+    )
+
+    static let cs_blob_size_peak: NameOID = .init(
+        name: "cs_blob_size_peak",
+        format: "LU"
+    )
+
+    static let cs_blob_size_max: NameOID = .init(
+        name: "cs_blob_size_max",
+        format: "LU"
     )
 }
 

@@ -127,6 +127,10 @@ extension Nodes.HW {
         .init(oid: OID.HW.tbfrequency)
     }
 
+    public var memsize_usable: LeafNameNode<CLongLong> {
+        .init(oid: OID.HW.memsize_usable)
+    }
+
     public var packages: LeafNameNode<CInt> {
         .init(oid: OID.HW.packages)
     }
@@ -562,8 +566,20 @@ extension Nodes.HW.Optional {
             .init(oid: OID.HW.Optional.Arm.FEAT_I8MM)
         }
 
+        public var FEAT_WFxT: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_WFxT)
+        }
+
+        public var FEAT_RPRES: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_RPRES)
+        }
+
         public var FEAT_ECV: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_ECV)
+        }
+
+        public var FEAT_AFP: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_AFP)
         }
 
         public var FEAT_LSE2: LeafNameNode<CInt> {
@@ -592,6 +608,46 @@ extension Nodes.HW.Optional {
 
         public var FEAT_BTI: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_BTI)
+        }
+
+        public var FEAT_SME: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_SME)
+        }
+
+        public var FEAT_SME2: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_SME2)
+        }
+
+        public var SME_F32F32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.SME_F32F32)
+        }
+
+        public var SME_BI32I32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.SME_BI32I32)
+        }
+
+        public var SME_B16F32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.SME_B16F32)
+        }
+
+        public var SME_F16F32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.SME_F16F32)
+        }
+
+        public var SME_I8I32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.SME_I8I32)
+        }
+
+        public var SME_I16I32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.SME_I16I32)
+        }
+
+        public var FEAT_SME_F64F64: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_SME_F64F64)
+        }
+
+        public var FEAT_SME_I16I64: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_SME_I16I64)
         }
 
         public var FP_SyncExceptions: LeafNameNode<CInt> {

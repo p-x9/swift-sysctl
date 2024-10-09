@@ -19,10 +19,6 @@ extension Nodes.MachDep {
         .init(oid: OID.MachDep.cpu)
     }
 
-    public var user_idle_level: LeafNameNode<CInt> {
-        .init(oid: OID.MachDep.user_idle_level)
-    }
-
     public var wake_abstime: LeafNameNode<CLongLong> {
         .init(oid: OID.MachDep.wake_abstime)
     }
@@ -59,20 +55,20 @@ extension Nodes.MachDep {
         .init(oid: OID.MachDep.trace_phy_write_delay)
     }
 
-    public var report_phy_read_osbt: LeafNameNode<CUnsignedInt> {
-        .init(oid: OID.MachDep.report_phy_read_osbt)
-    }
-
-    public var report_phy_write_osbt: LeafNameNode<CUnsignedInt> {
-        .init(oid: OID.MachDep.report_phy_write_osbt)
-    }
-
     public var phy_read_delay_panic: LeafNameNode<CInt> {
         .init(oid: OID.MachDep.phy_read_delay_panic)
     }
 
     public var phy_write_delay_panic: LeafNameNode<CInt> {
         .init(oid: OID.MachDep.phy_write_delay_panic)
+    }
+
+    public var ptrauth_enabled: LeafNameNode<CInt> {
+        .init(oid: OID.MachDep.ptrauth_enabled)
+    }
+
+    public var user_idle_level: LeafNameNode<CInt> {
+        .init(oid: OID.MachDep.user_idle_level)
     }
 }
 

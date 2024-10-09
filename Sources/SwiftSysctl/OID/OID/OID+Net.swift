@@ -290,14 +290,14 @@ extension OID.Net.Inet.Tcp {
     static let sendspace: OID = .init(
         name: "sendspace",
         id: 8,
-        kind: 0xc0e00002,
+        kind: 0xc1e00002,
         format: "IU"
     )
 
     static let recvspace: OID = .init(
         name: "recvspace",
         id: 9,
-        kind: 0xc0e00002,
+        kind: 0xc1e00002,
         format: "IU"
     )
 

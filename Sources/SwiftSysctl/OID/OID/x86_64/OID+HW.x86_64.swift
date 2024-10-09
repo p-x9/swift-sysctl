@@ -2,7 +2,7 @@
 //  OID+HW.swift
 //
 //
-//  Modified by p-x9 on 2024/04/16.
+//  Created by p-x9 on 2024/04/16.
 //
 //
 
@@ -156,6 +156,11 @@ extension OID.HW {
         format: "Q"
     )
 
+    static let memsize_usable: NameOID = .init(
+        name: "memsize_usable",
+        format: "Q"
+    )
+
     static let packages: NameOID = .init(
         name: "packages",
         format: "I"
@@ -194,11 +199,6 @@ extension OID.HW {
     static let targettype: NameOID = .init(
         name: "targettype",
         format: "A"
-    )
-
-    static let cputhreadtype: NameOID = .init(
-        name: "cputhreadtype",
-        format: "I"
     )
 }
 
@@ -481,6 +481,332 @@ extension OID.HW.Optional {
 
     static let avx512vbmi: NameOID = .init(
         name: "avx512vbmi",
+        format: "I"
+    )
+
+    static let neon: NameOID = .init(
+        name: "neon",
+        format: "I"
+    )
+
+    static let neon_hpfp: NameOID = .init(
+        name: "neon_hpfp",
+        format: "I"
+    )
+
+    static let neon_fp16: NameOID = .init(
+        name: "neon_fp16",
+        format: "I"
+    )
+
+    static let armv8_1_atomics: NameOID = .init(
+        name: "armv8_1_atomics",
+        format: "I"
+    )
+
+    static let armv8_2_fhm: NameOID = .init(
+        name: "armv8_2_fhm",
+        format: "I"
+    )
+
+    static let armv8_2_sha512: NameOID = .init(
+        name: "armv8_2_sha512",
+        format: "I"
+    )
+
+    static let armv8_2_sha3: NameOID = .init(
+        name: "armv8_2_sha3",
+        format: "I"
+    )
+
+    static let armv8_3_compnum: NameOID = .init(
+        name: "armv8_3_compnum",
+        format: "I"
+    )
+
+    static let watchpoint: NameOID = .init(
+        name: "watchpoint",
+        format: "I"
+    )
+
+    static let breakpoint: NameOID = .init(
+        name: "breakpoint",
+        format: "I"
+    )
+
+    static let armv8_crc32: NameOID = .init(
+        name: "armv8_crc32",
+        format: "I"
+    )
+
+    static let armv8_gpi: NameOID = .init(
+        name: "armv8_gpi",
+        format: "I"
+    )
+
+    static let AdvSIMD: NameOID = .init(
+        name: "AdvSIMD",
+        format: "I"
+    )
+
+    static let AdvSIMD_HPFPCvt: NameOID = .init(
+        name: "AdvSIMD_HPFPCvt",
+        format: "I"
+    )
+
+    static let ucnormal_mem: NameOID = .init(
+        name: "ucnormal_mem",
+        format: "I"
+    )
+
+    static let arm64: NameOID = .init(
+        name: "arm64",
+        format: "I"
+    )
+}
+
+extension OID.HW.Optional {
+    public enum Arm {}
+}
+
+extension OID.HW.Optional.Arm {
+    static let FEAT_FlagM: NameOID = .init(
+        name: "FEAT_FlagM",
+        format: "I"
+    )
+
+    static let FEAT_FlagM2: NameOID = .init(
+        name: "FEAT_FlagM2",
+        format: "I"
+    )
+
+    static let FEAT_FHM: NameOID = .init(
+        name: "FEAT_FHM",
+        format: "I"
+    )
+
+    static let FEAT_DotProd: NameOID = .init(
+        name: "FEAT_DotProd",
+        format: "I"
+    )
+
+    static let FEAT_SHA3: NameOID = .init(
+        name: "FEAT_SHA3",
+        format: "I"
+    )
+
+    static let FEAT_RDM: NameOID = .init(
+        name: "FEAT_RDM",
+        format: "I"
+    )
+
+    static let FEAT_LSE: NameOID = .init(
+        name: "FEAT_LSE",
+        format: "I"
+    )
+
+    static let FEAT_SHA256: NameOID = .init(
+        name: "FEAT_SHA256",
+        format: "I"
+    )
+
+    static let FEAT_SHA512: NameOID = .init(
+        name: "FEAT_SHA512",
+        format: "I"
+    )
+
+    static let FEAT_SHA1: NameOID = .init(
+        name: "FEAT_SHA1",
+        format: "I"
+    )
+
+    static let FEAT_AES: NameOID = .init(
+        name: "FEAT_AES",
+        format: "I"
+    )
+
+    static let FEAT_PMULL: NameOID = .init(
+        name: "FEAT_PMULL",
+        format: "I"
+    )
+
+    static let FEAT_SPECRES: NameOID = .init(
+        name: "FEAT_SPECRES",
+        format: "I"
+    )
+
+    static let FEAT_SB: NameOID = .init(
+        name: "FEAT_SB",
+        format: "I"
+    )
+
+    static let FEAT_FRINTTS: NameOID = .init(
+        name: "FEAT_FRINTTS",
+        format: "I"
+    )
+
+    static let FEAT_LRCPC: NameOID = .init(
+        name: "FEAT_LRCPC",
+        format: "I"
+    )
+
+    static let FEAT_LRCPC2: NameOID = .init(
+        name: "FEAT_LRCPC2",
+        format: "I"
+    )
+
+    static let FEAT_FCMA: NameOID = .init(
+        name: "FEAT_FCMA",
+        format: "I"
+    )
+
+    static let FEAT_JSCVT: NameOID = .init(
+        name: "FEAT_JSCVT",
+        format: "I"
+    )
+
+    static let FEAT_PAuth: NameOID = .init(
+        name: "FEAT_PAuth",
+        format: "I"
+    )
+
+    static let FEAT_PAuth2: NameOID = .init(
+        name: "FEAT_PAuth2",
+        format: "I"
+    )
+
+    static let FEAT_FPAC: NameOID = .init(
+        name: "FEAT_FPAC",
+        format: "I"
+    )
+
+    static let FEAT_DPB: NameOID = .init(
+        name: "FEAT_DPB",
+        format: "I"
+    )
+
+    static let FEAT_DPB2: NameOID = .init(
+        name: "FEAT_DPB2",
+        format: "I"
+    )
+
+    static let FEAT_BF16: NameOID = .init(
+        name: "FEAT_BF16",
+        format: "I"
+    )
+
+    static let FEAT_I8MM: NameOID = .init(
+        name: "FEAT_I8MM",
+        format: "I"
+    )
+
+    static let FEAT_WFxT: NameOID = .init(
+        name: "FEAT_WFxT",
+        format: "I"
+    )
+
+    static let FEAT_RPRES: NameOID = .init(
+        name: "FEAT_RPRES",
+        format: "I"
+    )
+
+    static let FEAT_ECV: NameOID = .init(
+        name: "FEAT_ECV",
+        format: "I"
+    )
+
+    static let FEAT_AFP: NameOID = .init(
+        name: "FEAT_AFP",
+        format: "I"
+    )
+
+    static let FEAT_LSE2: NameOID = .init(
+        name: "FEAT_LSE2",
+        format: "I"
+    )
+
+    static let FEAT_CSV2: NameOID = .init(
+        name: "FEAT_CSV2",
+        format: "I"
+    )
+
+    static let FEAT_CSV3: NameOID = .init(
+        name: "FEAT_CSV3",
+        format: "I"
+    )
+
+    static let FEAT_DIT: NameOID = .init(
+        name: "FEAT_DIT",
+        format: "I"
+    )
+
+    static let FEAT_FP16: NameOID = .init(
+        name: "FEAT_FP16",
+        format: "I"
+    )
+
+    static let FEAT_SSBS: NameOID = .init(
+        name: "FEAT_SSBS",
+        format: "I"
+    )
+
+    static let FEAT_BTI: NameOID = .init(
+        name: "FEAT_BTI",
+        format: "I"
+    )
+
+    static let FEAT_SME: NameOID = .init(
+        name: "FEAT_SME",
+        format: "I"
+    )
+
+    static let FEAT_SME2: NameOID = .init(
+        name: "FEAT_SME2",
+        format: "I"
+    )
+
+    static let SME_F32F32: NameOID = .init(
+        name: "SME_F32F32",
+        format: "I"
+    )
+
+    static let SME_BI32I32: NameOID = .init(
+        name: "SME_BI32I32",
+        format: "I"
+    )
+
+    static let SME_B16F32: NameOID = .init(
+        name: "SME_B16F32",
+        format: "I"
+    )
+
+    static let SME_F16F32: NameOID = .init(
+        name: "SME_F16F32",
+        format: "I"
+    )
+
+    static let SME_I8I32: NameOID = .init(
+        name: "SME_I8I32",
+        format: "I"
+    )
+
+    static let SME_I16I32: NameOID = .init(
+        name: "SME_I16I32",
+        format: "I"
+    )
+
+    static let FEAT_SME_F64F64: NameOID = .init(
+        name: "FEAT_SME_F64F64",
+        format: "I"
+    )
+
+    static let FEAT_SME_I16I64: NameOID = .init(
+        name: "FEAT_SME_I16I64",
+        format: "I"
+    )
+
+    static let FP_SyncExceptions: NameOID = .init(
+        name: "FP_SyncExceptions",
         format: "I"
     )
 }

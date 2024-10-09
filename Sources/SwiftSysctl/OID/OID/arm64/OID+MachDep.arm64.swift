@@ -25,11 +25,6 @@ extension OID.MachDep {
         format: "N"
     )
 
-    static let user_idle_level: NameOID = .init(
-        name: "user_idle_level",
-        format: "I"
-    )
-
     static let wake_abstime: NameOID = .init(
         name: "wake_abstime",
         format: "Q"
@@ -75,16 +70,6 @@ extension OID.MachDep {
         format: "Q"
     )
 
-    static let report_phy_read_osbt: NameOID = .init(
-        name: "report_phy_read_osbt",
-        format: "IU"
-    )
-
-    static let report_phy_write_osbt: NameOID = .init(
-        name: "report_phy_write_osbt",
-        format: "IU"
-    )
-
     static let phy_read_delay_panic: NameOID = .init(
         name: "phy_read_delay_panic",
         format: "I"
@@ -92,6 +77,16 @@ extension OID.MachDep {
 
     static let phy_write_delay_panic: NameOID = .init(
         name: "phy_write_delay_panic",
+        format: "I"
+    )
+
+    static let ptrauth_enabled: NameOID = .init(
+        name: "ptrauth_enabled",
+        format: "I"
+    )
+
+    static let user_idle_level: NameOID = .init(
+        name: "user_idle_level",
         format: "I"
     )
 }

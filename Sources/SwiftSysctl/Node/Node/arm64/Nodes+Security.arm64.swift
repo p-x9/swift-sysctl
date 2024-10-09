@@ -2,7 +2,7 @@
 //  Nodes+Security.swift
 //
 //
-//  Created by p-x9 on 2024/05/14.
+//  Created by p-x9 on 2024/04/16.
 //
 //
 
@@ -28,6 +28,10 @@ extension Nodes.Security {
             .init(oid: OID.Security.Mac.platform_exec_logging)
         }
 
+        public var lockdown_mode_state: LeafNameNode<CInt> {
+            .init(oid: OID.Security.Mac.lockdown_mode_state)
+        }
+
         public var max_slots: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Security.Mac.max_slots)
         }
@@ -38,10 +42,6 @@ extension Nodes.Security {
 
         public var vnode_label_count: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Security.Mac.vnode_label_count)
-        }
-
-        public var lockdown_mode_state: LeafNameNode<CInt> {
-            .init(oid: OID.Security.Mac.lockdown_mode_state)
         }
 
         public var device_enforce: LeafNameNode<CUnsignedInt> {

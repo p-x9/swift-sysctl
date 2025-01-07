@@ -41,9 +41,9 @@ extension OID.Net {
         format: "N"
     )
 
-    static let ndrv_multi_max_count: NameOID = .init(
-        name: "ndrv_multi_max_count",
-        format: "IU"
+    static let ndrv: NameOID = .init(
+        name: "ndrv",
+        format: "N"
     )
 
     static let necp: NameOID = .init(
@@ -115,6 +115,11 @@ extension OID.Net.Local {
 
     static let log: NameOID = .init(
         name: "log",
+        format: "IU"
+    )
+
+    static let pcbcount: NameOID = .init(
+        name: "pcbcount",
         format: "IU"
     )
 }
@@ -289,6 +294,11 @@ extension OID.Net.Link {
         format: "N"
     )
 
+    static let droptap: NameOID = .init(
+        name: "droptap",
+        format: "N"
+    )
+
     static let fake: NameOID = .init(
         name: "fake",
         format: "N"
@@ -329,6 +339,11 @@ extension OID.Net.Link.Bond {
         name: "debug",
         format: "I"
     )
+
+    static let log_level: NameOID = .init(
+        name: "log_level",
+        format: "I"
+    )
 }
 
 extension OID.Net.Link {
@@ -338,6 +353,11 @@ extension OID.Net.Link {
 extension OID.Net.Link.Bridge {
     static let debug: NameOID = .init(
         name: "debug",
+        format: "I"
+    )
+
+    static let enable_early_input: NameOID = .init(
+        name: "enable_early_input",
         format: "I"
     )
 
@@ -353,6 +373,11 @@ extension OID.Net.Link.Bridge {
 
     static let log_level: NameOID = .init(
         name: "log_level",
+        format: "I"
+    )
+
+    static let output_skip_filters: NameOID = .init(
+        name: "output_skip_filters",
         format: "I"
     )
 
@@ -385,10 +410,21 @@ extension OID.Net.Link.Bridge {
         name: "txstart",
         format: "I"
     )
+}
 
-    static let vmnet_pf_tagging: NameOID = .init(
-        name: "vmnet_pf_tagging",
-        format: "I"
+extension OID.Net.Link {
+    public enum Droptap {}
+}
+
+extension OID.Net.Link.Droptap {
+    static let total_tap_count: NameOID = .init(
+        name: "total_tap_count",
+        format: "IU"
+    )
+
+    static let verbose: NameOID = .init(
+        name: "verbose",
+        format: "IU"
     )
 }
 
@@ -442,6 +478,11 @@ extension OID.Net.Link.Fake {
         format: "IU"
     )
 
+    static let log_level: NameOID = .init(
+        name: "log_level",
+        format: "I"
+    )
+
     static let low_latency: NameOID = .init(
         name: "low_latency",
         format: "I"
@@ -475,6 +516,11 @@ extension OID.Net.Link.Fake {
     static let qset_cnt: NameOID = .init(
         name: "qset_cnt",
         format: "IU"
+    )
+
+    static let separate_frame_header: NameOID = .init(
+        name: "separate_frame_header",
+        format: "I"
     )
 
     static let switch_combined_mode: NameOID = .init(
@@ -535,6 +581,11 @@ extension OID.Net.Link.Fake {
     static let user_access: NameOID = .init(
         name: "user_access",
         format: "IU"
+    )
+
+    static let vlan_tagging: NameOID = .init(
+        name: "vlan_tagging",
+        format: "I"
     )
 
     static let wmm_mode: NameOID = .init(
@@ -619,6 +670,18 @@ extension OID.Net.Link {
 extension OID.Net.Link.Vlan {
     static let debug: NameOID = .init(
         name: "debug",
+        format: "IU"
+    )
+
+    static let log_level: NameOID = .init(
+        name: "log_level",
+        format: "I"
+    )
+}
+
+extension OID.Net.Key {
+    static let pcbcount: NameOID = .init(
+        name: "pcbcount",
         format: "IU"
     )
 }
@@ -728,6 +791,11 @@ extension OID.Net.Systm.Kctl {
         format: "I"
     )
 
+    static let pcbcount: NameOID = .init(
+        name: "pcbcount",
+        format: "IU"
+    )
+
     static let pcblist: NameOID = .init(
         name: "pcblist",
         format: "S,xkctlpcb"
@@ -749,6 +817,11 @@ extension OID.Net.Systm {
 }
 
 extension OID.Net.Systm.Kevt {
+    static let pcbcount: NameOID = .init(
+        name: "pcbcount",
+        format: "IU"
+    )
+
     static let pcblist: NameOID = .init(
         name: "pcblist",
         format: "S,xkevtpcb"
@@ -971,28 +1044,38 @@ extension OID.Net.Mpklog {
 }
 
 extension OID.Net {
+    public enum Ndrv {}
+}
+
+extension OID.Net.Ndrv {
+    static let multi_max_count: NameOID = .init(
+        name: "multi_max_count",
+        format: "IU"
+    )
+
+    static let pcbcount: NameOID = .init(
+        name: "pcbcount",
+        format: "IU"
+    )
+}
+
+extension OID.Net {
     public enum Necp {}
 }
 
 extension OID.Net.Necp {
-    static let arena_count: OID = .init(
+    static let arena_count: NameOID = .init(
         name: "arena_count",
-        id: 11,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let client_count: OID = .init(
+    static let client_count: NameOID = .init(
         name: "client_count",
-        id: 10,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let client_fd_count: OID = .init(
+    static let client_fd_count: NameOID = .init(
         name: "client_fd_count",
-        id: 9,
-        kind: 0x80e00002,
         format: "I"
     )
 
@@ -1036,24 +1119,18 @@ extension OID.Net.Necp {
         format: "I"
     )
 
-    static let debug: OID = .init(
+    static let debug: NameOID = .init(
         name: "debug",
-        id: 2,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let dedup_policies: OID = .init(
+    static let dedup_policies: NameOID = .init(
         name: "dedup_policies",
-        id: 21,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let drop_all_level: OID = .init(
+    static let drop_all_level: NameOID = .init(
         name: "drop_all_level",
-        id: 1,
-        kind: 0xc0e00002,
         format: "IU"
     )
 
@@ -1067,129 +1144,103 @@ extension OID.Net.Necp {
         format: "S,necp_drop_dest_level"
     )
 
-    static let drop_management_level: OID = .init(
+    static let drop_loopback_count: NameOID = .init(
+        name: "drop_loopback_count",
+        format: "I"
+    )
+
+    static let drop_management_level: NameOID = .init(
         name: "drop_management_level",
-        id: 24,
-        kind: 0xc0e00002,
         format: "IU"
     )
 
-    static let drop_unentitled_level: OID = .init(
+    static let drop_unentitled_level: NameOID = .init(
         name: "drop_unentitled_level",
-        id: 18,
-        kind: 0xc0e00002,
         format: "IU"
     )
 
-    static let if_flow_count: OID = .init(
+    static let if_flow_count: NameOID = .init(
         name: "if_flow_count",
-        id: 14,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let ip_policy_count: OID = .init(
+    static let ip_policy_count: NameOID = .init(
         name: "ip_policy_count",
-        id: 7,
-        kind: 0x80e00002,
         format: "L"
     )
 
-    static let necp_client_tracing_level: OID = .init(
+    static let necp_client_tracing_level: NameOID = .init(
         name: "necp_client_tracing_level",
-        id: 22,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let necp_client_tracing_pid: OID = .init(
+    static let necp_client_tracing_pid: NameOID = .init(
         name: "necp_client_tracing_pid",
-        id: 23,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let nexus_flow_count: OID = .init(
+    static let nexus_flow_count: NameOID = .init(
         name: "nexus_flow_count",
-        id: 12,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let observer_fd_count: OID = .init(
+    static let observer_fd_count: NameOID = .init(
         name: "observer_fd_count",
-        id: 15,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let observer_message_limit: OID = .init(
+    static let observer_message_limit: NameOID = .init(
         name: "observer_message_limit",
-        id: 16,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let pass_interpose: OID = .init(
+    static let pass_interpose: NameOID = .init(
         name: "pass_interpose",
-        id: 19,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let pass_keepalives: OID = .init(
+    static let pass_keepalives: NameOID = .init(
         name: "pass_keepalives",
-        id: 4,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let pass_loopback: OID = .init(
+    static let pass_loopback: NameOID = .init(
         name: "pass_loopback",
-        id: 3,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let restrict_multicast: OID = .init(
+    static let restrict_multicast: NameOID = .init(
         name: "restrict_multicast",
-        id: 20,
-        kind: 0xc0e00002,
         format: "I"
     )
 
-    static let session_count: OID = .init(
+    static let session_count: NameOID = .init(
         name: "session_count",
-        id: 8,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let socket_flow_count: OID = .init(
+    static let socket_flow_count: NameOID = .init(
         name: "socket_flow_count",
-        id: 13,
-        kind: 0x80e00002,
         format: "I"
     )
 
-    static let socket_non_app_policy_count: OID = .init(
+    static let socket_non_app_policy_count: NameOID = .init(
         name: "socket_non_app_policy_count",
-        id: 6,
-        kind: 0x80e00002,
         format: "L"
     )
 
-    static let socket_policy_count: OID = .init(
+    static let socket_policy_count: NameOID = .init(
         name: "socket_policy_count",
-        id: 5,
-        kind: 0x80e00002,
         format: "L"
     )
 
-    static let sysctl_arena_count: OID = .init(
+    static let sysctl_arena_count: NameOID = .init(
         name: "sysctl_arena_count",
-        id: 17,
-        kind: 0x80e00002,
+        format: "I"
+    )
+
+    static let trie_count: NameOID = .init(
+        name: "trie_count",
         format: "I"
     )
 }
@@ -1397,6 +1448,11 @@ extension OID.Net.Stats {
         format: "I"
     )
 
+    static let progress: NameOID = .init(
+        name: "progress",
+        format: "S"
+    )
+
     static let recvspace: NameOID = .init(
         name: "recvspace",
         format: "I"
@@ -1460,6 +1516,11 @@ extension OID.Net {
 }
 
 extension OID.Net.Vsock {
+    static let pcbcount: NameOID = .init(
+        name: "pcbcount",
+        format: "IU"
+    )
+
     static let pcblist: NameOID = .init(
         name: "pcblist",
         format: "S,xvsockpcb"

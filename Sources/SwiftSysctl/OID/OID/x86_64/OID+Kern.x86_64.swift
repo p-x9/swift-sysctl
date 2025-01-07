@@ -301,13 +301,18 @@ extension OID.Kern {
         format: "I"
     )
 
-    static let jetsam_aging_policy: NameOID = .init(
-        name: "jetsam_aging_policy",
-        format: "I"
-    )
-
     static let kdbg: NameOID = .init(
         name: "kdbg",
+        format: "N"
+    )
+
+    static let kdp_corefile: NameOID = .init(
+        name: "kdp_corefile",
+        format: "A"
+    )
+
+    static let kern_event: NameOID = .init(
+        name: "kern_event",
         format: "N"
     )
 
@@ -346,9 +351,9 @@ extension OID.Kern {
         format: "I"
     )
 
-    static let memorystatus_apps_idle_delay_time: NameOID = .init(
-        name: "memorystatus_apps_idle_delay_time",
-        format: "I"
+    static let memorystatus: NameOID = .init(
+        name: "memorystatus",
+        format: "N"
     )
 
     static let memorystatus_level: NameOID = .init(
@@ -368,11 +373,6 @@ extension OID.Kern {
 
     static let memorystatus_purge_on_warning: NameOID = .init(
         name: "memorystatus_purge_on_warning",
-        format: "I"
-    )
-
-    static let memorystatus_sysprocs_idle_delay_time: NameOID = .init(
-        name: "memorystatus_sysprocs_idle_delay_time",
         format: "I"
     )
 
@@ -576,8 +576,18 @@ extension OID.Kern {
         format: "-"
     )
 
+    static let sec_transition: NameOID = .init(
+        name: "sec_transition",
+        format: "N"
+    )
+
     static let secure_kernel: NameOID = .init(
         name: "secure_kernel",
+        format: "I"
+    )
+
+    static let serverperfmode: NameOID = .init(
+        name: "serverperfmode",
         format: "I"
     )
 
@@ -638,6 +648,11 @@ extension OID.Kern {
 
     static let stackshot_estimate_adj: NameOID = .init(
         name: "stackshot_estimate_adj",
+        format: "IU"
+    )
+
+    static let stackshot_single_thread: NameOID = .init(
+        name: "stackshot_single_thread",
         format: "IU"
     )
 
@@ -1001,11 +1016,6 @@ extension OID.Kern.Ipc {
     static let mb_stat: NameOID = .init(
         name: "mb_stat",
         format: "S,mb_stat"
-    )
-
-    static let mb_tag_mbuf: NameOID = .init(
-        name: "mb_tag_mbuf",
-        format: "IU"
     )
 
     static let mb_tag_stats: NameOID = .init(
@@ -1482,6 +1492,33 @@ extension OID.Kern.Kdbg {
 }
 
 extension OID.Kern {
+    public enum KernEvent {}
+}
+
+extension OID.Kern.KernEvent {
+    static let thread_bound_kqwl_support_enabled: NameOID = .init(
+        name: "thread_bound_kqwl_support_enabled",
+        format: "I"
+    )
+}
+
+extension OID.Kern {
+    public enum Memorystatus {}
+}
+
+extension OID.Kern.Memorystatus {
+    static let apps_idle_delay_time_ns: NameOID = .init(
+        name: "apps_idle_delay_time_ns",
+        format: "I"
+    )
+
+    static let sysprocs_idle_delay_time_ns: NameOID = .init(
+        name: "sysprocs_idle_delay_time_ns",
+        format: "I"
+    )
+}
+
+extension OID.Kern {
     public enum Microstackshot {}
 }
 
@@ -1549,6 +1586,17 @@ extension OID.Kern.Monotonic {
 
     static let task_thread_counting: NameOID = .init(
         name: "task_thread_counting",
+        format: "I"
+    )
+}
+
+extension OID.Kern {
+    public enum SecTransition {}
+}
+
+extension OID.Kern.SecTransition {
+    static let available: NameOID = .init(
+        name: "available",
         format: "I"
     )
 }

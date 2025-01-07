@@ -687,6 +687,11 @@ extension OID.HW.Optional.Arm {
         name: "SME_I8I32",
         format: "I"
     )
+
+    static let caps: NameOID = .init(
+        name: "caps",
+        format: "Q"
+    )
 }
 
 extension OID.HW {

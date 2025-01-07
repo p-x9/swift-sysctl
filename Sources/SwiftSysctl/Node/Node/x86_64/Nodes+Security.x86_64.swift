@@ -31,6 +31,10 @@ extension Nodes.Security {
         public var monitor: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Security.Codesigning.monitor)
         }
+
+        public var security_boot_mode_complete: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Security.Codesigning.security_boot_mode_complete)
+        }
     }
 }
 

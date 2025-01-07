@@ -35,8 +35,8 @@ extension Nodes.Net {
         .init(oid: OID.Net.mpklog)
     }
 
-    public var ndrv_multi_max_count: LeafNameNode<CUnsignedInt> {
-        .init(oid: OID.Net.ndrv_multi_max_count)
+    public var ndrv: NameNode<Ndrv> {
+        .init(oid: OID.Net.ndrv)
     }
 
     public var necp: NameNode<Necp> {
@@ -263,18 +263,32 @@ extension Nodes.Net {
 }
 
 extension Nodes.Net {
+    public struct Ndrv: NodeCollection {
+        public static let _shared: Ndrv = .init()
+
+        public var multi_max_count: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Net.Ndrv.multi_max_count)
+        }
+
+        public var pcbcount: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Net.Ndrv.pcbcount)
+        }
+    }
+}
+
+extension Nodes.Net {
     public struct Necp: NodeCollection {
         public static let _shared: Necp = .init()
 
-        public var arena_count: LeafNode<CInt> {
+        public var arena_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.arena_count)
         }
 
-        public var client_count: LeafNode<CInt> {
+        public var client_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.client_count)
         }
 
-        public var client_fd_count: LeafNode<CInt> {
+        public var client_fd_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.client_fd_count)
         }
 
@@ -310,15 +324,15 @@ extension Nodes.Net {
             .init(oid: OID.Net.Necp.data_tracing_session_order)
         }
 
-        public var debug: LeafNode<CInt> {
+        public var debug: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.debug)
         }
 
-        public var dedup_policies: LeafNode<CInt> {
+        public var dedup_policies: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.dedup_policies)
         }
 
-        public var drop_all_level: LeafNode<CUnsignedInt> {
+        public var drop_all_level: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Net.Necp.drop_all_level)
         }
 
@@ -330,76 +344,84 @@ extension Nodes.Net {
             .init(oid: OID.Net.Necp.drop_dest_level)
         }
 
-        public var drop_management_level: LeafNode<CUnsignedInt> {
+        public var drop_loopback_count: LeafNameNode<CInt> {
+            .init(oid: OID.Net.Necp.drop_loopback_count)
+        }
+
+        public var drop_management_level: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Net.Necp.drop_management_level)
         }
 
-        public var drop_unentitled_level: LeafNode<CUnsignedInt> {
+        public var drop_unentitled_level: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Net.Necp.drop_unentitled_level)
         }
 
-        public var if_flow_count: LeafNode<CInt> {
+        public var if_flow_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.if_flow_count)
         }
 
-        public var ip_policy_count: LeafNode<CLong> {
+        public var ip_policy_count: LeafNameNode<CLong> {
             .init(oid: OID.Net.Necp.ip_policy_count)
         }
 
-        public var necp_client_tracing_level: LeafNode<CInt> {
+        public var necp_client_tracing_level: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.necp_client_tracing_level)
         }
 
-        public var necp_client_tracing_pid: LeafNode<CInt> {
+        public var necp_client_tracing_pid: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.necp_client_tracing_pid)
         }
 
-        public var nexus_flow_count: LeafNode<CInt> {
+        public var nexus_flow_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.nexus_flow_count)
         }
 
-        public var observer_fd_count: LeafNode<CInt> {
+        public var observer_fd_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.observer_fd_count)
         }
 
-        public var observer_message_limit: LeafNode<CInt> {
+        public var observer_message_limit: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.observer_message_limit)
         }
 
-        public var pass_interpose: LeafNode<CInt> {
+        public var pass_interpose: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.pass_interpose)
         }
 
-        public var pass_keepalives: LeafNode<CInt> {
+        public var pass_keepalives: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.pass_keepalives)
         }
 
-        public var pass_loopback: LeafNode<CInt> {
+        public var pass_loopback: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.pass_loopback)
         }
 
-        public var restrict_multicast: LeafNode<CInt> {
+        public var restrict_multicast: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.restrict_multicast)
         }
 
-        public var session_count: LeafNode<CInt> {
+        public var session_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.session_count)
         }
 
-        public var socket_flow_count: LeafNode<CInt> {
+        public var socket_flow_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.socket_flow_count)
         }
 
-        public var socket_non_app_policy_count: LeafNode<CLong> {
+        public var socket_non_app_policy_count: LeafNameNode<CLong> {
             .init(oid: OID.Net.Necp.socket_non_app_policy_count)
         }
 
-        public var socket_policy_count: LeafNode<CLong> {
+        public var socket_policy_count: LeafNameNode<CLong> {
             .init(oid: OID.Net.Necp.socket_policy_count)
         }
 
-        public var sysctl_arena_count: LeafNode<CInt> {
+        public var sysctl_arena_count: LeafNameNode<CInt> {
             .init(oid: OID.Net.Necp.sysctl_arena_count)
+        }
+
+        public var trie_count: LeafNameNode<CInt> {
+            .init(oid: OID.Net.Necp.trie_count)
         }
     }
 }
@@ -576,6 +598,10 @@ extension Nodes.Net {
             .init(oid: OID.Net.Stats.debug_pid)
         }
 
+        public var progress: AnyNode {
+            .init(oid: OID.Net.Stats.progress)
+        }
+
         public var recvspace: LeafNameNode<CInt> {
             .init(oid: OID.Net.Stats.recvspace)
         }
@@ -629,6 +655,10 @@ extension Nodes.Net {
 extension Nodes.Net {
     public struct Vsock: NodeCollection {
         public static let _shared: Vsock = .init()
+
+        public var pcbcount: LeafNameNode<CUnsignedInt> {
+            .init(oid: OID.Net.Vsock.pcbcount)
+        }
 
         public var pcblist: AnyNode {
             .init(oid: OID.Net.Vsock.pcblist)

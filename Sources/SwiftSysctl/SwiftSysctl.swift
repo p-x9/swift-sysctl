@@ -130,7 +130,7 @@ extension Sysctl {
     @inlinable
     public static func kind<FieldType: FieldProtocol>(
         _ field: FieldType
-    ) throws -> CtlKind?  {
+    ) throws -> CtlKind? {
         guard let oid = try _oid(field._name),
               let fmt = try _oidfmt(oid) else {
             return nil
@@ -141,7 +141,7 @@ extension Sysctl {
     @inlinable
     public static func format<FieldType: FieldProtocol>(
         _ field: FieldType
-    ) throws -> String?  {
+    ) throws -> String? {
         guard let oid = try _oid(field._name),
               let fmt = try _oidfmt(oid) else {
             return nil

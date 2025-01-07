@@ -67,6 +67,11 @@ extension OID.VFS.Generic {
         name: "vfsidlist",
         format: "S,fsid"
     )
+
+    static let xattr_doubleagent_enabled: NameOID = .init(
+        name: "xattr_doubleagent_enabled",
+        format: "I"
+    )
 }
 
 extension OID.VFS.Generic {

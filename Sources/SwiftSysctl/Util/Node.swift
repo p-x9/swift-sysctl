@@ -16,7 +16,7 @@ public struct Node<Child: NodeCollection>: NodeProtocol {
     public var _name: String {
         _oid.name
     }
-    
+
     init(oid: OID) {
         self._oid = oid
     }
@@ -29,7 +29,7 @@ public struct NameNode<Child: NodeCollection>: NodeProtocol {
     public var _name: String {
         _oid.name
     }
-    
+
     init(oid: NameOID) {
         self._oid = oid
     }
@@ -44,7 +44,7 @@ public struct ChainedNode<Child: NodeCollection>: ChainedNodeProtocol {
     public var _name: String {
         (_parents + [_oid]).map(\.name).joined(separator: ".")
     }
-    
+
     init(parents: [any OIDProtocol], oid: OID) {
         self._parents = parents
         self._oid = oid
@@ -59,7 +59,7 @@ public struct ChainedNameNode<Child: NodeCollection>: ChainedNodeProtocol {
     public var _name: String {
         (_parents + [_oid]).map(\.name).joined(separator: ".")
     }
-    
+
     init(parents: [any OIDProtocol], oid: NameOID) {
         self._parents = parents
         self._oid = oid

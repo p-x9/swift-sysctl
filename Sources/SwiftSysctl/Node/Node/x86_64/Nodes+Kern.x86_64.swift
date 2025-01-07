@@ -243,12 +243,16 @@ extension Nodes.Kern {
         .init(oid: OID.Kern.ipc_voucher_trace_contents)
     }
 
-    public var jetsam_aging_policy: LeafNameNode<CInt> {
-        .init(oid: OID.Kern.jetsam_aging_policy)
-    }
-
     public var kdbg: NameNode<Kdbg> {
         .init(oid: OID.Kern.kdbg)
+    }
+
+    public var kdp_corefile: LeafNameNode<String> {
+        .init(oid: OID.Kern.kdp_corefile)
+    }
+
+    public var kern_event: NameNode<KernEvent> {
+        .init(oid: OID.Kern.kern_event)
     }
 
     public var kern_feature_overrides: LeafNameNode<CInt> {
@@ -279,8 +283,8 @@ extension Nodes.Kern {
         .init(oid: OID.Kern.memorypressure_manual_trigger)
     }
 
-    public var memorystatus_apps_idle_delay_time: LeafNameNode<CInt> {
-        .init(oid: OID.Kern.memorystatus_apps_idle_delay_time)
+    public var memorystatus: NameNode<Memorystatus> {
+        .init(oid: OID.Kern.memorystatus)
     }
 
     public var memorystatus_level: LeafNameNode<CInt> {
@@ -297,10 +301,6 @@ extension Nodes.Kern {
 
     public var memorystatus_purge_on_warning: LeafNameNode<CInt> {
         .init(oid: OID.Kern.memorystatus_purge_on_warning)
-    }
-
-    public var memorystatus_sysprocs_idle_delay_time: LeafNameNode<CInt> {
-        .init(oid: OID.Kern.memorystatus_sysprocs_idle_delay_time)
     }
 
     public var memorystatus_vm_pressure_level: LeafNameNode<CInt> {
@@ -463,8 +463,16 @@ extension Nodes.Kern {
         .init(oid: OID.Kern.sched_stats_enable)
     }
 
+    public var sec_transition: NameNode<SecTransition> {
+        .init(oid: OID.Kern.sec_transition)
+    }
+
     public var secure_kernel: LeafNameNode<CInt> {
         .init(oid: OID.Kern.secure_kernel)
+    }
+
+    public var serverperfmode: LeafNameNode<CInt> {
+        .init(oid: OID.Kern.serverperfmode)
     }
 
     public var setthread_cpupercent: LeafNameNode<CInt> {
@@ -513,6 +521,10 @@ extension Nodes.Kern {
 
     public var stackshot_estimate_adj: LeafNameNode<CUnsignedInt> {
         .init(oid: OID.Kern.stackshot_estimate_adj)
+    }
+
+    public var stackshot_single_thread: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.Kern.stackshot_single_thread)
     }
 
     public var stackshot_stats: AnyNode {
@@ -975,6 +987,30 @@ extension Nodes.Kern {
 }
 
 extension Nodes.Kern {
+    public struct KernEvent: NodeCollection {
+        public static let _shared: KernEvent = .init()
+
+        public var thread_bound_kqwl_support_enabled: LeafNameNode<CInt> {
+            .init(oid: OID.Kern.KernEvent.thread_bound_kqwl_support_enabled)
+        }
+    }
+}
+
+extension Nodes.Kern {
+    public struct Memorystatus: NodeCollection {
+        public static let _shared: Memorystatus = .init()
+
+        public var apps_idle_delay_time_ns: LeafNameNode<CInt> {
+            .init(oid: OID.Kern.Memorystatus.apps_idle_delay_time_ns)
+        }
+
+        public var sysprocs_idle_delay_time_ns: LeafNameNode<CInt> {
+            .init(oid: OID.Kern.Memorystatus.sysprocs_idle_delay_time_ns)
+        }
+    }
+}
+
+extension Nodes.Kern {
     public struct Microstackshot: NodeCollection {
         public static let _shared: Microstackshot = .init()
 
@@ -1030,6 +1066,16 @@ extension Nodes.Kern {
 
         public var task_thread_counting: LeafNameNode<CInt> {
             .init(oid: OID.Kern.Monotonic.task_thread_counting)
+        }
+    }
+}
+
+extension Nodes.Kern {
+    public struct SecTransition: NodeCollection {
+        public static let _shared: SecTransition = .init()
+
+        public var available: LeafNameNode<CInt> {
+            .init(oid: OID.Kern.SecTransition.available)
         }
     }
 }
@@ -1118,7 +1164,6 @@ extension Nodes.Kern.Skywalk {
 extension Nodes.Kern.Skywalk {
     public struct Libcuckoo: NodeCollection {
         public static let _shared: Libcuckoo = .init()
-
     }
 }
 
@@ -1139,7 +1184,6 @@ extension Nodes.Kern.Skywalk {
 extension Nodes.Kern.Skywalk {
     public struct Netns: NodeCollection {
         public static let _shared: Netns = .init()
-
     }
 }
 

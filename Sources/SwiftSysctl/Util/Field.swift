@@ -14,7 +14,7 @@ public struct LeafNode<Value>: FieldProtocol {
     public var _name: String {
         _oid.name
     }
-    
+
     init(oid: OID) {
         self._oid = oid
     }
@@ -26,7 +26,7 @@ public struct LeafNameNode<Value>: FieldProtocol {
     public var _name: String {
         _oid.name
     }
-    
+
     init(oid: NameOID) {
         self._oid = oid
     }
@@ -39,7 +39,7 @@ public struct Field<Value>: FieldProtocol {
     public var _name: String {
         (_parents + [_oid]).map(\.name).joined(separator: ".")
     }
-    
+
     init(parents: [any OIDProtocol], oid: OID) {
         self._parents = parents
         self._oid = oid
@@ -53,7 +53,7 @@ public struct NameField<Value>: FieldProtocol {
     public var _name: String {
         (_parents + [_oid]).map(\.name).joined(separator: ".")
     }
-    
+
     init(parents: [any OIDProtocol], oid: NameOID) {
         self._parents = parents
         self._oid = oid

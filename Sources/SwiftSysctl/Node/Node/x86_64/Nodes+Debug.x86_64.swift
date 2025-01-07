@@ -115,6 +115,10 @@ extension Nodes.Debug {
         .init(oid: OID.Debug.sched)
     }
 
+    public var sched_hygiene_debug_available: LeafNameNode<CInt> {
+        .init(oid: OID.Debug.sched_hygiene_debug_available)
+    }
+
     public var swd_panic: LeafNameNode<CInt> {
         .init(oid: OID.Debug.swd_panic)
     }

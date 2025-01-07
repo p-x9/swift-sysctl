@@ -346,7 +346,7 @@ extension Nodes.Net.Link.Generic {
     public struct System: NodeCollection {
         public static let _shared: System = .init()
 
-        public var ifcount: LeafNode<CInt> {
+        public var ifcount: AnyNode {
             .init(oid: OID.Net.Link.Generic.System.ifcount)
         }
     }

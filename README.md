@@ -43,7 +43,7 @@ The following is a brief description of the implementation.
 
 ### OID
 
-In the [OID directory](./Sources/SwiftSysctl/Node/), the name, id, and value type information of the OID for each node are defined.
+In the [OID directory](./Sources/SwiftSysctl/OID/), the name, id, and value type information of the OID for each node are defined.
 
 ### Node
 

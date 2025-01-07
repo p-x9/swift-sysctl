@@ -559,6 +559,10 @@ extension Nodes.HW.Optional {
         public var SME_I8I32: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.SME_I8I32)
         }
+
+        public var caps: LeafNameNode<CLongLong> {
+            .init(oid: OID.HW.Optional.Arm.caps)
+        }
     }
 }
 

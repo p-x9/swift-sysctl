@@ -61,6 +61,7 @@ extension OID.Net {
         kind: 0xc0e00001,
         format: "N"
     )
+
 }
 
 extension OID.Net {
@@ -509,8 +510,8 @@ extension OID.Net.Link.Generic.System {
     static let ifcount: OID = .init(
         name: "ifcount",
         id: 1,
-        kind: 0x80e00002,
-        format: "I"
+        kind: 0x80e00000,
+        format: "Number of configured interfaces"
     )
 }
 

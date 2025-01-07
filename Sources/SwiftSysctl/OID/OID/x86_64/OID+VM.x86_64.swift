@@ -146,6 +146,11 @@ extension OID.VM {
         format: "I"
     )
 
+    static let compressor_pool_multiplier: NameOID = .init(
+        name: "compressor_pool_multiplier",
+        format: "IU"
+    )
+
     static let compressor_pool_size: NameOID = .init(
         name: "compressor_pool_size",
         format: "Q"
@@ -161,9 +166,49 @@ extension OID.VM {
         format: "I"
     )
 
+    static let compressor_segment_alloc_size: NameOID = .init(
+        name: "compressor_segment_alloc_size",
+        format: "IU"
+    )
+
     static let compressor_segment_buffer_size: NameOID = .init(
         name: "compressor_segment_buffer_size",
         format: "I"
+    )
+
+    static let compressor_segment_limit: NameOID = .init(
+        name: "compressor_segment_limit",
+        format: "IU"
+    )
+
+    static let compressor_segment_pages_compressed: NameOID = .init(
+        name: "compressor_segment_pages_compressed",
+        format: "IU"
+    )
+
+    static let compressor_segment_pages_compressed_limit: NameOID = .init(
+        name: "compressor_segment_pages_compressed_limit",
+        format: "IU"
+    )
+
+    static let compressor_segment_slots_fixed_array_len: NameOID = .init(
+        name: "compressor_segment_slots_fixed_array_len",
+        format: "I"
+    )
+
+    static let compressor_segment_svp_hash_failed: NameOID = .init(
+        name: "compressor_segment_svp_hash_failed",
+        format: "IU"
+    )
+
+    static let compressor_segment_svp_hash_succeeded: NameOID = .init(
+        name: "compressor_segment_svp_hash_succeeded",
+        format: "IU"
+    )
+
+    static let compressor_segment_svp_in_hash: NameOID = .init(
+        name: "compressor_segment_svp_in_hash",
+        format: "IU"
     )
 
     static let compressor_swapout_target_age: NameOID = .init(
@@ -433,6 +478,11 @@ extension OID.VM {
 
     static let kern_lpage_count: NameOID = .init(
         name: "kern_lpage_count",
+        format: "I"
+    )
+
+    static let log_map_delete_permanent_prot_none: NameOID = .init(
+        name: "log_map_delete_permanent_prot_none",
         format: "I"
     )
 
@@ -751,6 +801,11 @@ extension OID.VM {
         format: "IU"
     )
 
+    static let pages_grabbed: NameOID = .init(
+        name: "pages_grabbed",
+        format: "Q"
+    )
+
     static let pagesize: NameOID = .init(
         name: "pagesize",
         format: "I"
@@ -833,6 +888,11 @@ extension OID.VM {
 
     static let self_region_footprint: NameOID = .init(
         name: "self_region_footprint",
+        format: "I"
+    )
+
+    static let self_region_info_flags: NameOID = .init(
+        name: "self_region_info_flags",
         format: "I"
     )
 

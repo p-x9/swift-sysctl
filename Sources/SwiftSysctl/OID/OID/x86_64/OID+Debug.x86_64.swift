@@ -145,6 +145,11 @@ extension OID.Debug {
         format: "I"
     )
 
+    static let sched_hygiene_debug_available: NameOID = .init(
+        name: "sched_hygiene_debug_available",
+        format: "I"
+    )
+
     static let swd_panic: NameOID = .init(
         name: "swd_panic",
         format: "I"

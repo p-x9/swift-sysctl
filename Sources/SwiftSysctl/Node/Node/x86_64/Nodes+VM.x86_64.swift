@@ -119,6 +119,10 @@ extension Nodes.VM {
         .init(oid: OID.VM.compressor_mode)
     }
 
+    public var compressor_pool_multiplier: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_pool_multiplier)
+    }
+
     public var compressor_pool_size: LeafNameNode<CLongLong> {
         .init(oid: OID.VM.compressor_pool_size)
     }
@@ -131,8 +135,40 @@ extension Nodes.VM {
         .init(oid: OID.VM.compressor_sample_min_in_msecs)
     }
 
+    public var compressor_segment_alloc_size: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_alloc_size)
+    }
+
     public var compressor_segment_buffer_size: LeafNameNode<CInt> {
         .init(oid: OID.VM.compressor_segment_buffer_size)
+    }
+
+    public var compressor_segment_limit: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_limit)
+    }
+
+    public var compressor_segment_pages_compressed: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_pages_compressed)
+    }
+
+    public var compressor_segment_pages_compressed_limit: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_pages_compressed_limit)
+    }
+
+    public var compressor_segment_slots_fixed_array_len: LeafNameNode<CInt> {
+        .init(oid: OID.VM.compressor_segment_slots_fixed_array_len)
+    }
+
+    public var compressor_segment_svp_hash_failed: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_svp_hash_failed)
+    }
+
+    public var compressor_segment_svp_hash_succeeded: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_svp_hash_succeeded)
+    }
+
+    public var compressor_segment_svp_in_hash: LeafNameNode<CUnsignedInt> {
+        .init(oid: OID.VM.compressor_segment_svp_in_hash)
     }
 
     public var compressor_swapout_target_age: LeafNameNode<CInt> {
@@ -349,6 +385,10 @@ extension Nodes.VM {
 
     public var kern_lpage_count: LeafNameNode<CInt> {
         .init(oid: OID.VM.kern_lpage_count)
+    }
+
+    public var log_map_delete_permanent_prot_none: LeafNameNode<CInt> {
+        .init(oid: OID.VM.log_map_delete_permanent_prot_none)
     }
 
     public var lz4_compressed_bytes: LeafNameNode<CLongLong> {
@@ -603,6 +643,10 @@ extension Nodes.VM {
         .init(oid: OID.VM.pages)
     }
 
+    public var pages_grabbed: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.pages_grabbed)
+    }
+
     public var pagesize: LeafNameNode<CInt> {
         .init(oid: OID.VM.pagesize)
     }
@@ -669,6 +713,10 @@ extension Nodes.VM {
 
     public var self_region_footprint: LeafNameNode<CInt> {
         .init(oid: OID.VM.self_region_footprint)
+    }
+
+    public var self_region_info_flags: LeafNameNode<CInt> {
+        .init(oid: OID.VM.self_region_info_flags)
     }
 
     public var self_region_page_size: LeafNameNode<CInt> {

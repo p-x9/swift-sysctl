@@ -40,6 +40,11 @@ extension OID.Security.Codesigning {
         name: "monitor",
         format: "IU"
     )
+
+    static let security_boot_mode_complete: NameOID = .init(
+        name: "security_boot_mode_complete",
+        format: "IU"
+    )
 }
 
 extension OID.Security {

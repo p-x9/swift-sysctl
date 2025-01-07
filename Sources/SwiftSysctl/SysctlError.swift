@@ -13,7 +13,7 @@ public enum SysctlError: Error {
     @inlinable
     static func error(_ code: Int32) -> Error {
         guard let code = POSIXErrorCode(rawValue: code) else {
-            return SysctlError.unknown(code)
+            return Self.unknown(code)
         }
         return POSIXError(code)
     }

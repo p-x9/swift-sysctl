@@ -8,8 +8,8 @@
 
 import Foundation
 
-public protocol FieldProtocol {
-    associatedtype Value
+public protocol FieldProtocol: Sendable {
+    associatedtype Value: Sendable
     associatedtype OIDType: OIDProtocol
 
     var _oid: OIDType { get }

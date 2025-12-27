@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct LeafNode<Value>: FieldProtocol {
+public struct LeafNode<Value: Sendable>: FieldProtocol {
     public let _oid: OID
 
     public var _name: String {
@@ -20,7 +20,7 @@ public struct LeafNode<Value>: FieldProtocol {
     }
 }
 
-public struct LeafNameNode<Value>: FieldProtocol {
+public struct LeafNameNode<Value: Sendable>: FieldProtocol {
     public let _oid: NameOID
 
     public var _name: String {
@@ -32,7 +32,7 @@ public struct LeafNameNode<Value>: FieldProtocol {
     }
 }
 
-public struct Field<Value>: FieldProtocol {
+public struct Field<Value: Sendable>: FieldProtocol {
     public let _parents: [any OIDProtocol]
     public let _oid: OID
 
@@ -46,7 +46,7 @@ public struct Field<Value>: FieldProtocol {
     }
 }
 
-public struct NameField<Value>: FieldProtocol {
+public struct NameField<Value: Sendable>: FieldProtocol {
     public let _parents: [any OIDProtocol]
     public let _oid: NameOID
 
@@ -60,7 +60,7 @@ public struct NameField<Value>: FieldProtocol {
     }
 }
 
-public struct AnyNode {
+public struct AnyNode: Sendable {
     public let _oid: any OIDProtocol
 
     public var _name: String {
@@ -80,7 +80,7 @@ public struct AnyNode {
     }
 }
 
-public struct AnyField {
+public struct AnyField: Sendable {
     public let _parents: [any OIDProtocol]
     public let _oid: any OIDProtocol
 

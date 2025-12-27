@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - NodeProtocol
-public protocol NodeProtocol {
+public protocol NodeProtocol: Sendable {
     associatedtype Child: NodeCollection
     associatedtype OIDType: OIDProtocol
 

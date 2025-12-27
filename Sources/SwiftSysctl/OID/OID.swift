@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol OIDProtocol: Equatable, Codable {
+public protocol OIDProtocol: Sendable, Equatable, Codable {
     var name: String { get }
     var format: String { get }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CtlKind: BitFlags, Equatable, Codable {
+public struct CtlKind: BitFlags, Sendable, Equatable, Codable {
     public typealias RawValue = UInt32
 
     public var rawValue: RawValue

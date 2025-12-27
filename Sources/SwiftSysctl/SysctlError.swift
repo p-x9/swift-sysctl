@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SysctlError: Error {
+public enum SysctlError: Error, Sendable {
     case unknown(Int32)
 
     @inlinable

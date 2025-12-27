@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Sysctl {}
+public enum Sysctl: Sendable {}
 
 extension Sysctl {
     @inlinable

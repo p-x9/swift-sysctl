@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol NodeCollection {
+public protocol NodeCollection: Sendable {
     static var _shared: Self { get }
 }

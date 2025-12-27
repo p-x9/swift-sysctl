@@ -87,6 +87,10 @@ extension Nodes.VM {
         .init(oid: OID.VM.can_reuse_success)
     }
 
+    public var cluster_direct_write_wired: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.cluster_direct_write_wired)
+    }
+
     public var compressor_available: LeafNameNode<CInt> {
         .init(oid: OID.VM.compressor_available)
     }
@@ -229,6 +233,14 @@ extension Nodes.VM {
 
     public var copied_on_read: LeafNameNode<CLongLong> {
         .init(oid: OID.VM.copied_on_read)
+    }
+
+    public var copied_on_read_kernel_map: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.copied_on_read_kernel_map)
+    }
+
+    public var copied_on_read_platform_map: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.copied_on_read_platform_map)
     }
 
     public var corpse_footprint_count: LeafNameNode<CLongLong> {
@@ -535,6 +547,22 @@ extension Nodes.VM {
         .init(oid: OID.VM.memory_pressure)
     }
 
+    public var object_pageout_active_local: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.object_pageout_active_local)
+    }
+
+    public var object_pageout_not_on_queue: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.object_pageout_not_on_queue)
+    }
+
+    public var object_pageout_not_pageable: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.object_pageout_not_pageable)
+    }
+
+    public var object_pageout_pageable: LeafNameNode<CLongLong> {
+        .init(oid: OID.VM.object_pageout_pageable)
+    }
+
     public var object_shadow_forced: LeafNameNode<CLongLong> {
         .init(oid: OID.VM.object_shadow_forced)
     }
@@ -677,6 +705,10 @@ extension Nodes.VM {
 
     public var protect_privileged_from_untrusted: LeafNameNode<CInt> {
         .init(oid: OID.VM.protect_privileged_from_untrusted)
+    }
+
+    public var reclaim: AnyNode {
+        .init(oid: OID.VM.reclaim)
     }
 
     public var reusable_failure: LeafNameNode<CLongLong> {
@@ -1029,6 +1061,12 @@ extension Nodes.VM {
 
     public var wks_sv_compressions: LeafNameNode<CLongLong> {
         .init(oid: OID.VM.wks_sv_compressions)
+    }
+}
+
+extension Nodes.VM {
+    public struct Reclaim: NodeCollection {
+        public static let _shared: Reclaim = .init()
     }
 }
 

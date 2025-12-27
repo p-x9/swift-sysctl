@@ -1071,7 +1071,7 @@ extension OID.Net.Inet6.Icmp6 {
     static let nd6_debug: OID = .init(
         name: "nd6_debug",
         id: 18,
-        kind: 0xc0e00002,
+        kind: 0xd0e00002,
         format: "I"
     )
 

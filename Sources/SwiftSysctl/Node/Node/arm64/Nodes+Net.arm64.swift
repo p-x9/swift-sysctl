@@ -542,7 +542,7 @@ extension Nodes.Net {
     public struct Route: NodeCollection {
         public static let _shared: Route = .init()
 
-        public var verbose: LeafNameNode<CUnsignedInt> {
+        public var verbose: LeafNameNode<CInt> {
             .init(oid: OID.Net.Route.verbose)
         }
     }
@@ -619,6 +619,10 @@ extension Nodes.Net {
 extension Nodes.Net {
     public struct Tracker: NodeCollection {
         public static let _shared: Tracker = .init()
+
+        public var extended_idle_timeout: LeafNameNode<CInt> {
+            .init(oid: OID.Net.Tracker.extended_idle_timeout)
+        }
 
         public var idle_timeout: LeafNameNode<CInt> {
             .init(oid: OID.Net.Tracker.idle_timeout)

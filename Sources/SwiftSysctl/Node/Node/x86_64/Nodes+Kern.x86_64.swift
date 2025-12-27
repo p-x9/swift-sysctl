@@ -1014,6 +1014,7 @@ extension Nodes.Kern {
     public struct Microstackshot: NodeCollection {
         public static let _shared: Microstackshot = .init()
 
+        // removed latest
         public var interrupt_sample_rate: LeafNameNode<CUnsignedInt> {
             .init(oid: OID.Kern.Microstackshot.interrupt_sample_rate)
         }
@@ -1074,6 +1075,7 @@ extension Nodes.Kern {
     public struct SecTransition: NodeCollection {
         public static let _shared: SecTransition = .init()
 
+        // removed latest
         public var available: LeafNameNode<CInt> {
             .init(oid: OID.Kern.SecTransition.available)
         }

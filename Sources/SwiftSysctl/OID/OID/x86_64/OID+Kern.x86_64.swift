@@ -1523,6 +1523,7 @@ extension OID.Kern {
 }
 
 extension OID.Kern.Microstackshot {
+    // removed latest
     static let interrupt_sample_rate: NameOID = .init(
         name: "interrupt_sample_rate",
         format: "IU"
@@ -1590,10 +1591,12 @@ extension OID.Kern.Monotonic {
     )
 }
 
+// removed latest
 extension OID.Kern {
     public enum SecTransition {}
 }
 
+// removed latest
 extension OID.Kern.SecTransition {
     static let available: NameOID = .init(
         name: "available",

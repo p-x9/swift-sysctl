@@ -351,6 +351,11 @@ extension OID.Net.Link {
 }
 
 extension OID.Net.Link.Bridge {
+    static let allow_lro_num_seg: NameOID = .init(
+        name: "allow_lro_num_seg",
+        format: "I"
+    )
+
     static let debug: NameOID = .init(
         name: "debug",
         format: "I"
@@ -391,6 +396,7 @@ extension OID.Net.Link.Bridge {
         format: "I"
     )
 
+    // removed latest
     static let segmentation: NameOID = .init(
         name: "segmentation",
         format: "I"
@@ -1383,7 +1389,7 @@ extension OID.Net {
 extension OID.Net.Route {
     static let verbose: NameOID = .init(
         name: "verbose",
-        format: "IU"
+        format: "I"
     )
 }
 
@@ -1474,6 +1480,11 @@ extension OID.Net {
 }
 
 extension OID.Net.Tracker {
+    static let extended_idle_timeout: NameOID = .init(
+        name: "extended_idle_timeout",
+        format: "I"
+    )
+
     static let idle_timeout: NameOID = .init(
         name: "idle_timeout",
         format: "I"

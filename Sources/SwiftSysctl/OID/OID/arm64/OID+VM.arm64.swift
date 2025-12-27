@@ -106,6 +106,11 @@ extension OID.VM {
         format: "Q"
     )
 
+    static let cluster_direct_write_wired: NameOID = .init(
+        name: "cluster_direct_write_wired",
+        format: "Q"
+    )
+
     static let compressor_available: NameOID = .init(
         name: "compressor_available",
         format: "I"
@@ -283,6 +288,16 @@ extension OID.VM {
 
     static let copied_on_read: NameOID = .init(
         name: "copied_on_read",
+        format: "Q"
+    )
+
+    static let copied_on_read_kernel_map: NameOID = .init(
+        name: "copied_on_read_kernel_map",
+        format: "Q"
+    )
+
+    static let copied_on_read_platform_map: NameOID = .init(
+        name: "copied_on_read_platform_map",
         format: "Q"
     )
 
@@ -666,6 +681,26 @@ extension OID.VM {
         format: "I"
     )
 
+    static let object_pageout_active_local: NameOID = .init(
+        name: "object_pageout_active_local",
+        format: "Q"
+    )
+
+    static let object_pageout_not_on_queue: NameOID = .init(
+        name: "object_pageout_not_on_queue",
+        format: "Q"
+    )
+
+    static let object_pageout_not_pageable: NameOID = .init(
+        name: "object_pageout_not_pageable",
+        format: "Q"
+    )
+
+    static let object_pageout_pageable: NameOID = .init(
+        name: "object_pageout_pageable",
+        format: "Q"
+    )
+
     static let object_shadow_forced: NameOID = .init(
         name: "object_shadow_forced",
         format: "Q"
@@ -844,6 +879,11 @@ extension OID.VM {
     static let protect_privileged_from_untrusted: NameOID = .init(
         name: "protect_privileged_from_untrusted",
         format: "I"
+    )
+
+    static let reclaim: NameOID = .init(
+        name: "reclaim",
+        format: "N"
     )
 
     static let reusable_failure: NameOID = .init(

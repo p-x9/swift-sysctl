@@ -207,11 +207,13 @@ extension OID.HW {
 }
 
 extension OID.HW.Optional {
+    // removed latest
     static let AdvSIMD: NameOID = .init(
         name: "AdvSIMD",
         format: "I"
     )
 
+    // removed latest
     static let AdvSIMD_HPFPCvt: NameOID = .init(
         name: "AdvSIMD_HPFPCvt",
         format: "I"
@@ -448,6 +450,16 @@ extension OID.HW.Optional {
 }
 
 extension OID.HW.Optional.Arm {
+    static let AdvSIMD: NameOID = .init(
+        name: "AdvSIMD",
+        format: "I"
+    )
+
+    static let AdvSIMD_HPFPCvt: NameOID = .init(
+        name: "AdvSIMD_HPFPCvt",
+        format: "I"
+    )
+
     static let FEAT_AES: NameOID = .init(
         name: "FEAT_AES",
         format: "I"
@@ -465,6 +477,16 @@ extension OID.HW.Optional.Arm {
 
     static let FEAT_BTI: NameOID = .init(
         name: "FEAT_BTI",
+        format: "I"
+    )
+
+    static let FEAT_CRC32: NameOID = .init(
+        name: "FEAT_CRC32",
+        format: "I"
+    )
+
+    static let FEAT_CSSC: NameOID = .init(
+        name: "FEAT_CSSC",
         format: "I"
     )
 
@@ -498,6 +520,11 @@ extension OID.HW.Optional.Arm {
         format: "I"
     )
 
+    static let FEAT_EBF16: NameOID = .init(
+        name: "FEAT_EBF16",
+        format: "I"
+    )
+
     static let FEAT_ECV: NameOID = .init(
         name: "FEAT_ECV",
         format: "I"
@@ -523,6 +550,11 @@ extension OID.HW.Optional.Arm {
         format: "I"
     )
 
+    static let FEAT_FPACCOMBINE: NameOID = .init(
+        name: "FEAT_FPACCOMBINE",
+        format: "I"
+    )
+
     static let FEAT_FRINTTS: NameOID = .init(
         name: "FEAT_FRINTTS",
         format: "I"
@@ -535,6 +567,11 @@ extension OID.HW.Optional.Arm {
 
     static let FEAT_FlagM2: NameOID = .init(
         name: "FEAT_FlagM2",
+        format: "I"
+    )
+
+    static let FEAT_HBC: NameOID = .init(
+        name: "FEAT_HBC",
         format: "I"
     )
 
@@ -565,6 +602,11 @@ extension OID.HW.Optional.Arm {
 
     static let FEAT_LSE2: NameOID = .init(
         name: "FEAT_LSE2",
+        format: "I"
+    )
+
+    static let FEAT_PACIMP: NameOID = .init(
+        name: "FEAT_PACIMP",
         format: "I"
     )
 
@@ -643,6 +685,11 @@ extension OID.HW.Optional.Arm {
         format: "I"
     )
 
+    static let FEAT_SPECRES2: NameOID = .init(
+        name: "FEAT_SPECRES2",
+        format: "I"
+    )
+
     static let FEAT_SSBS: NameOID = .init(
         name: "FEAT_SSBS",
         format: "I"
@@ -691,6 +738,11 @@ extension OID.HW.Optional.Arm {
     static let caps: NameOID = .init(
         name: "caps",
         format: "Q"
+    )
+
+    static let sme_max_svl_b: NameOID = .init(
+        name: "sme_max_svl_b",
+        format: "I"
     )
 }
 

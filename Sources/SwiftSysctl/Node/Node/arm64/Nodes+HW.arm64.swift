@@ -167,6 +167,7 @@ extension Nodes.HW {
 extension Nodes.HW {
     public struct Features: NodeCollection {
         public static let _shared: Features = .init()
+
     }
 }
 
@@ -174,10 +175,12 @@ extension Nodes.HW {
     public struct Optional: NodeCollection {
         public static let _shared: Optional = .init()
 
+        // removed latest
         public var AdvSIMD: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.AdvSIMD)
         }
 
+        // removed latest
         public var AdvSIMD_HPFPCvt: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.AdvSIMD_HPFPCvt)
         }
@@ -368,6 +371,14 @@ extension Nodes.HW.Optional {
     public struct Arm: NodeCollection {
         public static let _shared: Arm = .init()
 
+        public var AdvSIMD: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.AdvSIMD)
+        }
+
+        public var AdvSIMD_HPFPCvt: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.AdvSIMD_HPFPCvt)
+        }
+
         public var FEAT_AES: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_AES)
         }
@@ -382,6 +393,14 @@ extension Nodes.HW.Optional {
 
         public var FEAT_BTI: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_BTI)
+        }
+
+        public var FEAT_CRC32: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_CRC32)
+        }
+
+        public var FEAT_CSSC: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_CSSC)
         }
 
         public var FEAT_CSV2: LeafNameNode<CInt> {
@@ -408,6 +427,10 @@ extension Nodes.HW.Optional {
             .init(oid: OID.HW.Optional.Arm.FEAT_DotProd)
         }
 
+        public var FEAT_EBF16: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_EBF16)
+        }
+
         public var FEAT_ECV: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_ECV)
         }
@@ -428,6 +451,10 @@ extension Nodes.HW.Optional {
             .init(oid: OID.HW.Optional.Arm.FEAT_FPAC)
         }
 
+        public var FEAT_FPACCOMBINE: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_FPACCOMBINE)
+        }
+
         public var FEAT_FRINTTS: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_FRINTTS)
         }
@@ -438,6 +465,10 @@ extension Nodes.HW.Optional {
 
         public var FEAT_FlagM2: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_FlagM2)
+        }
+
+        public var FEAT_HBC: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_HBC)
         }
 
         public var FEAT_I8MM: LeafNameNode<CInt> {
@@ -462,6 +493,10 @@ extension Nodes.HW.Optional {
 
         public var FEAT_LSE2: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_LSE2)
+        }
+
+        public var FEAT_PACIMP: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_PACIMP)
         }
 
         public var FEAT_PAuth: LeafNameNode<CInt> {
@@ -524,6 +559,10 @@ extension Nodes.HW.Optional {
             .init(oid: OID.HW.Optional.Arm.FEAT_SPECRES)
         }
 
+        public var FEAT_SPECRES2: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.FEAT_SPECRES2)
+        }
+
         public var FEAT_SSBS: LeafNameNode<CInt> {
             .init(oid: OID.HW.Optional.Arm.FEAT_SSBS)
         }
@@ -562,6 +601,10 @@ extension Nodes.HW.Optional {
 
         public var caps: LeafNameNode<CLongLong> {
             .init(oid: OID.HW.Optional.Arm.caps)
+        }
+
+        public var sme_max_svl_b: LeafNameNode<CInt> {
+            .init(oid: OID.HW.Optional.Arm.sme_max_svl_b)
         }
     }
 }

@@ -149,3 +149,16 @@ extension Sysctl {
         return fmt.1
     }
 }
+
+extension Sysctl {
+    @inlinable
+    public static func description<FieldType: FieldProtocol>(
+        _ field: FieldType
+    ) throws -> String? {
+        guard let oid = try _oid(field._name),
+              let desc = try _description(oid) else {
+            return nil
+        }
+        return desc
+    }
+}

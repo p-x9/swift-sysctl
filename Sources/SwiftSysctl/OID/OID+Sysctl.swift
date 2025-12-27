@@ -47,4 +47,11 @@ extension OID.Sysctl {
         kind: 0x80e00001,
         format: "N"
     )
+
+    static let oiddescr: OID = .init(
+        name: "oiddescr",
+        id: 5,
+        kind: 0x80e00001,
+        format: "N"
+    )
 }

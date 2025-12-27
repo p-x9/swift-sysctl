@@ -17,6 +17,22 @@ final class SwiftSysctlTests: XCTestCase {
         }
     }
 
+    func testSysctlDescriptions() throws {
+        let root: [Int32] = [0, 0]
+        var current: [Int32]? = root
+
+        while current != nil {
+            guard let _current = current else { break }
+            let name = try? Sysctl._name(_current)
+            let desc = try? Sysctl._description(_current)
+            print(
+                (name ?? "Unknown") + ":",
+                "\"\(desc ?? "")\""
+            )
+            current = try? Sysctl._next(_current)
+        }
+    }
+
     func testSysctlNextValue() throws {
         let root: [Int32] = [0, 0]
         var current: [Int32]? = root

@@ -31,5 +31,9 @@ extension Nodes {
         public let oidfmt = AnyNode(
             oid: OID.Sysctl.oidfmt
         )
+
+        public var oiddescr: AnyNode {
+            .init(oid: OID.Sysctl.oiddescr)
+        }
     }
 }

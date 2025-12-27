@@ -89,6 +89,22 @@ extension Sysctl {
 }
 
 extension Sysctl {
+    public static func _description(_ oid: [Int32]) throws -> String? {
+        let field = SwiftSysctl.sysctl.oiddescr
+        return try sysctl(field, additional: oid).withUnsafeBytes {
+            guard let baseAddress = $0.baseAddress else {
+                return nil
+            }
+            return String(
+                cString: baseAddress.assumingMemoryBound(
+                    to: CChar.self
+                )
+            )
+        }
+    }
+}
+
+extension Sysctl {
     public static func _oid(_ name: String) throws -> [Int32]? {
         try name.withCString {
             var size = 0

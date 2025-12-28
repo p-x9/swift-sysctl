@@ -87,7 +87,7 @@ extension NodeProtocol {
 }
 
 // MARK: - ChainedNodeProtocol
-public protocol ChainedNodeProtocol {
+public protocol ChainedNodeProtocol: Sendable {
     associatedtype Child: NodeCollection
     associatedtype OIDType: OIDProtocol
 
